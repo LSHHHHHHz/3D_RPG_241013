@@ -21,7 +21,6 @@ public class PlayerMove : MonoBehaviour
         MovePlayer();
         RotPlayer();
         MoveRunPlayer();
-        Debug.Log(currentSpeed);
     }
 
     void MovePlayer()
