@@ -6,6 +6,6 @@ public class PlayerMeleeWeapon : ActorMeleeWeapon<BaseEnemy>
     public override void Update()
     {
         base.Update();
-        enemies = ActorManager<BaseEnemy>.instnace.GetActors();
+        targets = ActorManager<BaseEnemy>.instnace.GetActors();
     }
 }

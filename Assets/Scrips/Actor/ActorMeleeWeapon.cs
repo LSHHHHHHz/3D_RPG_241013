@@ -6,8 +6,8 @@ public class ActorMeleeWeapon<T> : MonoBehaviour where T : MonoBehaviour
     protected Transform swordStartPoint;
     protected Transform swordEndPoint;
     public float attackRange = 0.1f;
-    protected IReadOnlyList<T> enemies;
-    private HashSet<T> attackedEnemies = new HashSet<T>();
+    protected IReadOnlyList<T> targets;
+    private HashSet<T> attackedTarget = new HashSet<T>();
     private void Awake()
     {
         swordStartPoint = transform.Find("StartPos");
@@ -15,28 +15,35 @@ public class ActorMeleeWeapon<T> : MonoBehaviour where T : MonoBehaviour
     }
     public virtual void Update()
     {
-        if (enemies != null)
+        if (targets != null)
         {
             DetectEnemiesInSwordRange();
         }
     }
     protected void DetectEnemiesInSwordRange()
     {
-        foreach (T enemy in enemies)
+        foreach (T target in targets)
         {
-            Vector3 enemyPosition = enemy.transform.position;
+            Vector3 enemyPosition = target.transform.position;
             float distanceToLine = DistanceFromPointToLine(enemyPosition, swordStartPoint.position, swordEndPoint.position);
 
-            if (distanceToLine <= attackRange && !attackedEnemies.Contains(enemy))
+            if (distanceToLine <= attackRange && !attackedTarget.Contains(target))
             {
-                attackedEnemies.Add(enemy);
+                attackedTarget.Add(target);
                 Debug.Log("공격 성공!");
+                StartCoroutine(ResetAttacks(target));
             }
         }
     }
-    public void ResetAttacks()
+    IEnumerator ResetAttacks(T target)
     {
-        attackedEnemies.Clear();  
+        float elapsedTime = 0;
+        while (elapsedTime < 0.2f)
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        attackedTarget.Remove(target);
     }
     float DistanceFromPointToLine(Vector3 point, Vector3 lineStart, Vector3 lineEnd)
     {
@@ -55,7 +62,7 @@ public class ActorMeleeWeapon<T> : MonoBehaviour where T : MonoBehaviour
         {
             float swordLength = Vector3.Distance(swordStartPoint.position, swordEndPoint.position);
 
-            Gizmos.color = Color.red; 
+            Gizmos.color = Color.red;
             Gizmos.DrawLine(swordStartPoint.position, swordEndPoint.position);
         }
     }
