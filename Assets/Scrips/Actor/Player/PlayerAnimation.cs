@@ -5,6 +5,9 @@ public class PlayerAnimation : MonoBehaviour
 {
     Animator anim;
     PlayerMove playerMove;
+
+    public string newDefaultAnimation; 
+    
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -14,6 +17,7 @@ public class PlayerAnimation : MonoBehaviour
     private void Update()
     {
         MoveAnimation();
+        SwapWeapon();
     }
     void MoveAnimation()
     {
@@ -31,6 +35,13 @@ public class PlayerAnimation : MonoBehaviour
         {
             anim.SetBool("IsWalk", false);
             anim.SetBool("IsRun", false);
+        }
+    }
+    void SwapWeapon()
+    {
+        if (Input.GetButtonDown("Swap"))
+        {
+            anim.SetTrigger("DoSwap");
         }
     }
 }
