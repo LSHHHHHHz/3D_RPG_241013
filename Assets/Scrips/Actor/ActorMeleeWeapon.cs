@@ -8,11 +8,12 @@ public class ActorMeleeWeapon<T> : MonoBehaviour where T : MonoBehaviour
     public float attackRange = 0.1f;
     protected IReadOnlyList<T> targets;
     private HashSet<T> attackedTarget = new HashSet<T>();
+    private bool isStartAttack = false;
     private void Awake()
     {
         swordStartPoint = transform.Find("StartPos");
         swordEndPoint = transform.Find("EndPos");
-    }
+    }    
     public virtual void Update()
     {
         if (targets != null)
@@ -27,23 +28,20 @@ public class ActorMeleeWeapon<T> : MonoBehaviour where T : MonoBehaviour
             Vector3 enemyPosition = target.transform.position;
             float distanceToLine = DistanceFromPointToLine(enemyPosition, swordStartPoint.position, swordEndPoint.position);
 
-            if (distanceToLine <= attackRange && !attackedTarget.Contains(target))
+            if (distanceToLine <= attackRange && !attackedTarget.Contains(target) && isStartAttack)
             {
                 attackedTarget.Add(target);
                 Debug.Log("공격 성공!");
-                StartCoroutine(ResetAttacks(target));
             }
         }
     }
-    IEnumerator ResetAttacks(T target)
+    protected void StartAttackAction(bool isAttack)
     {
-        float elapsedTime = 0;
-        while (elapsedTime < 0.2f)
-        {
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-        attackedTarget.Remove(target);
+        isStartAttack = isAttack;
+    }
+    protected void ResetTarget()
+    {
+        attackedTarget.Clear();
     }
     float DistanceFromPointToLine(Vector3 point, Vector3 lineStart, Vector3 lineEnd)
     {

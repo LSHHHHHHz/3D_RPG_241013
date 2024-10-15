@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,19 +6,19 @@ public class PlayerAnimation : MonoBehaviour
 {
     Animator anim;
     PlayerMove playerMove;
-
-    public string newDefaultAnimation; 
+    PlayerMeleeWeapon playerMeleeWeapon;
     
     private void Awake()
     {
         anim = GetComponent<Animator>();
         playerMove = GetComponent<PlayerMove>();
+        playerMeleeWeapon = GetComponentInChildren<PlayerMeleeWeapon>();
     }
-
     private void Update()
     {
         MoveAnimation();
         SwapWeapon();
+        CheckEndAttackAnim();
     }
     void MoveAnimation()
     {
@@ -42,6 +43,24 @@ public class PlayerAnimation : MonoBehaviour
         if (Input.GetButtonDown("Swap"))
         {
             anim.SetTrigger("DoSwap");
+        }
+    }
+    void CheckEndAttackAnim()
+    {
+        AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+
+        if (stateInfo.IsName("Player_Attack"))
+        {
+            if (stateInfo.normalizedTime >= 0.5f && !stateInfo.loop)
+            {
+                Debug.Log("Player_Attack" + " 애니메이션 종료");
+                EventManager.instance.EndAttackAnim();
+                EventManager.instance.StartAttackAnim(false);
+            }
+            else if (stateInfo.normalizedTime >= 0)
+            {
+                EventManager.instance.StartAttackAnim(true);
+            }
         }
     }
 }
