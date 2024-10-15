@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerMeleeWeapon : ActorMeleeWeapon<BaseEnemy>
 {
+    PlayerAnimation playerAnim;
+
     private void OnEnable()
     {
-        EventManager.instance.onEndPlayerAttackAnim += ResetTarget;
-        EventManager.instance.onStartPlayerAttackAnim += StartAttackAction;
+        playerAnim = GetComponentInParent<PlayerAnimation>();
+        playerAnim.onEndPlayerAttackAnim += ResetTarget;
+        playerAnim.onStartPlayerAttackAnim += StartAttackAction;
     }
     private void OnDisable()
     {
-        EventManager.instance.onEndPlayerAttackAnim -= ResetTarget;
-        EventManager.instance.onStartPlayerAttackAnim -= StartAttackAction;
+        playerAnim.onEndPlayerAttackAnim -= ResetTarget;
+        playerAnim.onStartPlayerAttackAnim -= StartAttackAction;
     }
     public override void Update()
     {

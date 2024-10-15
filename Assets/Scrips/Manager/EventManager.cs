@@ -17,21 +17,31 @@ public class EventManager
             return _instance;
         }
     }
-
-    public event Action<bool> onStartPlayerAttackAnim;
-    public event Action onEndPlayerAttackAnim;
-
     public event Action<Vector3> onLeapPortalPlayer;
-    public void StartAttackAnim(bool isAtack)
-    {
-        onStartPlayerAttackAnim?.Invoke(isAtack);
-    }
-    public void EndAttackAnim()
-    {
-        onEndPlayerAttackAnim?.Invoke();
-    }
+
+    public event Action<float> onZommIn;
+    public event Action<float> onZommOut;
+    public event Action<float, float> onStartCameraShake;
+    public event Action onEndCameraShake;
+ 
     public void LeapPortalPlayer(Vector3 vec)
     {
         onLeapPortalPlayer?.Invoke(vec);
+    }
+    public void ZommIn(float duration)
+    {
+        onZommIn.Invoke(duration);
+    }
+    public void ZoomOut(float duration)
+    {
+        onZommOut.Invoke(duration);
+    }
+    public void StartCameraShake(float duration, float matitude)
+    {
+        onStartCameraShake?.Invoke(duration, matitude);
+    }
+    public void EndCameraShake()
+    {
+        onEndCameraShake?.Invoke();
     }
 }

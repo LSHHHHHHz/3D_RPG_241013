@@ -6,13 +6,12 @@ public class PlayerAnimation : MonoBehaviour
 {
     Animator anim;
     PlayerMove playerMove;
-    PlayerMeleeWeapon playerMeleeWeapon;
-    
+    public event Action<bool> onStartPlayerAttackAnim;
+    public event Action onEndPlayerAttackAnim;
     private void Awake()
     {
         anim = GetComponent<Animator>();
         playerMove = GetComponent<PlayerMove>();
-        playerMeleeWeapon = GetComponentInChildren<PlayerMeleeWeapon>();
     }
     private void Update()
     {
@@ -53,13 +52,12 @@ public class PlayerAnimation : MonoBehaviour
         {
             if (stateInfo.normalizedTime >= 0.5f && !stateInfo.loop)
             {
-                Debug.Log("Player_Attack" + " 애니메이션 종료");
-                EventManager.instance.EndAttackAnim();
-                EventManager.instance.StartAttackAnim(false);
+                onEndPlayerAttackAnim?.Invoke();
+                onStartPlayerAttackAnim?.Invoke(false);
             }
             else if (stateInfo.normalizedTime >= 0)
             {
-                EventManager.instance.StartAttackAnim(true);
+                onStartPlayerAttackAnim?.Invoke(true);
             }
         }
     }

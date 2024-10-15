@@ -1,33 +1,27 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 public class NPC : MonoBehaviour
 {
-    [SerializeField] float detectedRange =5;
-    IReadOnlyList<Player> player;
-    NPCMove npcMove;
+    public NPCDetector npcDetector {  get; private set; }
+    public NPCMove npcMove{  get; private set; }
+    public Animator anim { get; private set; }
+    public FSMController<NPC> fsmController {  get; private set; } 
     private void Awake()
     {
+        anim = GetComponent<Animator>();
+        npcDetector = GetComponent<NPCDetector>();
         npcMove = GetComponent<NPCMove>();
+        fsmController = new FSMController<NPC> (this);
+    }
+    private void OnEnable()
+    {
+        fsmController.ChangeState(new NPCWalkState());
     }
     private void Update()
     {
-        player = ActorManager<Player>.instnace.GetActors();
-        DetectPlayer();
-    }
-    private void DetectPlayer()
-    {
-        foreach (Player p in player)
-        {
-            if (Vector3.Distance(transform.position, p.transform.position) <= detectedRange)
-            {
-                Debug.Log("플레이어가 특정 키 입력 시 팝업 생성");
-            }
-        }
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectedRange);
+        fsmController.FSMUpdate();
     }
 }

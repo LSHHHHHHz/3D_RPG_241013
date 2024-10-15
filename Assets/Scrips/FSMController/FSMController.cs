@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FSMController
+public class FSMController<T>
 {
-    private BaseEnemy baseEnemy;
-    IState currentState;
-    public FSMController(BaseEnemy enemy)
+    private T actor;
+    IState<T> currentState;
+    public FSMController(T actor)
     {
-        this.baseEnemy = enemy;
+        this.actor = actor;
     }
-    public void ChangeState(IState newState)
+    public void ChangeState(IState<T> newState)
     {
-        currentState?.Exit(baseEnemy);
+        currentState?.Exit(actor);
         currentState = newState;
-        currentState.Enter(baseEnemy);
+        currentState.Enter(actor);
     }
     public void FSMUpdate()
     {
-        currentState.Update(baseEnemy);
+        currentState.Update(actor);
     }
 }

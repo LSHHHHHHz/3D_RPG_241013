@@ -77,12 +77,14 @@ public class PlayerMove : MonoBehaviour
     IEnumerator LeapPortalPlayer(Vector3 vec)
     {
         anim.DoLeapJump();
+        EventManager.instance.ZommIn(2);
         yield return new WaitForSeconds(3.67f);
         while (Vector3.Distance(transform.position, vec) >0.2f)
         {
             transform.position = Vector3.Lerp(transform.position, vec, Time.deltaTime * 5);
             yield return null;
         }
+        EventManager.instance.ZoomOut(0.5f);
         isLeap = false;
     }
     void MoveRunPlayer()

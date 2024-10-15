@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IState
+public interface IState<T>
 {
-    void Enter(BaseEnemy actor);
-    void Update(BaseEnemy actor);
-    void Exit(BaseEnemy actor);
+    void Enter(T actor);
+    void Update(T actor);
+    void Exit(T actor);
 }

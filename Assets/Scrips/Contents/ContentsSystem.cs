@@ -28,7 +28,7 @@ public class ContentsSystem : MonoBehaviour
     {
         if (maincamera != null)
         {
-            yield return StartCoroutine(maincamera.ZoomIn());
+            yield return StartCoroutine(maincamera.ZoomIn(1));
         }
         if (fadeSystem != null)
         {
@@ -41,7 +41,7 @@ public class ContentsSystem : MonoBehaviour
         }
         if (maincamera != null)
         {
-            yield return StartCoroutine(maincamera.ZoomOut());
+            yield return StartCoroutine(maincamera.ZoomOut(1));
         }
         if (fadeSystem != null)
         {

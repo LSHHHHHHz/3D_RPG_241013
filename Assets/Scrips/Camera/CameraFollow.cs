@@ -18,7 +18,6 @@ public class CameraFollow : MonoBehaviour
     public float zoomDuration = 1f;
     Vector3 originOffset = new Vector3(0, 3, -5);
     Vector3 zoomOffset = new Vector3(0, 2, -3);
-
     private void Awake()
     {
         mainCamera = GetComponent<Camera>();
@@ -30,32 +29,50 @@ public class CameraFollow : MonoBehaviour
     private void OnEnable()
     {
         elapsedTime = 0;
+        EventManager.instance.onZommIn += StartZoomIn;
+        EventManager.instance.onZommOut += StartZoomOut;
     }
-    public IEnumerator ZoomIn()
+    private void OnDisable()
+    {
+        EventManager.instance.onZommIn -= StartZoomIn;
+        EventManager.instance.onZommOut -= StartZoomOut;
+    }
+    public void StartZoomIn(float duration)
+    {
+        StopAllCoroutines();
+        StartCoroutine(ZoomIn(duration)); 
+    }
+    public void StartZoomOut(float duration)
+    {
+        StopAllCoroutines();
+        StartCoroutine(ZoomOut(duration)); 
+    }
+    public IEnumerator ZoomIn(float duration)
     {
         Debug.Log("¡‹¿Œ Ω√¿€");
+        offset = originOffset;
         float elapsedTime = 0f;
         Vector3 startOffset = offset;
-        while (elapsedTime < zoomDuration)
+        while (elapsedTime < duration)
         {
-            offset = Vector3.Lerp(startOffset, zoomOffset, elapsedTime / zoomDuration);
+            offset = Vector3.Lerp(startOffset, zoomOffset, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
         offset = zoomOffset;
     }
-    public IEnumerator ZoomOut()
+    public IEnumerator ZoomOut(float duration)
     {
         Debug.Log("¡‹æ∆øÙ Ω√¿€");
         float elapsedTime = 0f;
         Vector3 startOffset = offset; 
-        while (elapsedTime < zoomDuration)
+        while (elapsedTime < duration)
         {
-            offset = Vector3.Lerp(startOffset, originOffset, elapsedTime / zoomDuration);
+            offset = Vector3.Lerp(startOffset, originOffset, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        offset = originOffset; 
+        offset = originOffset;
     }
     void LateUpdate()
     {
