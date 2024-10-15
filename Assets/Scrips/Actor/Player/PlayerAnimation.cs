@@ -63,4 +63,8 @@ public class PlayerAnimation : MonoBehaviour
             }
         }
     }
+    public void DoLeapJump()
+    {
+        anim.SetTrigger("DoLeap");
+    }
 }

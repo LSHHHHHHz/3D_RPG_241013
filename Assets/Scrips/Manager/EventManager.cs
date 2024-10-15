@@ -21,6 +21,7 @@ public class EventManager
     public event Action<bool> onStartPlayerAttackAnim;
     public event Action onEndPlayerAttackAnim;
 
+    public event Action<Vector3> onLeapPortalPlayer;
     public void StartAttackAnim(bool isAtack)
     {
         onStartPlayerAttackAnim?.Invoke(isAtack);
@@ -28,5 +29,9 @@ public class EventManager
     public void EndAttackAnim()
     {
         onEndPlayerAttackAnim?.Invoke();
+    }
+    public void LeapPortalPlayer(Vector3 vec)
+    {
+        onLeapPortalPlayer?.Invoke(vec);
     }
 }

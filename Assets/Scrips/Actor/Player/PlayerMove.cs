@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
-    public CharacterController controller;
+    CharacterController controller;
+    PlayerAnimation anim;
     public Transform camera_Point;
 
     public float playerSpeed = 5f;
@@ -16,11 +17,29 @@ public class PlayerMove : MonoBehaviour
     public float currentSpeed { get; private set; }
     private Vector3 velocity;
 
+    bool isLeap = false;
+    private void Awake()
+    {
+        controller = GetComponent<CharacterController>();
+        anim = GetComponent<PlayerAnimation>();
+    }
+
+    private void OnEnable()
+    {
+        EventManager.instance.onLeapPortalPlayer += LeapPlayer;
+    }
+    private void OnDisable()
+    {
+        EventManager.instance.onLeapPortalPlayer -= LeapPlayer;
+    }
     void Update()
     {
-        MovePlayer();
-        RotPlayer();
-        MoveRunPlayer();
+        if (!isLeap)
+        {
+            MovePlayer();
+            RotPlayer();
+            MoveRunPlayer();
+        }
     }
 
     void MovePlayer()
@@ -48,6 +67,23 @@ public class PlayerMove : MonoBehaviour
         {
             lastMoveDir = Vector3.zero;
         }
+    }
+    void LeapPlayer(Vector3 vec)
+    {
+        StopAllCoroutines();
+        isLeap = true;
+        StartCoroutine(LeapPortalPlayer(vec));
+    }
+    IEnumerator LeapPortalPlayer(Vector3 vec)
+    {
+        anim.DoLeapJump();
+        yield return new WaitForSeconds(3.67f);
+        while (Vector3.Distance(transform.position, vec) >0.2f)
+        {
+            transform.position = Vector3.Lerp(transform.position, vec, Time.deltaTime * 5);
+            yield return null;
+        }
+        isLeap = false;
     }
     void MoveRunPlayer()
     {

@@ -60,7 +60,7 @@ public class CameraFollow : MonoBehaviour
     void LateUpdate()
     {
         elapsedTime += Time.deltaTime;
-       // keyQ = Input.GetButton("CameraRotation");
+        keyQ = Input.GetButton("CameraRotation");
 
         if (keyQ)
         {
@@ -69,7 +69,7 @@ public class CameraFollow : MonoBehaviour
             currentPitch = Mathf.Clamp(currentPitch, -pitchRange, pitchRange);
         }
         Quaternion horizontalRotation = Quaternion.Euler(0, currentAngle, 0);
-        Quaternion verticalRotation = Quaternion.Euler(currentPitch, 0, 0);
+        Quaternion verticalRotation = Quaternion.Euler(-currentPitch, 0, 0);
         Quaternion combinedRotation = horizontalRotation * verticalRotation;
         Vector3 rotatedOffset = combinedRotation * offset;
         if (elapsedTime <= 0.5f)
