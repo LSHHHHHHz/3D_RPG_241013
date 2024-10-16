@@ -7,13 +7,18 @@ public class EnemyMeleeWeapon : ActorMeleeWeapon<Player>
     private void OnEnable()
     {
         baseEnemy = GetComponentInParent<BaseEnemy>();
+        baseEnemy.onEndEnemyAttackAnim += ResetTarget;
+        baseEnemy.onStartEnemyAttackAnim += StartAttackAction;
     }
+
     private void OnDisable()
     {
+        baseEnemy.onEndEnemyAttackAnim -= ResetTarget;
+        baseEnemy.onStartEnemyAttackAnim -= StartAttackAction;
     }
     public override void Update()
     {
-        base.Update();
         targets = ActorManager<Player>.instnace.GetActors();
+        base.Update();
     }
 }

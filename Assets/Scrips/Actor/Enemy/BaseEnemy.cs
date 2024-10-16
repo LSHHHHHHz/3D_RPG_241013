@@ -10,7 +10,7 @@ public class BaseEnemy : Actor
     public FSMController<BaseEnemy> fsmController { get; private set; }
     public Animator anim { get; private set; }
     public Action<bool> onStartEnemyAttackAnim;
-    public Action onEndPlayerAttackAnim;
+    public Action onEndEnemyAttackAnim;
     private void Awake()
     {
         enemyDetector = GetComponent<EnemyDetector>();

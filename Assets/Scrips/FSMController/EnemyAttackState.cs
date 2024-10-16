@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class EnemyAttackState : IState<BaseEnemy>
 {
-    public event Action onEdnAttackAnim;
-
     public void Enter(BaseEnemy actor)
     {
         actor.anim.SetBool("IsAttack", true);
@@ -21,12 +19,24 @@ public class EnemyAttackState : IState<BaseEnemy>
     {
         AnimatorStateInfo stateInfo = actor.anim.GetCurrentAnimatorStateInfo(0);
 
-        if (stateInfo.IsName("Attack") && !actor.IsPossibleAttack())
+        if (stateInfo.IsName("Attack"))
         {
-            if (stateInfo.normalizedTime % 1 >= 0.99f)
+            float normalizedTime = stateInfo.normalizedTime % 1;
+
+            if (normalizedTime >= 0.99f)
             {
-                actor.fsmController.ChangeState(new EnemyWalkState());
+                actor.fsmController.ChangeState(new EnemyIdleState());
+                actor.onStartEnemyAttackAnim?.Invoke(false);
+                actor.onEndEnemyAttackAnim?.Invoke();
             }
+            else if (normalizedTime >= 0f)
+            {
+                actor.onStartEnemyAttackAnim?.Invoke(true);
+            }
+        }
+        if (!actor.IsPossibleAttack() && stateInfo.IsName("Attack") && stateInfo.normalizedTime % 1 >= 0.99f)
+        {
+            actor.fsmController.ChangeState(new EnemyWalkState());
         }
     }
 }

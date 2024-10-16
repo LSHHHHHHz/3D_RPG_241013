@@ -25,13 +25,14 @@ public class ActorMeleeWeapon<T> : MonoBehaviour where T : MonoBehaviour
     {
         foreach (T target in targets)
         {
-            Vector3 enemyPosition = target.transform.position;
-            float distanceToLine = DistanceFromPointToLine(enemyPosition, swordStartPoint.position, swordEndPoint.position);
+            Vector3 targetPos = target.transform.position;
+            float distanceToLine = DistanceFromPointToLine(targetPos, swordStartPoint.position, swordEndPoint.position);
 
             if (distanceToLine <= attackRange && !attackedTarget.Contains(target) && isStartAttack)
             {
                 attackedTarget.Add(target);
                 Debug.Log("공격 성공!");
+                Debug.Log("TargetName : " + target.name);
             }
         }
     }

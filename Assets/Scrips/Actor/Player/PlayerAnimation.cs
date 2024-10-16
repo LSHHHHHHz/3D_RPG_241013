@@ -50,7 +50,7 @@ public class PlayerAnimation : MonoBehaviour
 
         if (stateInfo.IsName("Player_Attack"))
         {
-            if (stateInfo.normalizedTime >= 0.5f && !stateInfo.loop)
+            if (stateInfo.normalizedTime >= 0.5f)
             {
                 onEndPlayerAttackAnim?.Invoke();
                 onStartPlayerAttackAnim?.Invoke(false);
