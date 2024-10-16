@@ -15,6 +15,10 @@ public class EnemyMove : MoveBase
 
     public override void MoveEnemy()
     {
+        if (!isPossibleMove)
+        {
+            return;
+        }
         if (Vector3.Distance(transform.position, originPos) > 0.1f)
         {
             isOriginPos = false;
