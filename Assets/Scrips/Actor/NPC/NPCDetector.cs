@@ -1,40 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-public class NPCDetector : MonoBehaviour
+
+public class NPCDetector : DetectorBase
 {
-    public bool isDetectedPlayer { get; private set; }
-    [SerializeField] float detectedRange =5;
-    [SerializeField] float possibleTalkRange = 1;
-    IReadOnlyList<Player> player;
-    NPCMove npcMove;
-    private void Awake()
+    [SerializeField] private float possibleTalkRange = 1;
+
+    protected override void Awake()
     {
-        npcMove = GetComponent<NPCMove>();
+        base.Awake();
+        moveBase = GetComponent<NPCMove>();
     }
-    private void Update()
+    protected override void Update()
     {
-        player = ActorManager<Player>.instnace.GetActors();
-        DetectPlayer();
+        actors = ActorManager<Player>.instnace.GetActors();
+        base.Update();
     }
-    private void DetectPlayer()
+    protected override void DetectPlayer(IReadOnlyList<Actor> players)
     {
-        foreach (Player p in player)
+        foreach (Player p in actors)
         {
             if (Vector3.Distance(transform.position, p.transform.position) <= detectedRange)
             {
-                npcMove.StopMove();
-                npcMove.LookTarget(p.transform.position);
+                moveBase.StopMove();
+                moveBase.LookTarget(p.transform.position);
                 isDetectedPlayer = true;
             }
             else
             {
                 isDetectedPlayer = false;
-                npcMove.ResetMoveSpeed();
+                moveBase.ResetMoveSpeed();
             }
         }
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

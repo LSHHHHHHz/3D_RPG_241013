@@ -2933,7 +2933,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
@@ -3964,6 +3964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectedRange: 3
+  possibleAttackRange: 1
   possibleTalkRange: 1
 --- !u!23 &1588642943
 MeshRenderer:
@@ -4054,9 +4055,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bdc6a3c0098c8b4d993213ccec1ef21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wayPointParent: {fileID: 4014311492695623755, guid: 13398295bc03f5f40a2c510f73e18f93, type: 3}
   moveSpeed: 1
   rotateSpeed: 360
+  wayPointParent: {fileID: 4014311492695623755, guid: 13398295bc03f5f40a2c510f73e18f93, type: 3}
 --- !u!1 &1590599074
 GameObject:
   m_ObjectHideFlags: 0
@@ -5759,9 +5760,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bdc6a3c0098c8b4d993213ccec1ef21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wayPointParent: {fileID: 4014311492695623755, guid: 13398295bc03f5f40a2c510f73e18f93, type: 3}
   moveSpeed: 1
   rotateSpeed: 10
+  wayPointParent: {fileID: 4014311492695623755, guid: 13398295bc03f5f40a2c510f73e18f93, type: 3}
 --- !u!114 &2122899855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5775,6 +5776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectedRange: 3
+  possibleAttackRange: 1
   possibleTalkRange: 1
 --- !u!114 &2122899858
 MonoBehaviour:

@@ -1,46 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-public class EnemyDetector : MonoBehaviour
+
+public class EnemyDetector : DetectorBase
 {
-    public bool isDetectedPlayer { get; private set; }
-    public Player detectedTarget {  get; private set; }
-    public float detectedRange =5;
-    public float possibleAttackRange = 1;
-    IReadOnlyList<Player> player;
-    EnemyMove enemyMove;
-    private void Awake()
+    Vector3 originPos;
+    protected override void Awake()
     {
-        enemyMove = GetComponent<EnemyMove>();
+        base.Awake();
+        originPos = transform.position;
     }
-    private void Update()
+    protected override void Update()
     {
-        player = ActorManager<Player>.instnace.GetActors();
-        DetectPlayer();
+        actors = ActorManager<Player>.instnace.GetActors();
+        base.Update();
     }
-    private void DetectPlayer()
+    protected override void DetectPlayer(IReadOnlyList<Actor> players)
     {
-        foreach (Player p in player)
+        foreach (Player actor in actors)
         {
-            if (Vector3.Distance(transform.position, p.transform.position) <= detectedRange)
+            float distance = Vector3.Distance(originPos, actor.transform.position);
+            if (distance <= detectedRange)
             {
-                enemyMove.LookTarget(p.transform.position);
+                moveBase.LookTarget(actor.transform.position);
                 isDetectedPlayer = true;
-                detectedTarget = p;
+                detectedTarget = actor;
+                break;
             }
             else
             {
-                isDetectedPlayer = false;
-                detectedTarget = null;
-                enemyMove.ResetMoveSpeed();
+                if (isDetectedPlayer)
+                {
+                    isDetectedPlayer = false;
+                    detectedTarget = null;
+                    moveBase.ResetMoveSpeed();
+                }
             }
         }
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectedRange);
+        Gizmos.DrawWireSphere(originPos, detectedRange);
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, possibleAttackRange);
