@@ -5,12 +5,16 @@ using System.Threading;
 using UnityEngine;
 public class BaseEnemy : Actor
 {
+    public EnemyDetector enemyDetector;
+    EnemyMove enemyMove;
     public FSMController<BaseEnemy> fsmController { get; private set; }
     public Animator anim { get; private set; }
     public Action<bool> onStartEnemyAttackAnim;
     public Action onEndPlayerAttackAnim;
     private void Awake()
     {
+        enemyDetector = GetComponent<EnemyDetector>();
+        enemyMove = GetComponent<EnemyMove>();
         fsmController = new FSMController<BaseEnemy>(this);
         anim = GetComponentInChildren<Animator>();
     }
@@ -25,6 +29,32 @@ public class BaseEnemy : Actor
     }
     private void Update()
     {
-        fsmController.FSMUpdate();
+        if (enemyDetector != null)
+        {
+            fsmController.FSMUpdate();
+        }
+    }
+    public bool IsPlayerDetected()
+    {
+        return enemyDetector.detectedTarget != null;
+    }
+    public bool IsPossibleAttack()
+    {
+        return enemyDetector.isPossibleAttack;
+    }
+    public bool IsOriginPos()
+    {
+        return enemyMove.isOriginPos;
+    }
+    public void StartAttack(bool isAttack)
+    {
+        if(isAttack)
+        {
+            enemyMove.StopMove();
+        }
+        else
+        {
+            enemyMove.ResetMoveSpeed();
+        }
     }
 }

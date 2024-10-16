@@ -6,8 +6,7 @@ public abstract class DetectorBase : MonoBehaviour
 {
     public bool isDetectedPlayer { get; set; }
     public Player detectedTarget { get; set; }
-    public float detectedRange = 5;
-    public float possibleAttackRange = 1;
+    public float detectedRange { get; private set; } = 5;   
     protected IReadOnlyList<Actor> actors;
     protected MoveBase moveBase;
 

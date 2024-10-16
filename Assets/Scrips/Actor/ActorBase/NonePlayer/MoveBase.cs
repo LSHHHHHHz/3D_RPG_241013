@@ -11,13 +11,11 @@ public abstract class MoveBase : MonoBehaviour
     protected Vector3 targetPos;
     protected Vector3 originPos;
     protected Quaternion targetRot;
-    protected DetectorBase detectorBase;
 
     protected virtual void Awake()
     {
         originMoveSpeed = moveSpeed;
         originPos = transform.position;
-        detectorBase = GetComponent<DetectorBase>();
     }
     private void Update()
     {

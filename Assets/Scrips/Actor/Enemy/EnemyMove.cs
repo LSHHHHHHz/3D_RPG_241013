@@ -4,44 +4,49 @@ using UnityEngine;
 
 public class EnemyMove : MoveBase
 {
+    public bool isOriginPos { get; private set; }
     [SerializeField] float moveArea = 5;
-
+    EnemyDetector enemyDetector;
     protected override void Awake()
     {
         base.Awake();
-        detectorBase = GetComponent<EnemyDetector>();
+        enemyDetector = GetComponent<EnemyDetector>();
     }
 
     public override void MoveEnemy()
     {
-        Vector3 targetPosition = Vector3.zero;
-
-        if (detectorBase.detectedTarget != null)
+        if (Vector3.Distance(transform.position, originPos) > 0.1f)
         {
-            targetPosition = detectorBase.detectedTarget.transform.position;
+            isOriginPos = false;
         }
         else
         {
-            targetPosition = originPos;
+            isOriginPos = true;
         }
-        targetPosition.y = transform.position.y;
-
-        if (Vector3.Distance(originPos, targetPosition) < detectorBase.detectedRange)
+        Vector3 targetPosition = Vector3.zero;
+        if (enemyDetector.isDetectedPlayer)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-        }
-        else if (Vector3.Distance(originPos, targetPosition) == detectorBase.possibleAttackRange)
-        {
-            Debug.Log("Attack");
+            targetPosition = enemyDetector.detectedTarget.transform.position;
+            targetPosition.y = transform.position.y;
+            if (enemyDetector.isPossibleAttack)
+            {
+                StopMove();
+            }
+            else
+            {
+                ResetMoveSpeed();
+                transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+            }
         }
         else
         {
             transform.position = Vector3.MoveTowards(transform.position, originPos, moveSpeed * Time.deltaTime);
+            ResetMoveSpeed();
         }
-
-        if (!detectorBase.isDetectedPlayer)
+        LookTarget(targetPosition);
+        if (!enemyDetector.isDetectedPlayer)
         {
-            if(Vector3.Distance(transform.position, originPos)>0.1f)
+            if (Vector3.Distance(transform.position, originPos) > 0.1f)
             {
                 LookTarget(targetPosition);
             }

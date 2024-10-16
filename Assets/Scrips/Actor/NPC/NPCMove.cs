@@ -8,11 +8,11 @@ public class NPCMove : MoveBase
     [SerializeField] GameObject wayPointParent;
     List<Vector3> npcMovePos = new List<Vector3>();
     int wayPointIndex = 0;
-
+    NPCDetector npcDetector;
     protected override void Awake()
     {
         base.Awake();
-        detectorBase = GetComponent<NPCDetector>();
+        npcDetector = GetComponent<NPCDetector>();
         SetMovePos();
     }
     private void OnEnable()
@@ -40,7 +40,7 @@ public class NPCMove : MoveBase
         }
 
         transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
-        if (!detectorBase.isDetectedPlayer)
+        if (!npcDetector.isDetectedPlayer)
         {
             LookTarget(targetPos);
         }

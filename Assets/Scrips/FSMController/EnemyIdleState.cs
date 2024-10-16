@@ -14,6 +14,13 @@ public class EnemyIdleState : IState<BaseEnemy>
 
     public void Update(BaseEnemy actor)
     {
-
+        if(actor.IsPlayerDetected())
+        {
+            actor.fsmController.ChangeState(new EnemyWalkState());
+        }
+        if (actor.IsPossibleAttack())
+        {
+            actor.fsmController.ChangeState(new EnemyAttackState());
+        }
     }
 }
