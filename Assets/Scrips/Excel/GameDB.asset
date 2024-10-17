@@ -38,9 +38,34 @@ MonoBehaviour:
     prefabPath: "\uACBD\uB85C\uC74D\uB2E4"
     description: "\uAE30\uBCF8\uAC80\uC774\uB2E4"
     price: 10
+    dataType: Swrod
   - dataID: Sword2
     name: "\uC911\uAE09\uAC80"
     iconPath: Item/Sword2
     prefabPath: "\uACBD\uB85C\uC74D\uB2E4"
     description: "\uC911\uAE09\uAC80\uC774\uB2E4"
     price: 20
+    dataType: Swrod
+  - dataID: Portion1
+    name: "\uAE30\uBCF8HP"
+    iconPath: Item/Portion1
+    prefabPath: "\uACBD\uB85C\uC74D\uB2E4"
+    description: "\uAE30\uBCF8\uD3EC\uC158\uC774\uB2E4"
+    price: 11
+    dataType: Portion
+  - dataID: Portion2
+    name: "\uC911\uAE09HP"
+    iconPath: item/Portion2
+    prefabPath: "\uACBD\uB85C\uC74D\uB2E4"
+    description: "\uC911\uAE09\uD45C\uC158\uC774\uB2E4"
+    price: 21
+    dataType: Portion
+  shopDB:
+  - npcID: PortionShopNPC
+    dataID: Portion1
+  - npcID: PortionShopNPC
+    dataID: Portion2
+  - npcID: EquipmentShopNPC
+    dataID: Sword1
+  - npcID: EquipmentShopNPC
+    dataID: Sword2

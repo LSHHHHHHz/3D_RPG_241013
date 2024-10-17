@@ -4,13 +4,18 @@ using UnityEngine;
 
 public enum InventoryType
 {
-    Inventory,
-    EquipInventory
+    itemInventory,
+    EquipImentnventory,
+    SkillInventory,
+    QuickSkillSlots,
+    QuickPortionSlots,
+    none
 }
 public class BaseInventory : MonoBehaviour
 {
     [SerializeField] GameObject slotPrefab;
     [SerializeField] Transform slotTransform;
+    public InventoryType inventoryType;
     public int slotCount;
     protected List<DropSlotUI> slots;
 
@@ -21,6 +26,7 @@ public class BaseInventory : MonoBehaviour
     public void AddSlot()
     {
         DropSlotUI newSlot = Instantiate(slotPrefab, slotTransform).GetComponent<DropSlotUI>();
+        newSlot.parentInventoryType = inventoryType;
         slots.Add(newSlot);
     }
     public void SetSlotCount(int newCount)

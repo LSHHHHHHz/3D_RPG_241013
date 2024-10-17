@@ -9,4 +9,5 @@ public class GameDBEntity
     public string prefabPath;
     public string description;
     public int price;
+    public string dataType;
 }

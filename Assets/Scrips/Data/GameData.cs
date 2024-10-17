@@ -25,10 +25,14 @@ public class GameData
     }
     public ItemInventoryData itemInventoryData;
     public ItemEquipInventoryData ItemEquipInventoryData;
+    public QuickPortionSlotsData quickPortionSlotsData;
+    public QuickSkillSlotsData quickSkillSlotsData;
     public GameData()
     {
         itemInventoryData = new ItemInventoryData();
         ItemEquipInventoryData = new ItemEquipInventoryData();
+        quickPortionSlotsData = new QuickPortionSlotsData();
+        quickSkillSlotsData = new QuickSkillSlotsData();
     }
     [ContextMenu("Save To Json Data")]
     public void Save()

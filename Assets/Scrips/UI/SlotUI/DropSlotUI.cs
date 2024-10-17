@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class DropSlotUI : MonoBehaviour, IDropHandler
 {
     public SlotData currentSlotData { get; set; }
+    public InventoryType parentInventoryType;
     [SerializeField] Image dataImage;
     [SerializeField] Text dataCount;
 
@@ -41,7 +42,11 @@ public class DropSlotUI : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         DragSlotUI draggedSlot = eventData.pointerDrag.GetComponent<DragSlotUI>();
-
+        GameDBEntity db = GameManager.instance.gameDB.GetProfileDB(draggedSlot.dragDataId);
+        if (IsPossibleDrop(db.dataType) == false)
+        {
+            return;
+        }
         if(currentSlotData.dataID == draggedSlot.dragDataId)
         {
             currentSlotData.MergeData(currentSlotData,draggedSlot.dropSlotUI.currentSlotData);
@@ -49,6 +54,24 @@ public class DropSlotUI : MonoBehaviour, IDropHandler
         else
         {
             currentSlotData.SwapData(currentSlotData, draggedSlot.dropSlotUI.currentSlotData);
+        }
+    }
+    bool IsPossibleDrop(string type)
+    {
+        switch (parentInventoryType)
+        {
+            case InventoryType.itemInventory:
+                return true;
+            case InventoryType.QuickPortionSlots:
+                return type == "Portion"; 
+            case InventoryType.QuickSkillSlots:
+                return type == "Skill";
+            case InventoryType.EquipImentnventory:
+                return type == "Equipment"; 
+            case InventoryType.SkillInventory:
+                return false; 
+            default:
+                return false;  
         }
     }
 }

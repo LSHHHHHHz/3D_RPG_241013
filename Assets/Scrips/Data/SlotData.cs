@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum DataType
+public enum SlotType
 {
     Equipment,
     Portion,
@@ -114,12 +114,27 @@ public class SkillInventoryData : InventoryData
         }
     }
 }
-
 [Serializable]
-public class SkillEquipInventoryData : InventoryData
+public class QuickSkillSlotsData : InventoryData
 {
-    public int inventoryCount = 3;
-    public SkillEquipInventoryData()
+    public int inventoryCount = 6;
+    public QuickSkillSlotsData()
+    {
+        if (slotDatas == null || slotDatas.Count == 0)
+        {
+            InitializeSlots(inventoryCount);
+            Debug.Log("√ ±‚»≠");
+        }
+        else
+        {
+            Debug.Log(slotDatas.Count);
+        }
+    }
+}
+public class QuickPortionSlotsData : InventoryData
+{
+    public int inventoryCount = 4;
+    public QuickPortionSlotsData()
     {
         if (slotDatas == null || slotDatas.Count == 0)
         {

@@ -9,7 +9,7 @@ public class GameDB : ScriptableObject
 {
 	public List<DialogDBEntity> DialogEntites;
 	public List<GameDBEntity> GameDataEntites;
-
+    public List<ShopDB> shopDB;
     public GameDBEntity GetProfileDB(string id)
     {
         foreach (GameDBEntity profile in GameDataEntites)
@@ -21,5 +21,17 @@ public class GameDB : ScriptableObject
         }
         Debug.LogError("맞는 아이디 없음");
         return null;
+    }
+    public List<string> GetDataID(string id)
+    {
+        List<string> list = new List<string>();
+        foreach (ShopDB db in shopDB)
+        {
+            if (id == db.npcID)
+            {
+                list.Add(db.dataID);
+            }
+        }
+        return list;
     }
 }

@@ -10,7 +10,7 @@ public class Test : MonoBehaviour
         Button button = GetComponent<Button>();
         button.onClick.AddListener(() =>
         {
-            dropSlotUI.SetData("Sword1", 5);
+            dropSlotUI.SetData("Portion1", 5);
         });
     }
 }

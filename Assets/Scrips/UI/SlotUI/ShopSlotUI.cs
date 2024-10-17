@@ -19,7 +19,7 @@ public class ShopSlotUI : MonoBehaviour
     public void SetData(string dataID)
     {
         GameDBEntity db = GameManager.instance.gameDB.GetProfileDB(dataID);
-        itemImage.sprite = Resources.Load<Sprite>(dataID);
+        itemImage.sprite = Resources.Load<Sprite>(db.iconPath);
         itemName.text = db.name;
         iemDescription.text = db.description;
         itemPrice.text = db.price.ToString();
