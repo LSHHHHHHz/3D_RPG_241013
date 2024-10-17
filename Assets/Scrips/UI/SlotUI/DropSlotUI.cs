@@ -7,10 +7,11 @@ using UnityEngine.UI;
 public class DropSlotUI : MonoBehaviour, IDropHandler
 {
     public SlotData currentSlotData { get; set; }
-    public string currentDataID { get; private set; }
-    public int currentDataCount { get; private set; }
     [SerializeField] Image dataImage;
     [SerializeField] Text dataCount;
+
+    public event Action onDropSlot;
+    public event Action<string> onSetData;
     private void Awake()
     {
         Button button = GetComponent<Button>();
@@ -23,23 +24,31 @@ public class DropSlotUI : MonoBehaviour, IDropHandler
     {
         if (string.IsNullOrEmpty(dataID))
         {
-            currentDataID = dataID;
-            currentDataCount = 0;
+            currentSlotData.dataID = dataID;
+            currentSlotData.count = 0;
             dataImage.sprite = null;
             dataCount.text = "";
+            onSetData?.Invoke(currentSlotData.dataID);
             return;
         }
-        currentDataID = dataID;
-        currentDataCount = count;
+        currentSlotData.dataID = dataID;
+        currentSlotData.count = count;
         GameDBEntity db = GameManager.instance.gameDB.GetProfileDB(dataID);
-        dataImage.sprite = Resources.Load<Sprite>(dataID);
+        dataImage.sprite = Resources.Load<Sprite>(db.iconPath);
         dataCount.text = count.ToString();
+        onSetData?.Invoke(currentSlotData.dataID);
     }
     public void OnDrop(PointerEventData eventData)
     {
         DragSlotUI draggedSlot = eventData.pointerDrag.GetComponent<DragSlotUI>();
-        if (draggedSlot != null)
+
+        if(currentSlotData.dataID == draggedSlot.dragDataId)
         {
+            currentSlotData.MergeData(currentSlotData,draggedSlot.dropSlotUI.currentSlotData);
+        }
+        else
+        {
+            currentSlotData.SwapData(currentSlotData, draggedSlot.dropSlotUI.currentSlotData);
         }
     }
 }

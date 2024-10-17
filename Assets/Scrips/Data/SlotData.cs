@@ -18,25 +18,32 @@ public class SlotData
     public event Action<string, int> onDataChanged;
     public void SetData(string id, int newCount) //여기 아이디가 같은게 있다면 카운트만 늘리면됨
     {
-        if (id == null || newCount <= 0)
-        {
-            return;
-        }
-
-        if (dataID == null || dataID != id)
-        {
-            dataID = id;
-            count = newCount;
-        }
-        else
-        {
-            count += newCount;
-            if (count > maxCount)
-            {
-                return;
-            }
-        }
+        dataID = id;
+        count = newCount;
         onDataChanged?.Invoke(dataID,count);
+    }
+    public void SwapData(SlotData dropData, SlotData dragData)
+    {
+        string tempDataId = dragData.dataID;
+        int tempDataCount = dragData.count;
+
+        dragData.dataID = dropData.dataID;
+        dragData.count = dropData.count;
+
+        dropData.dataID = tempDataId;
+        dropData.count = tempDataCount;
+
+        dropData.onDataChanged(dropData.dataID,dropData.count);
+        dragData.onDataChanged(dragData.dataID,dragData.count);
+    }
+    public void MergeData(SlotData dropData, SlotData dragData)
+    {
+        dropData.count += dragData.count;
+        dragData.dataID ="";
+        dragData.count = 0;
+
+        dropData.onDataChanged(dropData.dataID, dropData.count);
+        dragData.onDataChanged(dragData.dataID, dragData.count);
     }
     public string GetData()
     {

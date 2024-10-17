@@ -32,15 +32,15 @@ MonoBehaviour:
     name: ???
     dialog: "\uD558\uD638"
   GameDataEntites:
-  - dataID: sword1
+  - dataID: Sword1
     name: "\uAE30\uBCF8\uAC80"
-    iconPath: "\uACBD\uB85C\uC5C6\uC74C"
+    iconPath: Item/Sword1
     prefabPath: "\uACBD\uB85C\uC74D\uB2E4"
     description: "\uAE30\uBCF8\uAC80\uC774\uB2E4"
     price: 10
-  - dataID: sword2
+  - dataID: Sword2
     name: "\uC911\uAE09\uAC80"
-    iconPath: "\uACBD\uB85C\uC5C6\uC74C"
+    iconPath: Item/Sword2
     prefabPath: "\uACBD\uB85C\uC74D\uB2E4"
     description: "\uC911\uAE09\uAC80\uC774\uB2E4"
     price: 20
