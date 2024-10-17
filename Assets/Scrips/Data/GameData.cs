@@ -23,8 +23,12 @@ public class GameData
             _instance = value;
         }
     }
+    public ItemInventoryData itemInventoryData;
+    public ItemEquipInventoryData ItemEquipInventoryData;
     public GameData()
     {
+        itemInventoryData = new ItemInventoryData();
+        ItemEquipInventoryData = new ItemEquipInventoryData();
     }
     [ContextMenu("Save To Json Data")]
     public void Save()
