@@ -295,6 +295,7 @@ MonoBehaviour:
   itemName: {fileID: 2061934802639618773}
   iemDescription: {fileID: 6006181814789411840}
   itemPrice: {fileID: 7400551933945945451}
+  shopBuyPopupPrefab: {fileID: 5370449670165544720, guid: 4b83efcf8f490e442825640ca5b0221b, type: 3}
 --- !u!1 &6671180124552680205
 GameObject:
   m_ObjectHideFlags: 0
