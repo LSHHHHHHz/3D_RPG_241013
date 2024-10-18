@@ -14,11 +14,11 @@ public class PlayerStatus
     public int playerCurrentExp { get; private set; }
     public int playerLevel { get; private set; }
 
-    public event Action<int> onChangeHP;
-    public event Action<int> onChangeMP;
-    public event Action<int> onChangeExp;
+    public event Action<int,int> onChangeHP;
+    public event Action<int,int> onChangeMP;
+    public event Action<int,int> onChangeExp;
     public event Action<int> onChangeLevel;
-    public PlayerStatus(int maxHp, int maxMp, float speed)
+    public PlayerStatus(int maxHp, int maxMp)
     {
         playerMaxHP = maxHp;
         playerCurrentHP = playerMaxHP;
@@ -27,37 +27,38 @@ public class PlayerStatus
         playerMaxExp = 100; 
         playerCurrentExp = 0;
         playerLevel = 1;
-        originSpeed = speed;
-        currentMoveSpeed = speed;
-        onChangeHP?.Invoke(playerCurrentHP);
-        onChangeMP?.Invoke(playerMaxMP);
-        onChangeExp?.Invoke(playerCurrentMP);
-        onChangeLevel?.Invoke(playerCurrentExp);
+    }
+    public void IntializeStatus()
+    {
+        onChangeHP?.Invoke(playerCurrentHP, playerMaxHP);
+        onChangeMP?.Invoke(playerMaxMP, playerMaxMP);
+        onChangeExp?.Invoke(playerCurrentMP, playerMaxExp);
+        onChangeLevel?.Invoke(playerLevel);
     }
     public void GetHP(int amount)
     {
         playerCurrentHP += amount;
-        onChangeHP?.Invoke(playerCurrentHP);
+        onChangeHP?.Invoke(playerCurrentHP, playerMaxExp);
     }
     public void ReduceHP(int amount)
     {
         playerCurrentHP -= amount;
-        onChangeHP?.Invoke(playerCurrentHP);
+        onChangeHP?.Invoke(playerCurrentHP, playerMaxExp);
     }
     public void GetMP(int amount)
     {
         playerCurrentMP += amount;
-        onChangeMP?.Invoke(playerCurrentMP);
+        onChangeMP?.Invoke(playerCurrentMP, playerMaxExp);
     }
     public void ReduceMP(int amount)
     {
         playerCurrentMP -= amount;
-        onChangeMP?.Invoke(playerCurrentMP);
+        onChangeMP?.Invoke(playerCurrentMP, playerMaxExp);
     }
     public void GainExp(int amount)
     {
         playerCurrentExp += amount;
-        onChangeExp?.Invoke(playerCurrentExp);
+        onChangeExp?.Invoke(playerCurrentExp, playerMaxExp);
 
         while (playerCurrentExp >= playerMaxExp)
         {
@@ -69,6 +70,7 @@ public class PlayerStatus
         playerLevel++;
         playerMaxExp += playerLevel * 100; 
         playerCurrentExp -= playerMaxExp;
+        onChangeLevel?.Invoke(playerLevel);
     }
 }
 
