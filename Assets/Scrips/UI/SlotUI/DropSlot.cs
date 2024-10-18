@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class DropSlotUI : MonoBehaviour, IDropHandler
+public abstract class DropSlot : MonoBehaviour, IDropHandler
 {
     public SlotData currentSlotData { get; set; }
     public InventoryType parentInventoryType;
@@ -13,14 +13,6 @@ public class DropSlotUI : MonoBehaviour, IDropHandler
 
     public event Action onDropSlot;
     public event Action<string> onSetData;
-    private void Awake()
-    {
-        Button button = GetComponent<Button>();
-        button.onClick.AddListener(() =>
-        {
-            Debug.Log("ÆË¾÷ ¶ç¿ì±â");
-        });
-    }
     public void SetData(string dataID, int count)
     {
         if (string.IsNullOrEmpty(dataID))
@@ -42,6 +34,10 @@ public class DropSlotUI : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         DragSlotUI draggedSlot = eventData.pointerDrag.GetComponent<DragSlotUI>();
+        if (string.IsNullOrEmpty(draggedSlot.dragDataId))
+        {
+            return;
+        }
         GameDBEntity db = GameManager.instance.gameDB.GetProfileDB(draggedSlot.dragDataId);
         if (IsPossibleDrop(db.dataType) == false)
         {
@@ -57,11 +53,11 @@ public class DropSlotUI : MonoBehaviour, IDropHandler
         }
     }
     bool IsPossibleDrop(string type)
-    {
+    {        
         switch (parentInventoryType)
         {
             case InventoryType.itemInventory:
-                return true;
+                return type != "Skill";
             case InventoryType.QuickPortionSlots:
                 return type == "Portion"; 
             case InventoryType.QuickSkillSlots:
@@ -74,4 +70,5 @@ public class DropSlotUI : MonoBehaviour, IDropHandler
                 return false;  
         }
     }
+    protected abstract void ClickButton();
 }

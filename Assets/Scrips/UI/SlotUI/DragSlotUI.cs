@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class DragSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public DropSlotUI dropSlotUI { get; private set; }
+    public DropSlot dropSlotUI { get; private set; }
     public string dragDataId { get; private set; }
     public int dragDataCount {  get; private set; }
     private Transform canvas;
@@ -18,7 +18,7 @@ public class DragSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         canvasGroup = GetComponent<CanvasGroup>();
         rectTransform = GetComponent<RectTransform>();
         canvas = FindObjectOfType<Canvas>().transform;
-        dropSlotUI = GetComponentInParent<DropSlotUI>();
+        dropSlotUI = GetComponentInParent<DropSlot>();
     }
     private void OnEnable()
     {

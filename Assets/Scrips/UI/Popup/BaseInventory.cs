@@ -17,15 +17,15 @@ public class BaseInventory : MonoBehaviour
     [SerializeField] Transform slotTransform;
     public InventoryType inventoryType;
     public int slotCount;
-    protected List<DropSlotUI> slots;
+    protected List<DropSlot> slots;
 
     protected virtual void Awake()
     {
-        slots = new List<DropSlotUI>();
+        slots = new List<DropSlot>();
     }
     public void AddSlot()
     {
-        DropSlotUI newSlot = Instantiate(slotPrefab, slotTransform).GetComponent<DropSlotUI>();
+        DropSlot newSlot = Instantiate(slotPrefab, slotTransform).GetComponent<DropSlot>();
         newSlot.parentInventoryType = inventoryType;
         slots.Add(newSlot);
     }

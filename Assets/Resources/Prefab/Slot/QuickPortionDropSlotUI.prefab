@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 3237469909841941069}
   - component: {fileID: 5343089748585000434}
   - component: {fileID: 86193170039629098}
-  - component: {fileID: 4262527633465458663}
   - component: {fileID: 7862620307897939135}
+  - component: {fileID: 9140569814766133090}
   m_Layer: 5
-  m_Name: DropSlotUI
+  m_Name: QuickPortionDropSlotUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,20 +79,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4262527633465458663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1979132622776616059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d595b14bd2c4304993b74a63b1972e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dataImage: {fileID: 86193170039629098}
-  dataCount: {fileID: 7280061405526615274}
 --- !u!114 &7862620307897939135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +123,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9140569814766133090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979132622776616059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6dd955df0501954abdb23b9c117c802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentInventoryType: 4
+  dataImage: {fileID: 86193170039629098}
+  dataCount: {fileID: 7280061405526615274}
 --- !u!1 &2303001978935737735
 GameObject:
   m_ObjectHideFlags: 0

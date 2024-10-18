@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Test : MonoBehaviour
 {
-    public DropSlotUI dropSlotUI;
+    public DropSlot dropSlotUI;
     private void Awake()
     {
         Button button = GetComponent<Button>();
         button.onClick.AddListener(() =>
         {
-            dropSlotUI.SetData("Portion1", 5);
+            dropSlotUI.SetData("Skill1", 5);
         });
     }
 }

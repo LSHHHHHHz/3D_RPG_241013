@@ -60,6 +60,20 @@ MonoBehaviour:
     description: "\uC911\uAE09\uD45C\uC158\uC774\uB2E4"
     price: 21
     dataType: Portion
+  - dataID: Skill1
+    name: "\uCCAB\uC2A4\uD0AC"
+    iconPath: SkillIcon/Skill1
+    prefabPath: Prefab/Skill/Skill1
+    description: "\uCCAB\uC2A4\uD0AC\uC774\uB2E4"
+    price: 0
+    dataType: Skill
+  - dataID: Skill2
+    name: "\uB458\uC2A4\uD0AC"
+    iconPath: SkillIcon/Skill2
+    prefabPath: Prefab/Skill/Skill2
+    description: "\uB458\uC2A4\uD0AC\uC774\uB2E4"
+    price: 0
+    dataType: Skill
   shopDB:
   - npcID: PortionShopNPC
     dataID: Portion1
