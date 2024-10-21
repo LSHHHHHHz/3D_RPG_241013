@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class NPCDetector : DetectorBase
 {
-    [SerializeField] private float possibleTalkRange = 1;
-
+    public float possibleTalkRange = 1;
+    public bool isPossibleTalk { get; private set; } = false;
     protected override void Awake()
     {
         base.Awake();
@@ -24,11 +24,19 @@ public class NPCDetector : DetectorBase
             {
                 moveBase.StopMove();
                 moveBase.LookTarget(p.transform.position);
-                isDetectedPlayer = true;
+                isDetectedTarget = true;
+                if (Vector3.Distance(transform.position, p.transform.position) <= possibleTalkRange)
+                {
+                    isPossibleTalk = true;
+                }
+                else
+                {
+                    isPossibleTalk=   false;
+                }
             }
             else
             {
-                isDetectedPlayer = false;
+                isDetectedTarget = false;
                 moveBase.ResetMoveSpeed();
             }
         }

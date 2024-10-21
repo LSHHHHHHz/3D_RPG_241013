@@ -5,13 +5,12 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     Animator anim;
-    PlayerMove playerMove;
+    [SerializeField] PlayerController playerMove;
     public event Action<bool> onStartPlayerAttackAnim;
     public event Action onEndPlayerAttackAnim;
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        playerMove = GetComponent<PlayerMove>();
     }
     private void Update()
     {

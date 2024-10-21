@@ -16,7 +16,7 @@ public class NPCIdleState : IState<NPC>
 
     public void Update(NPC actor)
     {
-        if(!actor.npcDetector.isDetectedPlayer)
+        if(!actor.npcDetector.isDetectedTarget)
         {
             actor.fsmController.ChangeState(new NPCWalkState());
         }

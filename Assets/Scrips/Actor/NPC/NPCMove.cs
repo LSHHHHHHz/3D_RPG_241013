@@ -40,7 +40,7 @@ public class NPCMove : MoveBase
         }
 
         transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
-        if (!npcDetector.isDetectedPlayer)
+        if (!npcDetector.isDetectedTarget)
         {
             LookTarget(targetPos);
         }

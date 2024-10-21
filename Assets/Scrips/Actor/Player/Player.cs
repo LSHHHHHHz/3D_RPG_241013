@@ -8,7 +8,6 @@ public class Player : Actor
     private void Awake()
     {
         status = new PlayerStatus(100, 50);
-        Debug.Log("Player가 먼저되나");
     }
     private void OnEnable()
     {

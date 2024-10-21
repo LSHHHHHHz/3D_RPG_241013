@@ -28,7 +28,7 @@ public class EnemyMove : MoveBase
             isOriginPos = true;
         }
         Vector3 targetPosition = Vector3.zero;
-        if (enemyDetector.isDetectedPlayer)
+        if (enemyDetector.isDetectedTarget)
         {
             targetPosition = enemyDetector.detectedTarget.transform.position;
             targetPosition.y = transform.position.y;
@@ -51,7 +51,7 @@ public class EnemyMove : MoveBase
         {
             LookTarget(targetPosition);
         }
-        if (!enemyDetector.isDetectedPlayer)
+        if (!enemyDetector.isDetectedTarget)
         {
             if (Vector3.Distance(transform.position, originPos) > 0.1f)
             {

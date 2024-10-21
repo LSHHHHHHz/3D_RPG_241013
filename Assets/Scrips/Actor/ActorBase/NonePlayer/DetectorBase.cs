@@ -4,9 +4,9 @@ using UnityEngine;
 
 public abstract class DetectorBase : MonoBehaviour
 {
-    public bool isDetectedPlayer { get; set; }
+    public bool isDetectedTarget { get; set; }
     public Player detectedTarget { get; set; }
-    public float detectedRange { get; private set; } = 5;   
+    [SerializeField] protected float detectedRange = 3;   
     protected IReadOnlyList<Actor> actors;
     protected MoveBase moveBase;
 

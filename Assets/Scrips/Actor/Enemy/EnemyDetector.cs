@@ -29,7 +29,7 @@ public class EnemyDetector : DetectorBase
 
             if (distanceFromOrigin <= detectedRange)
             {
-                isDetectedPlayer = true;
+                isDetectedTarget = true;
                 detectedTarget = actor;
 
                 if (distanceFromCurrent <= possibleAttackRange)
@@ -44,9 +44,9 @@ public class EnemyDetector : DetectorBase
             }
             else
             {
-                if (isDetectedPlayer)
+                if (isDetectedTarget)
                 {
-                    isDetectedPlayer = false;
+                    isDetectedTarget = false;
                     detectedTarget = null;
                     isPossibleAttack = false;
                 }

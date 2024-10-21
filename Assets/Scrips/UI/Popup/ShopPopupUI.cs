@@ -4,14 +4,27 @@ using UnityEngine;
 public class ShopPopupUI : MonoBehaviour
 {
     [SerializeField] string npcName;
-    [SerializeField] GameObject shopSlosPrefab;
+    [SerializeField] GameObject shopSlotPrefab;
+    private List<GameObject> createdSlots = new List<GameObject>();
+    public List<string> originDataIDList = new List<string>();
     public List<string> dataIDList = new List<string>();
-    private void Start()
+    public void OpenShopPopup(string name)
     {
+        npcName = name;
         dataIDList = GameManager.instance.gameDB.GetDataID(npcName);
-        for(int i =0; i < dataIDList.Count; i++)
+        if (originDataIDList.Count != dataIDList.Count)
         {
-            ShopSlotUI shopSlotUI = Instantiate(shopSlosPrefab, transform).GetComponent<ShopSlotUI>();
+            for (int i = 0; i < createdSlots.Count; i++)
+            {
+                Destroy(createdSlots[i]);
+            }
+            createdSlots.Clear();
+        }
+        for (int i = 0; i < dataIDList.Count; i++)
+        {
+            GameObject newSlot = Instantiate(shopSlotPrefab, transform);
+            createdSlots.Add(newSlot);
+            ShopSlotUI shopSlotUI = newSlot.GetComponent<ShopSlotUI>();
             shopSlotUI.SetData(dataIDList[i]);
         }
     }

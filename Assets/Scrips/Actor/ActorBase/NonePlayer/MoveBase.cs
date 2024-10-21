@@ -26,7 +26,7 @@ public abstract class MoveBase : MonoBehaviour
     public void LookTarget(Vector3 targetPos)
     {
         Vector3 dir = (targetPos - transform.position).normalized;
-        //dir.y = 0;
+        dir.y = 0;
         targetRot = Quaternion.LookRotation(dir);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * rotateSpeed);
     }
