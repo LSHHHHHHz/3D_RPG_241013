@@ -71,7 +71,6 @@ public class ItemInventoryData : InventoryData
         if (slotDatas == null || slotDatas.Count == 0)
         {
             InitializeSlots(inventoryCount);
-            Debug.Log("초기화");
         }
         else
         {
@@ -89,7 +88,6 @@ public class ItemEquipInventoryData : InventoryData
         if (slotDatas == null || slotDatas.Count == 0)
         {
             InitializeSlots(inventoryCount);
-            Debug.Log("초기화");
         }
         else
         {
@@ -106,7 +104,6 @@ public class SkillInventoryData : InventoryData
         if (slotDatas == null || slotDatas.Count == 0)
         {
             InitializeSlots(inventoryCount);
-            Debug.Log("초기화");
         }
         else
         {
@@ -123,7 +120,6 @@ public class QuickSkillSlotsData : InventoryData
         if (slotDatas == null || slotDatas.Count == 0)
         {
             InitializeSlots(inventoryCount);
-            Debug.Log("초기화");
         }
         else
         {
@@ -139,7 +135,6 @@ public class QuickPortionSlotsData : InventoryData
         if (slotDatas == null || slotDatas.Count == 0)
         {
             InitializeSlots(inventoryCount);
-            Debug.Log("초기화");
         }
         else
         {

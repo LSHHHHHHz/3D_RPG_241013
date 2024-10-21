@@ -47,7 +47,10 @@ public class EnemyMove : MoveBase
             transform.position = Vector3.MoveTowards(transform.position, originPos, moveSpeed * Time.deltaTime);
             ResetMoveSpeed();
         }
-        LookTarget(targetPosition);
+        if (!isOriginPos)
+        {
+            LookTarget(targetPosition);
+        }
         if (!enemyDetector.isDetectedPlayer)
         {
             if (Vector3.Distance(transform.position, originPos) > 0.1f)

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class Actor : MonoBehaviour
+public abstract class Actor : MonoBehaviour, IEventReceiver
 {
-
+    public abstract void ReceiveEvent(IEvent ievent);
 }

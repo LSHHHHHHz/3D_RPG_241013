@@ -39,7 +39,6 @@ public class JumpPortal : MonoBehaviour
         {
             if (Vector3.Distance(jumpPortalPos[i].transform.position, player[0].transform.position) < portalRange)
             {
-                Debug.Log("µé¾î¿È : " + jumpPortalPos[i].name);
                 if (i == 0)
                 {
                     targetPos = jumpPortalPos[1].transform.position;

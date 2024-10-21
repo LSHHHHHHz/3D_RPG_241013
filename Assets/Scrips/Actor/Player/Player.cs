@@ -18,18 +18,24 @@ public class Player : Actor
     {
         ActorManager<Player>.instnace.UnregisterActor(this);
     }
-    private Weapon equippedWeapon;
 
-    public void EquipWeapon(Weapon newWeapon)
+    public override void ReceiveEvent(IEvent ievent)
     {
-        equippedWeapon = newWeapon;
+        if (ievent is SendDamageEvent damageEvent)
+        {
+            TakeDamage(damageEvent.damage);
+        }
+        if (ievent is SendHealingEvent healingEvent)
+        {
+            TakeDamage(healingEvent.amount);
+        }
     }
-    public void Attack()
+    void TakeDamage(int damage)
     {
-        equippedWeapon?.Attack();
+        status.ReduceHP(damage);
     }
-    public void SwapWeapon(Weapon newWeapon)
+    void RecoverHP(int amout)
     {
-        EquipWeapon(newWeapon);
+        status.GetHP(amout);
     }
 }

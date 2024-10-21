@@ -57,4 +57,11 @@ public class BaseEnemy : Actor
             enemyMove.ResetMoveSpeed();
         }
     }
+    public override void ReceiveEvent(IEvent ievent)
+    {
+        if(ievent is SendDamageEvent damageEvent)
+        {
+
+        }
+    }
 }

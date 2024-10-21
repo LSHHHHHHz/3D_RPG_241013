@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PlayerStatusUI : MonoBehaviour
 {
-    [SerializeField] Player player;
+    Player player;
     [SerializeField] Image hpFillAmountImage;
     [SerializeField] Image mpFillAmountImage;
     [SerializeField] Image expFillAmountImage;
@@ -14,7 +14,10 @@ public class PlayerStatusUI : MonoBehaviour
     [SerializeField] Text mpText;     
     [SerializeField] Text expText;  
     [SerializeField] Text levelText;
-
+    private void Awake()
+    {
+        player = FindObjectOfType<Player>();
+    }
     private void OnEnable()
     {
         Debug.Log("PlayerStatusUI 먼저되나");
