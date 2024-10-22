@@ -83,3 +83,18 @@ MonoBehaviour:
     dataID: Sword1
   - npcID: EquipmentShopNPC
     dataID: Sword2
+  QuestEntities:
+  - QuestID: mainQuest0
+    npcID: MainNPC
+    questName: "\uCCAB \uB9C8\uC744 \uBC29\uBB38"
+    questDescription: "NPC\uC640 \uB300\uD654\uD574\uBCF4\uC790"
+    questClearCount: 1
+    currentQuestClearCount: 1
+    isCompleted: 0
+  - QuestID: subQuest0
+    npcID: PortionShopNPC
+    questName: "\uB458\uB7EC\uBCF4\uAE30"
+    questDescription: "\uD14C\uC2A4\uD2B8\uC911"
+    questClearCount: 1
+    currentQuestClearCount: 1
+    isCompleted: 0

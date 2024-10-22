@@ -10,6 +10,7 @@ public class GameDB : ScriptableObject
 	public List<DialogDBEntity> DialogEntites;
 	public List<GameDBEntity> GameDataEntites;
     public List<ShopDB> shopDB;
+    public List<QuestEntity> QuestEntities;
     public GameDBEntity GetProfileDB(string id)
     {
         foreach (GameDBEntity profile in GameDataEntites)
