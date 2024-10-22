@@ -23,7 +23,9 @@ public class EventManager
     public event Action<float> onZommOut;
     public event Action<float, float> onStartCameraShake;
     public event Action onEndCameraShake;
- 
+
+    public event Action<int> onTalkNPC;
+    public event Action<int> onEndTalkNPC;
     public void LeapPortalPlayer(Vector3 vec)
     {
         onLeapPortalPlayer?.Invoke(vec);
@@ -43,5 +45,13 @@ public class EventManager
     public void EndCameraShake()
     {
         onEndCameraShake?.Invoke();
+    }
+    public void StartTalkNPC(int npcBranch)
+    {
+        onTalkNPC?.Invoke(npcBranch);
+    }
+    public void EndTalkNPC(int npcBranch)
+    {
+        onEndTalkNPC?.Invoke(npcBranch);
     }
 }

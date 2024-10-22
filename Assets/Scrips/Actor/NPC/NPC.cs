@@ -5,7 +5,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 public class NPC : MonoBehaviour
 {
-    [SerializeField] string shopNpcName;
+    [SerializeField] string npcName;
+    [SerializeField] int npcBranch;
     public NPCDetector npcDetector { get; private set; }
     public NPCMove npcMove { get; private set; }
     public Animator anim { get; private set; }
@@ -13,6 +14,7 @@ public class NPC : MonoBehaviour
     [SerializeField] GameObject shopPopupUIPrefab;
     [SerializeField] Transform shopPopupTransform;
     ShopPopupUI shopPopupUI;
+    public event Action<string> onTalkNPC;
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -23,15 +25,30 @@ public class NPC : MonoBehaviour
     private void OnEnable()
     {
         fsmController.ChangeState(new NPCWalkState());
+        EventManager.instance.onEndTalkNPC += OpenShopPopupUI;
+    }
+    private void OnDisable()
+    {
+        EventManager.instance.onEndTalkNPC -= OpenShopPopupUI;
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Debug.Log("Talk");
-        }
         fsmController.FSMUpdate();
         if (npcDetector.isPossibleTalk && Input.GetKeyDown(KeyCode.T))
+        {
+            EventManager.instance.StartTalkNPC(npcBranch);
+        }
+    }
+    void OpenShopPopupUI(int index)
+    {
+        if(npcBranch == index)
+        {
+            ActiveShoPopupUI();
+        }
+    }
+    void ActiveShoPopupUI()
+    {
+        if (npcDetector.isPossibleTalk)
         {
             if (shopPopupUI == null)
             {
@@ -41,9 +58,9 @@ public class NPC : MonoBehaviour
             {
                 shopPopupUI.gameObject.SetActive(true);
             }
-            shopPopupUI.OpenShopPopup(shopNpcName);
+            shopPopupUI.OpenShopPopup(npcName);
         }
-        if(!npcDetector.isPossibleTalk && shopPopupUI != null)
+        if (!npcDetector.isPossibleTalk && shopPopupUI != null)
         {
             shopPopupUI.gameObject.SetActive(false);
         }

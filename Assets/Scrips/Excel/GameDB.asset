@@ -13,22 +13,22 @@ MonoBehaviour:
   m_Name: GameDB
   m_EditorClassIdentifier: 
   DialogEntites:
-  - branch: 1
+  - branch: 0
     name: ???
     dialog: "\uC810\uD504\uD0A4\uB97C \uC54C\uB824\uC8FC\uC9C0"
-  - branch: 1
+  - branch: 0
     name: "\uB098"
     dialog: "\uC640\uC624"
-  - branch: 1
+  - branch: 0
     name: ???
     dialog: "\uADF8\uB798 \uB2E4\uC74C\uBD80\uD130"
-  - branch: 2
+  - branch: 1
     name: ???
     dialog: "\uD638\uD638"
-  - branch: 2
+  - branch: 1
     name: "\uB098\uB098"
     dialog: "\uD638\uD558"
-  - branch: 2
+  - branch: 1
     name: ???
     dialog: "\uD558\uD638"
   GameDataEntites:

@@ -15,7 +15,6 @@ public class DialogSystem : MonoBehaviour
     private int currentSpeakerIndex = 0;                     // 현재 말을 하는 화자(Speaker)의 speakers 배열 순번
     [SerializeField] private float typingSpeed = 0.1f;       // 텍스트 타이핑 효과의 재생 속도
     [SerializeField] private bool isTypingEffect = false;    // 텍스트 타이핑 효과를 재생 중인지 여부
-
     private void OnEnable()
     {
         Setup();

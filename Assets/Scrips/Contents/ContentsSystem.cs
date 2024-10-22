@@ -6,22 +6,20 @@ public class ContentsSystem : MonoBehaviour
 {
     public Player player;
     public int contentsBranch;
+    public GameObject dialogSysyemObj;
     public DialogSystem dialogSystem;
     public CameraFollow maincamera;
     public FadeSystem fadeSystem;
     private void OnEnable()
     {
-        if (dialogSystem != null)
+        if (dialogSystem == null)
+        {
+            dialogSystem = Instantiate(dialogSysyemObj, transform).GetComponent<DialogSystem>();
+        }
+        else
         {
             dialogSystem.gameObject.SetActive(true);
-        }
-        StartCoroutine(RunContent());
-    }
-    private void OnDisable()
-    {
-        if (dialogSystem != null)
-        {
-            dialogSystem.gameObject.SetActive(false);
+            StartCoroutine(RunContent());
         }
     }
     private IEnumerator RunContent()
@@ -37,7 +35,9 @@ public class ContentsSystem : MonoBehaviour
         if (dialogSystem != null && contentsBranch != -1)
         {
             dialogSystem.SetBranch(contentsBranch);
+            yield return new WaitForSeconds(0.2f);
             yield return new WaitUntil(() => dialogSystem.UpdateDialog());
+            EventManager.instance.EndTalkNPC(contentsBranch);
         }
         if (maincamera != null)
         {
@@ -47,5 +47,6 @@ public class ContentsSystem : MonoBehaviour
         {
             yield return StartCoroutine(fadeSystem.FadeOut());
         }
+        gameObject.SetActive(false);
     }
 }
