@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public float acceleration = 10f;
     public float deceleration = 5f;
     public float turnSpeed = 10f;
+    public float jumpPower = 5;
+    public bool doJump {  get; private set; }
 
     private Vector2 moveInput;
     private Vector3 lastMoveDir;
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
             RotPlayer();
             MoveRunPlayer();
             MovePlayer();
+            JumpPlayer();
         }
     }
     void MovePlayer()
@@ -56,6 +59,22 @@ public class PlayerController : MonoBehaviour
         if (currentSpeed < 0.1f)
         {
             lastMoveDir = Vector3.zero;
+        }
+    }
+    void JumpPlayer()
+    {
+        if (Input.GetButtonDown("Jump") && controller.isGrounded && !doJump)  
+        {
+            physicsController.velocity = new Vector3(physicsController.velocity.x, jumpPower, physicsController.velocity.z);
+            doJump = true;
+        }
+        if (!controller.isGrounded)
+        {
+            physicsController.velocity += Physics.gravity * Time.deltaTime;  
+        }
+        if (controller.isGrounded)
+        {
+            doJump = false;
         }
     }
     void LeapPlayer(Vector3 vec)

@@ -46,19 +46,69 @@ MonoBehaviour:
     description: "\uC911\uAE09\uAC80\uC774\uB2E4"
     price: 20
     dataType: Swrod
-  - dataID: Portion1
-    name: "\uAE30\uBCF8HP"
-    iconPath: Item/Portion1
-    prefabPath: "\uACBD\uB85C\uC74D\uB2E4"
-    description: "\uAE30\uBCF8\uD3EC\uC158\uC774\uB2E4"
-    price: 11
+  - dataID: HPPortion1
+    name: "\uAE30\uBCF8HP\uD3EC\uC158"
+    iconPath: PortionIcon/HP1
+    prefabPath: 
+    description: "\uC0DD\uBA85\uC758 \uB098\uBB34\uC5D0\uC11C \uCD94\uCD9C\uB41C
+      \uC2E0\uBE44\uD55C \uC601\uC57D"
+    price: 100
     dataType: Portion
-  - dataID: Portion2
-    name: "\uC911\uAE09HP"
-    iconPath: item/Portion2
-    prefabPath: "\uACBD\uB85C\uC74D\uB2E4"
-    description: "\uC911\uAE09\uD45C\uC158\uC774\uB2E4"
-    price: 21
+  - dataID: HPPortion2
+    name: "\uC911\uAE09HP\uD3EC\uC158"
+    iconPath: PortionIcon/HP2
+    prefabPath: 
+    description: "\uC804\uC124 \uC18D \uBD89\uC740 \uC6A9\uC758 \uD53C \uD55C \uBC29\uC6B8\uC774
+      \uD3EC\uD568\uB41C \uD3EC\uC158"
+    price: 200
+    dataType: Portion
+  - dataID: HPPortion3
+    name: "\uACE0\uAE09HP\uD3EC\uC158"
+    iconPath: PortionIcon/HP3
+    prefabPath: 
+    description: "\uBC24\uD558\uB298\uC744 \uC0C1\uC9D5\uD558\uB294 \uC2E0\uBE44\uB85C\uC6B4
+      \uCE58\uC720 \uBB3C\uC57D"
+    price: 300
+    dataType: Portion
+  - dataID: HPPortion4
+    name: "\uCD5C\uC0C1\uAE09HP\uD3EC\uC158"
+    iconPath: PortionIcon/HP4
+    prefabPath: 
+    description: "\uC790\uC5F0\uC758 \uC815\uC218\uB97C \uB2F4\uC544 \uC81C\uC791\uB41C
+      \uBD89\uC740 \uBB3C\uC57D"
+    price: 400
+    dataType: Portion
+  - dataID: MpPortion1
+    name: "\uAE30\uBCF8MP\uD3EC\uC158"
+    iconPath: PortionIcon/MP1
+    prefabPath: 
+    description: " \uB300\uB9C8\uBC95\uC0AC\uB4E4\uC5D0 \uC758\uD574 \uC5F0\uAD6C\uB418\uC5B4
+      \uD0C4\uC0DD\uD55C \uB9C8\uBC95\uC758 \uD3EC\uC158"
+    price: 100
+    dataType: Portion
+  - dataID: MpPortion2
+    name: "\uC911\uAE09MP\uD3EC\uC158"
+    iconPath: PortionIcon/MP2
+    prefabPath: 
+    description: "\uACE0\uB300 \uB9C8\uBC95\uC0AC\uB4E4\uC758 \uB9C8\uB098 \uC0D8\uC5D0\uC11C
+      \uB098\uC624\uB294 \uBB3C\uB85C \uB9CC\uB4E4\uC5B4\uC9C4 \uBB3C\uC57D"
+    price: 200
+    dataType: Portion
+  - dataID: MpPortion3
+    name: "\uACE0\uAE09MP\uD3EC\uC158"
+    iconPath: PortionIcon/MP3
+    prefabPath: 
+    description: "\uBC14\uB2E4 \uAE4A\uC219\uD55C \uACF3\uC5D0\uC11C \uBC1C\uACAC\uB41C
+      \uB9C8\uB098\uC758 \uACB0\uC815\uC774 \uB179\uC544\uB4E0 \uD3EC\uC158"
+    price: 300
+    dataType: Portion
+  - dataID: MpPortion4
+    name: "\uCD5C\uC0C1\uAE09MP\uD3EC\uC158"
+    iconPath: PortionIcon/MP4
+    prefabPath: 
+    description: "\uD478\uB978 \uD558\uB298\uC5D0\uC11C \uB5A8\uC5B4\uC9C4 \uB9C8\uB825\uC758
+      \uBE57\uBC29\uC6B8\uB85C \uB9CC\uB4E4\uC5B4\uC9C4 \uD3EC\uC158"
+    price: 400
     dataType: Portion
   - dataID: Skill1
     name: "\uCCAB\uC2A4\uD0AC"
@@ -76,9 +126,21 @@ MonoBehaviour:
     dataType: Skill
   shopDB:
   - npcID: PortionShopNPC
-    dataID: Portion1
+    dataID: HPPortion1
   - npcID: PortionShopNPC
-    dataID: Portion2
+    dataID: HPPortion2
+  - npcID: PortionShopNPC
+    dataID: HPPortion3
+  - npcID: PortionShopNPC
+    dataID: HPPortion4
+  - npcID: PortionShopNPC
+    dataID: MpPortion1
+  - npcID: PortionShopNPC
+    dataID: MpPortion2
+  - npcID: PortionShopNPC
+    dataID: MpPortion3
+  - npcID: PortionShopNPC
+    dataID: MpPortion4
   - npcID: EquipmentShopNPC
     dataID: Sword1
   - npcID: EquipmentShopNPC
@@ -87,14 +149,90 @@ MonoBehaviour:
   - QuestID: mainQuest0
     npcID: MainNPC
     questName: "\uCCAB \uB9C8\uC744 \uBC29\uBB38"
-    questDescription: "NPC\uC640 \uB300\uD654\uD574\uBCF4\uC790"
-    questClearCount: 1
-    currentQuestClearCount: 1
+    questDescription: "\uB9C8\uC744 \uAD00\uB9AC\uC778\uACFC \uB300\uD654\uD574\uBCF4\uC790"
+    questClearCount: 0
+    currentQuestClearCount: 0
+    questDialog: "\uC5B4\uC11C\uC640. \uB9C8\uC744\uC740 \uCC98\uC74C\uC774\uC9C0?"
     isCompleted: 0
-  - QuestID: subQuest0
-    npcID: PortionShopNPC
-    questName: "\uB458\uB7EC\uBCF4\uAE30"
-    questDescription: "\uD14C\uC2A4\uD2B8\uC911"
-    questClearCount: 1
-    currentQuestClearCount: 1
+  - QuestID: mainQuest0
+    npcID: MainNPC
+    questName: "\uCCAB \uB9C8\uC744 \uBC29\uBB38"
+    questDescription: "\uB9C8\uC744 \uAD00\uB9AC\uC778\uACFC \uB300\uD654\uD574\uBCF4\uC790"
+    questClearCount: 0
+    currentQuestClearCount: 0
+    questDialog: "\uB9C8\uC744 \uC0AC\uB78C\uB4E4\uACFC \uB300\uD654\uB97C \uD574\uBD10"
+    isCompleted: 0
+  - QuestID: mainQuest0
+    npcID: MainNPC
+    questName: "\uCCAB \uB9C8\uC744 \uBC29\uBB38"
+    questDescription: "\uB9C8\uC744 \uAD00\uB9AC\uC778\uACFC \uB300\uD654\uD574\uBCF4\uC790"
+    questClearCount: 0
+    currentQuestClearCount: 0
+    questDialog: "\uB9C8\uC744 \uC0AC\uB78C\uB4E4\uACFC \uB300\uD654\uB97C \uD574\uBD10"
+    isCompleted: 0
+  - QuestID: mainQuest0
+    npcID: PortionNPC
+    questName: "\uCCAB \uB9C8\uC744 \uBC29\uBB38"
+    questDescription: "\uD3EC\uC158 NPC\uC640 \uB300\uD654\uD574\uBCF4\uC790"
+    questClearCount: 0
+    currentQuestClearCount: 0
+    questDialog: "\uB098\uB294 \uD3EC\uC158\uC744 \uD310\uB9E4\uD558\uACE0 \uC788\uC5B4"
+    isCompleted: 0
+  - QuestID: mainQuest0
+    npcID: PortionNPC
+    questName: "\uCCAB \uB9C8\uC744 \uBC29\uBB38"
+    questDescription: "\uD3EC\uC158 NPC\uC640 \uB300\uD654\uD574\uBCF4\uC790"
+    questClearCount: 0
+    currentQuestClearCount: 0
+    questDialog: "\uC0AC\uB0E5\uD130\uC5D0\uC120 \uD45C\uC158\uC774 \uC911\uC694\uD558\uB2E4\uACE0."
+    isCompleted: 0
+  - QuestID: mainQuest0
+    npcID: EquimentNPC
+    questName: "\uCCAB \uB9C8\uC744 \uBC29\uBB38"
+    questDescription: "\uC7A5\uBE44 NPC\uC640 \uB300\uD654\uD574\uBCF4\uC790"
+    questClearCount: 0
+    currentQuestClearCount: 0
+    questDialog: "\uB098\uB294 \uC7A5\uBE44\uB97C \uD310\uB9E4\uD558\uACE0 \uC788\uC5B4"
+    isCompleted: 0
+  - QuestID: mainQuest0
+    npcID: EquimentNPC
+    questName: "\uCCAB \uB9C8\uC744 \uBC29\uBB38"
+    questDescription: "\uC7A5\uBE44 NPC\uC640 \uB300\uD654\uD574\uBCF4\uC790"
+    questClearCount: 0
+    currentQuestClearCount: 0
+    questDialog: "\uC7A5\uBE44\uB97C \uAC16\uCDB0\uC57C \uBAAC\uC2A4\uD130\uB97C
+      \uC0AC\uB0E5\uD558\uAE30 \uC27D\uC9C0."
+    isCompleted: 0
+  - QuestID: mainQuest0
+    npcID: MainNPC
+    questName: "\uCCAB \uB9C8\uC744 \uBC29\uBB38"
+    questDescription: "\uB9C8\uC744 \uAD00\uB9AC\uC778\uC5D0\uAC8C\uB85C.."
+    questClearCount: 0
+    currentQuestClearCount: 0
+    questDialog: "\uBC8C\uC368 \uB2E4 \uB3CC\uC544\uBCF8\uAC70\uC57C?"
+    isCompleted: 0
+  - QuestID: mainQuest0
+    npcID: MainNPC
+    questName: "\uCCAB \uB9C8\uC744 \uBC29\uBB38"
+    questDescription: "\uB9C8\uC744 \uAD00\uB9AC\uC778\uC5D0\uAC8C\uB85C.."
+    questClearCount: 0
+    currentQuestClearCount: 0
+    questDialog: "\uC774\uAC74 \uC0AC\uB0E5\uD560 \uB54C \uD544\uC694\uD55C \uAC83\uB4E4\uC774\uC57C"
+    isCompleted: 0
+  - QuestID: mainQuest1
+    npcID: MainNPC
+    questName: "\uBAAC\uC2A4\uD130 \uC0AC\uB0E5"
+    questDescription: "\uB9C8\uC744 \uAD00\uB9AC\uC778\uACFC \uB300\uD654\uD574\uBCF4\uC790"
+    questClearCount: 0
+    currentQuestClearCount: 0
+    questDialog: "\uC131 \uBC16\uC5D0 \uC2A4\uCF08\uB808\uD1A4\uC774 \uCD9C\uBAB0\uD588\uB2E4\uB294\uB370\u2026"
+    isCompleted: 0
+  - QuestID: mainQuest1
+    npcID: MainNPC
+    questName: "\uBAAC\uC2A4\uD130 \uC0AC\uB0E5"
+    questDescription: "\uB9C8\uC744 \uAD00\uB9AC\uC778\uACFC \uB300\uD654\uD574\uBCF4\uC790"
+    questClearCount: 0
+    currentQuestClearCount: 0
+    questDialog: "\uB108\uAC00 \uC2A4\uCF08\uB808\uD1A4 5\uB9C8\uB9AC\uB9CC \uC7A1\uC544\uC654\uC73C\uBA74
+      \uC88B\uACA0\uC5B4!"
     isCompleted: 0

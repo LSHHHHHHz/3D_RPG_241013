@@ -7,6 +7,7 @@ public class BaseEnemy : Actor
 {
     public EnemyDetector enemyDetector;
     EnemyMove enemyMove;
+    [SerializeField] float startAttackTime;
     public FSMController<BaseEnemy> fsmController { get; private set; }
     public Animator anim { get; private set; }
     public Action<bool> onStartEnemyAttackAnim;
@@ -63,5 +64,9 @@ public class BaseEnemy : Actor
         {
 
         }
+    }
+    public float GetStartAttackTime()
+    {
+       return startAttackTime;
     }
 }

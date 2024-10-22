@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 
 [Serializable]
 public class QuestEntity
@@ -9,5 +10,6 @@ public class QuestEntity
     public string questDescription; 
     public int questClearCount; 
     public int currentQuestClearCount;
+    public string questDialog;
     public bool isCompleted;
 }

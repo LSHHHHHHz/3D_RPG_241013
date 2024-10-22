@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Test : MonoBehaviour
 {
-    public DropSlot dropSlotUI;
+    public BaseSlotUI dropSlotUI;
     private void Awake()
     {
         Button button = GetComponent<Button>();

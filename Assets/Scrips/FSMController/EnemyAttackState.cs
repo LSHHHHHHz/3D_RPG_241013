@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class EnemyAttackState : IState<BaseEnemy>
 {
+    float isStartAttackTime;
     public void Enter(BaseEnemy actor)
     {
+        isStartAttackTime = actor.GetStartAttackTime();
         actor.anim.SetBool("IsAttack", true);
         actor.StartAttack(true);
     }
@@ -29,7 +31,7 @@ public class EnemyAttackState : IState<BaseEnemy>
                 actor.onStartEnemyAttackAnim?.Invoke(false);
                 actor.onEndEnemyAttackAnim?.Invoke();
             }
-            else if (normalizedTime >= 0f)
+            else if (normalizedTime >= isStartAttackTime)
             {
                 actor.onStartEnemyAttackAnim?.Invoke(true);
             }

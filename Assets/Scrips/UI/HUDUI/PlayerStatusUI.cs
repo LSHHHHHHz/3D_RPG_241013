@@ -11,8 +11,7 @@ public class PlayerStatusUI : MonoBehaviour
     [SerializeField] Image mpFillAmountImage;
     [SerializeField] Image expFillAmountImage;
     [SerializeField] Text hpText;      
-    [SerializeField] Text mpText;     
-    [SerializeField] Text expText;  
+    [SerializeField] Text mpText;   
     [SerializeField] Text levelText;
     private void Awake()
     {
@@ -46,7 +45,6 @@ public class PlayerStatusUI : MonoBehaviour
     }
     void ChangeExpUI(int currentExp, int maxExp)
     {
-        expText.text = currentExp + " / " + maxExp;
         expFillAmountImage.fillAmount = (float)currentExp / maxExp;
     }
     void ChangeLevelUI(int lv)

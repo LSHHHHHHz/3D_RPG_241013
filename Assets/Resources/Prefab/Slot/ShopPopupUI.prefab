@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6270625261417767017}
   - component: {fileID: 6481724961501888882}
   - component: {fileID: 4361344702028907255}
+  - component: {fileID: 213281189058901833}
   m_Layer: 5
   m_Name: ShopPopupUI
   m_TagString: Untagged
@@ -67,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 802451727016168549, guid: c3cbd015370c5294385a8d880c234850, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -117,3 +118,16 @@ MonoBehaviour:
   shopSlotPrefab: {fileID: 6337055340219811553, guid: c1f95626a6e6d8b4f8ba5725cbd49c26, type: 3}
   originDataIDList: []
   dataIDList: []
+--- !u!114 &213281189058901833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4586868822911537197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1

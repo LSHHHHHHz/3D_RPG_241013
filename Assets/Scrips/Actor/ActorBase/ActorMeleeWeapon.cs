@@ -5,6 +5,7 @@ using System.Net;
 using UnityEngine;
 public class ActorMeleeWeapon<T> : MonoBehaviour where T : MonoBehaviour
 {
+    public int totalDamage = 10;
     protected Transform swordStartPoint;
     protected Transform swordEndPoint;
     public float attackRange = 0.1f;
@@ -48,6 +49,11 @@ public class ActorMeleeWeapon<T> : MonoBehaviour where T : MonoBehaviour
         if (isInAttackRange)
         {
             attackedTarget.Add(target);
+            SendDamageEvent damageEvent = new SendDamageEvent(totalDamage);
+            if(target is IEventReceiver receiver)
+            {
+                receiver.ReceiveEvent(damageEvent);
+            }
         }
     }
     protected void StartAttackAction(bool isAttack)

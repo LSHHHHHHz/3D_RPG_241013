@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class DragSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public DropSlot dropSlotUI { get; private set; }
+    public BaseSlotUI dropSlotUI { get; private set; }
     public string dragDataId { get; private set; }
     public int dragDataCount {  get; private set; }
     private Transform canvas;
@@ -18,7 +18,7 @@ public class DragSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         canvasGroup = GetComponent<CanvasGroup>();
         rectTransform = GetComponent<RectTransform>();
         canvas = FindObjectOfType<Canvas>().transform;
-        dropSlotUI = GetComponentInParent<DropSlot>();
+        dropSlotUI = GetComponentInParent<BaseSlotUI>();
     }
     private void OnEnable()
     {
@@ -33,10 +33,12 @@ public class DragSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         if(string.IsNullOrEmpty(dataID))
         {
             dataImage.sprite = null;
+            dataImage.color = new Color(1, 1, 1, 0);
             return;
         }
         GameDBEntity db = GameManager.instance.gameDB.GetProfileDB(dataID);
         dataImage.sprite = Resources.Load<Sprite>(db.iconPath);
+        dataImage.color = new Color(1, 1, 1, 1);
     }
     void SetDragData(string id, int count)
     {
