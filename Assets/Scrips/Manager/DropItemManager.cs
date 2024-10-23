@@ -57,7 +57,6 @@ public class DropItemManager : MonoBehaviour
         int count = UnityEngine.Random.Range(4, 6);
         for (int i = 0; i < count; i++)
         {
-            Debug.Log("dropItemsPrefabsPath[MonsterDeathDropItemIndex(): " + dropItemsPrefabsPath[MonsterDeathDropItemIndex()]);
             DropItem dropItem = GameManager.instance.poolManager.GetObjectFromPool(dropItemsPrefabsPath[MonsterDeathDropItemIndex()]).GetComponent<DropItem>();
             dropItem.CreatedDropItem(enemyDeathPos);
             dropItem.SetData(id);

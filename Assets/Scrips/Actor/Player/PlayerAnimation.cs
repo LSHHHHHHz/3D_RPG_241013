@@ -8,6 +8,9 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] PlayerController playerController;
     public event Action<bool> onStartPlayerAttackAnim;
     public event Action onEndPlayerAttackAnim;
+
+    public event Action onEndSwapWeapon;
+    bool isSwapped = false;
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -42,6 +45,21 @@ public class PlayerAnimation : MonoBehaviour
         if (Input.GetButtonDown("Swap"))
         {
             anim.SetTrigger("DoSwap");
+        }
+        AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+
+        if (stateInfo.IsName("Player_SwapWeapon"))
+        {
+            if (stateInfo.normalizedTime < 0.5f)
+            {
+                isSwapped = false;
+            }
+            if (stateInfo.normalizedTime >= 0.5f && !isSwapped)
+            {
+                isSwapped = true;
+                onEndSwapWeapon?.Invoke();
+                Debug.Log("Swap");
+            }
         }
     }
     void CheckEndAttackAnim()
