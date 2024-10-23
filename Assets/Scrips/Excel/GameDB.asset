@@ -244,3 +244,5 @@ MonoBehaviour:
     monsterIconPath: 
     monsterPrefabPath: 
     monsterMaxHP: 100
+    rewardEquipment: Sword1
+    rewardPortion: HPPortion1

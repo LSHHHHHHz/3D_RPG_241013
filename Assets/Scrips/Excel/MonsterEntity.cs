@@ -10,4 +10,6 @@ public class MonsterEntity
     public string monsterIconPath;
     public string monsterPrefabPath;
     public int monsterMaxHP;
+    public string rewardEquipment;
+    public string rewardPortion;
 }
