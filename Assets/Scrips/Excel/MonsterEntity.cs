@@ -12,4 +12,6 @@ public class MonsterEntity
     public int monsterMaxHP;
     public string rewardEquipment;
     public string rewardPortion;
+    public int rewardExp;
+    public int rewardCoin;
 }

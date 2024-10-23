@@ -55,7 +55,7 @@ public class PlayerStatus
         playerCurrentMP -= amount;
         onChangeMP?.Invoke(playerCurrentMP, playerMaxExp);
     }
-    public void GainExp(int amount)
+    public void GetExp(int amount)
     {
         playerCurrentExp += amount;
         onChangeExp?.Invoke(playerCurrentExp, playerMaxExp);

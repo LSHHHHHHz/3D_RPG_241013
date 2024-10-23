@@ -246,3 +246,5 @@ MonoBehaviour:
     monsterMaxHP: 100
     rewardEquipment: Sword1
     rewardPortion: HPPortion1
+    rewardExp: 10
+    rewardCoin: 20

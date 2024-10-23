@@ -14,6 +14,7 @@ public class BaseEnemy : Actor
     public Action<bool> onStartEnemyAttackAnim;
     public Action onEndEnemyAttackAnim;
     public Action onDeathEnemy;
+    public Action<Vector3, string> onDeathEnemyID;
     private void Awake()
     {
         enemyDetector = GetComponent<EnemyDetector>();
@@ -30,6 +31,7 @@ public class BaseEnemy : Actor
     {
         ActorManager<BaseEnemy>.instnace.UnregisterActor(this);
         onDeathEnemy?.Invoke();
+        onDeathEnemyID?.Invoke(transform.position, enemyID);
     }
     private void Update()
     {
@@ -75,5 +77,5 @@ public class BaseEnemy : Actor
     public string GetEnemyID()
     {
         return enemyID;
-    }
+    }  
 }

@@ -5,9 +5,11 @@ using UnityEngine;
 public class Player : Actor
 {
     public PlayerStatus status { get; private set; }
+    public PlayerCurrency currency { get; private set; }
     private void Awake()
     {
         status = new PlayerStatus(100, 50);
+        currency = new PlayerCurrency(100);
     }
     private void OnEnable()
     {

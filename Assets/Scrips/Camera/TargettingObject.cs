@@ -10,7 +10,8 @@ public class TargettingObject : MonoBehaviour
     public GameObject targettingPopupUIprefab;
     TargettingEnemyPopupUI targettingEnemyPopupUI;
     [SerializeField]RectTransform targettingRectTransform;
-    private void Update()
+    [SerializeField] Camera mainCamera;
+    private void LateUpdate()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -20,7 +21,7 @@ public class TargettingObject : MonoBehaviour
     void SelectTarget()
     {
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
         Debug.DrawRay(ray.origin, ray.direction * 100, Color.red, 1.0f);
 
