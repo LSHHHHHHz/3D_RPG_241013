@@ -5,6 +5,7 @@ using System.Threading;
 using UnityEngine;
 public class BaseEnemy : Actor
 {
+    [SerializeField] string enemyID;
     public EnemyDetector enemyDetector;
     EnemyMove enemyMove;
     [SerializeField] float startAttackTime;
@@ -12,6 +13,7 @@ public class BaseEnemy : Actor
     public Animator anim { get; private set; }
     public Action<bool> onStartEnemyAttackAnim;
     public Action onEndEnemyAttackAnim;
+    public Action onDeathEnemy;
     private void Awake()
     {
         enemyDetector = GetComponent<EnemyDetector>();
@@ -27,6 +29,7 @@ public class BaseEnemy : Actor
     private void OnDisable()
     {
         ActorManager<BaseEnemy>.instnace.UnregisterActor(this);
+        onDeathEnemy?.Invoke();
     }
     private void Update()
     {
@@ -68,5 +71,9 @@ public class BaseEnemy : Actor
     public float GetStartAttackTime()
     {
        return startAttackTime;
+    }
+    public string GetEnemyID()
+    {
+        return enemyID;
     }
 }

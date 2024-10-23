@@ -11,6 +11,7 @@ public class GameDB : ScriptableObject
 	public List<GameDBEntity> GameDataEntites;
     public List<ShopDB> shopDB;
     public List<QuestEntity> QuestEntities;
+    public List<MonsterEntity> MonsterEntites;
     public GameDBEntity GetProfileDB(string id)
     {
         foreach (GameDBEntity profile in GameDataEntites)
@@ -34,5 +35,17 @@ public class GameDB : ScriptableObject
             }
         }
         return list;
+    }
+    public MonsterEntity GetEnemyProfileDB(string id)
+    {
+        foreach (MonsterEntity profile in MonsterEntites)
+        {
+            if (id == profile.monsterID)
+            {
+                return profile;
+            }
+        }
+        Debug.LogError("맞는 아이디 없음");
+        return null;
     }
 }

@@ -10281,7 +10281,7 @@ GameObject:
   - component: {fileID: 243145287}
   - component: {fileID: 243145286}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CanvasMiniMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14112,6 +14112,7 @@ RectTransform:
   - {fileID: 1874000680}
   - {fileID: 971799809}
   - {fileID: 746984371}
+  - {fileID: 1128276372}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -19335,7 +19336,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 434559939}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c019306ba7785b946bc387e04f54114f, type: 3}
   m_Name: 
@@ -42842,6 +42843,7 @@ GameObject:
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
   - component: {fileID: 963194231}
+  - component: {fileID: 963194232}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -43015,6 +43017,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e07c1afaf0d8f0c41aac4e813211eef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &963194232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af5d452f68c60d24fa0dd9ccfb7c6bf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  distanceObj: 100
+  targetObj: {fileID: 0}
+  targettingPopupUIprefab: {fileID: 3463911103546395654, guid: eb482a2ae5e3a0a489dc85934083bf3e, type: 3}
+  targettingRectTransform: {fileID: 1128276372}
 --- !u!1001 &963770412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48859,6 +48880,41 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d7438da623f2694f8c461b17a08fd27, type: 3}
+--- !u!1 &1128276371
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1128276372}
+  m_Layer: 5
+  m_Name: TargettingPopupTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1128276372
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128276371}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 330275458}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1129641757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56034,7 +56090,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1266929069}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29fa9b17a8201854c9b1db6ad4859f75, type: 3}
   m_Name: 
@@ -88292,7 +88348,7 @@ GameObject:
   - component: {fileID: 1993652313}
   - component: {fileID: 1993652314}
   m_Layer: 9
-  m_Name: Circle
+  m_Name: MinimapIcon_Enemy01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91426,7 +91482,6 @@ GameObject:
   - component: {fileID: 2074362761}
   - component: {fileID: 2074362763}
   - component: {fileID: 2074362764}
-  - component: {fileID: 2074362765}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -91495,23 +91550,6 @@ MonoBehaviour:
   - {fileID: 5199654335768809645, guid: 3c4d4cdc4d9c71c43a8121dfb45aa582, type: 3}
   transformParent: {fileID: 746984371}
   contentsSystems: []
---- !u!114 &2074362765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2074362760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af5d452f68c60d24fa0dd9ccfb7c6bf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 128
-  distanceObj: 100
-  targetObj: {fileID: 0}
 --- !u!1001 &2074457316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92558,6 +92596,7 @@ GameObject:
   - component: {fileID: 2095722469}
   - component: {fileID: 2095722471}
   - component: {fileID: 2095722472}
+  - component: {fileID: 2095722473}
   m_Layer: 7
   m_Name: Skeleton
   m_TagString: Untagged
@@ -92594,6 +92633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f5dd3f94f0edf409252b4b4cd0d1e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyID: normarMonster1
   enemyDetector: {fileID: 0}
   startAttackTime: 0.3
 --- !u!114 &2095722471
@@ -92624,6 +92664,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectedRange: 3
+--- !u!65 &2095722473
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095722467}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 1.5, z: 0.5}
+  m_Center: {x: 0, y: 0.75, z: 0}
 --- !u!4 &2098262200 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 445910, guid: c63ea781a273235439e583799176c846, type: 3}

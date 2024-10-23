@@ -7,7 +7,9 @@ public class TargettingObject : MonoBehaviour
     public LayerMask layerMask;
     public int distanceObj;
     public GameObject targetObj;
-
+    public GameObject targettingPopupUIprefab;
+    TargettingEnemyPopupUI targettingEnemyPopupUI;
+    [SerializeField]RectTransform targettingRectTransform;
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -18,16 +20,41 @@ public class TargettingObject : MonoBehaviour
     void SelectTarget()
     {
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, layerMask))
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        Debug.DrawRay(ray.origin, ray.direction * 100, Color.red, 1.0f);
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
+            Debug.Log(hit.collider.gameObject.name);
             BaseEnemy enemy = hit.collider.GetComponent<BaseEnemy>();
             if (enemy != null && Vector3.Distance(transform.position, enemy.transform.position) <= distanceObj)
             {
                 targetObj = enemy.gameObject;
                 Debug.Log(targetObj.name);
+                enemy.onDeathEnemy += ClearTarget;
+                ShowTargetPopup(enemy.GetEnemyID());
             }
         }
     }
-
+    void ShowTargetPopup(string enemyID)
+    {
+        if (targettingEnemyPopupUI == null)
+        {
+            targettingEnemyPopupUI = Instantiate(targettingPopupUIprefab, targettingRectTransform).GetComponent<TargettingEnemyPopupUI>();
+            targettingEnemyPopupUI.gameObject.SetActive(true);
+            targettingEnemyPopupUI.onDisablePopupUI += ClearTarget;
+        }
+        else
+        {
+            targettingEnemyPopupUI.gameObject.SetActive(true);
+        }
+        targettingEnemyPopupUI.Setdata(enemyID);
+    }
+    void ClearTarget()
+    {
+        targetObj = null; 
+        targettingEnemyPopupUI.gameObject.SetActive(false);
+    }
 }
 
