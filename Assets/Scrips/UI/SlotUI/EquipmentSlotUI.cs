@@ -6,6 +6,15 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class EquipmentSlotUI : BaseSlotUI, IDropHandler
 {
+    public event Action<string> onEquipItem;
+    private void OnEnable()
+    {
+        onEquipItem += GameManager.instance.equipmentManager.EquipItem;
+    }
+    private void OnDisable()
+    {
+        onEquipItem -= GameManager.instance.equipmentManager.EquipItem;
+    }
     public void OnDrop(PointerEventData eventData)
     {
         DragSlotUI draggedSlot = eventData.pointerDrag.GetComponent<DragSlotUI>();
@@ -18,13 +27,7 @@ public class EquipmentSlotUI : BaseSlotUI, IDropHandler
         {
             return;
         }
-        if (currentSlotData.dataID == draggedSlot.dragDataId)
-        {
-            currentSlotData.MergeData(currentSlotData, draggedSlot.dropSlotUI.currentSlotData);
-        }
-        else
-        {
-            currentSlotData.SwapData(currentSlotData, draggedSlot.dropSlotUI.currentSlotData);
-        }
+        currentSlotData.SetData(db.dataID, 0);
+        onEquipItem?.Invoke(db.dataID);
     }
 }

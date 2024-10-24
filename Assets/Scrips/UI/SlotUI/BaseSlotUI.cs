@@ -49,10 +49,10 @@ public class BaseSlotUI : MonoBehaviour
                 return type == "Portion"; 
             case InventoryType.QuickSkillSlots:
                 return type == "active" || type == "passive";
-            case InventoryType.EquipImentnventory:
-                return type == "Equipment"; 
-            case InventoryType.SkillInventory:
-                return false; 
+            case InventoryType.SwordEquipIment:
+                return type == "Sword";
+            case InventoryType.ShieldEquipment:
+                return type == "Shield";
             default:
                 return false;  
         }

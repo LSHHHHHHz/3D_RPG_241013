@@ -5,7 +5,8 @@ using UnityEngine;
 public enum InventoryType
 {
     itemInventory,
-    EquipImentnventory,
+    SwordEquipIment,
+    ShieldEquipment,
     SkillInventory,
     QuickSkillSlots,
     QuickPortionSlots,

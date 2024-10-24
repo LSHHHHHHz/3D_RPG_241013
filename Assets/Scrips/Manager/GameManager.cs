@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public DropItemManager dropItemManager;
     public GameDB gameDB;
     public Player player;
+    public EquipmentManager equipmentManager;
     private void Awake()
     {
         if (instance == null)

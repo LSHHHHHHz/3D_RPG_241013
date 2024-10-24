@@ -5,12 +5,13 @@ using UnityEngine.UI;
 public class Test : MonoBehaviour
 {
     public BaseSlotUI dropSlotUI;
+    public string dataID;
     private void Awake()
     {
         Button button = GetComponent<Button>();
         button.onClick.AddListener(() =>
         {
-            dropSlotUI.SetData("HPPortion1", 5);
+            dropSlotUI.SetData(dataID, 5);
         });
     }
 }
