@@ -48,7 +48,7 @@ public class BaseSlotUI : MonoBehaviour
             case InventoryType.QuickPortionSlots:
                 return type == "Portion"; 
             case InventoryType.QuickSkillSlots:
-                return type == "Skill";
+                return type == "active" || type == "passive";
             case InventoryType.EquipImentnventory:
                 return type == "Equipment"; 
             case InventoryType.SkillInventory:

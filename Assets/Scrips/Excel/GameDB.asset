@@ -32,22 +32,86 @@ MonoBehaviour:
     name: ???
     dialog: "\uD558\uD638"
   GameDataEntites:
-  - dataID: Sword1
-    name: "\uAE30\uBCF8\uAC80"
+  - dataID: sword1
+    name: "\uCD08\uC2EC\uC790\uC758 \uAC80"
     iconPath: Item/Sword1
-    prefabPath: "\uACBD\uB85C\uC74D\uB2E4"
-    description: "\uAE30\uBCF8\uAC80\uC774\uB2E4"
-    price: 10
-    dataType: Swrod
+    prefabPath: Prefab/Equipment/Sword1
+    description: 
+    price: 100
+    dataType: sword
     coolDown: 
-  - dataID: Sword2
-    name: "\uC911\uAE09\uAC80"
+    requiredLV: 1
+    amount: 10
+  - dataID: sword2
+    name: "\uC6A9\uC0AC\uC758 \uAC80"
     iconPath: Item/Sword2
-    prefabPath: "\uACBD\uB85C\uC74D\uB2E4"
-    description: "\uC911\uAE09\uAC80\uC774\uB2E4"
-    price: 20
-    dataType: Swrod
+    prefabPath: Prefab/Equipment/Sword2
+    description: 
+    price: 200
+    dataType: sword
     coolDown: 
+    requiredLV: 2
+    amount: 20
+  - dataID: sword3
+    name: "\uBA85\uC608\uC758 \uAC80"
+    iconPath: Item/Sword3
+    prefabPath: Prefab/Equipment/Sword3
+    description: 
+    price: 300
+    dataType: sword
+    coolDown: 
+    requiredLV: 3
+    amount: 30
+  - dataID: sword4
+    name: "\uC804\uC124\uC758 \uAC80"
+    iconPath: Item/Sword4
+    prefabPath: Prefab/Equipment/Sword4
+    description: 
+    price: 400
+    dataType: sword
+    coolDown: 
+    requiredLV: 4
+    amount: 40
+  - dataID: shield1
+    name: "\uCD08\uC2EC\uC790\uC758 \uBC29\uD328"
+    iconPath: Item/Shield1
+    prefabPath: Prefab/Equipment/Shield1
+    description: 
+    price: 100
+    dataType: shield
+    coolDown: 
+    requiredLV: 1
+    amount: 100
+  - dataID: shield2
+    name: "\uC218\uD638\uC790\uC758 \uBC29\uD328"
+    iconPath: Item/Shield2
+    prefabPath: Prefab/Equipment/Shield2
+    description: 
+    price: 200
+    dataType: shield
+    coolDown: 
+    requiredLV: 2
+    amount: 200
+  - dataID: shield3
+    name: "\uAC15\uCCA0\uC758 \uBC29\uD328"
+    iconPath: Item/Shield3
+    prefabPath: Prefab/Equipment/Shield3
+    description: 
+    price: 300
+    dataType: shield
+    coolDown: 
+    requiredLV: 3
+    amount: 300
+  - dataID: shield4
+    name: "\uBD88\uBA78\uC758 \uBC29\uD328"
+    iconPath: Item/Shield4
+    prefabPath: Prefab/Equipment/Shield4
+    description: 
+    price: 400
+    dataType: shield
+    coolDown: 
+    requiredLV: 4
+    amount: 400
   - dataID: HPPortion1
     name: "\uAE30\uBCF8HP\uD3EC\uC158"
     iconPath: PortionIcon/HP1
@@ -57,6 +121,8 @@ MonoBehaviour:
     price: 100
     dataType: Portion
     coolDown: 
+    requiredLV: 0
+    amount: 50
   - dataID: HPPortion2
     name: "\uC911\uAE09HP\uD3EC\uC158"
     iconPath: PortionIcon/HP2
@@ -66,6 +132,8 @@ MonoBehaviour:
     price: 200
     dataType: Portion
     coolDown: 
+    requiredLV: 0
+    amount: 100
   - dataID: HPPortion3
     name: "\uACE0\uAE09HP\uD3EC\uC158"
     iconPath: PortionIcon/HP3
@@ -75,6 +143,8 @@ MonoBehaviour:
     price: 300
     dataType: Portion
     coolDown: 
+    requiredLV: 0
+    amount: 150
   - dataID: HPPortion4
     name: "\uCD5C\uC0C1\uAE09HP\uD3EC\uC158"
     iconPath: PortionIcon/HP4
@@ -84,6 +154,8 @@ MonoBehaviour:
     price: 400
     dataType: Portion
     coolDown: 
+    requiredLV: 0
+    amount: 200
   - dataID: MpPortion1
     name: "\uAE30\uBCF8MP\uD3EC\uC158"
     iconPath: PortionIcon/MP1
@@ -93,6 +165,8 @@ MonoBehaviour:
     price: 100
     dataType: Portion
     coolDown: 
+    requiredLV: 0
+    amount: 50
   - dataID: MpPortion2
     name: "\uC911\uAE09MP\uD3EC\uC158"
     iconPath: PortionIcon/MP2
@@ -102,6 +176,8 @@ MonoBehaviour:
     price: 200
     dataType: Portion
     coolDown: 
+    requiredLV: 0
+    amount: 100
   - dataID: MpPortion3
     name: "\uACE0\uAE09MP\uD3EC\uC158"
     iconPath: PortionIcon/MP3
@@ -111,6 +187,8 @@ MonoBehaviour:
     price: 300
     dataType: Portion
     coolDown: 
+    requiredLV: 0
+    amount: 150
   - dataID: MpPortion4
     name: "\uCD5C\uC0C1\uAE09MP\uD3EC\uC158"
     iconPath: PortionIcon/MP4
@@ -120,102 +198,128 @@ MonoBehaviour:
     price: 400
     dataType: Portion
     coolDown: 
+    requiredLV: 0
+    amount: 200
   - dataID: activeSkill1
     name: "\uC5D1\uD2F0\uBE0C1"
-    iconPath: PortionIcon/HP1
-    prefabPath: 
+    iconPath: SkillIcon/ActSkill1
+    prefabPath: Prefab/Skill/ActSkill1
     description: 
     price: 0
     dataType: active
     coolDown: 
+    requiredLV: 1
+    amount: 0
   - dataID: activeSkill2
     name: "\uC5D1\uD2F0\uBE0C2"
-    iconPath: PortionIcon/HP2
-    prefabPath: 
+    iconPath: SkillIcon/ActSkill2
+    prefabPath: Prefab/Skill/ActSkill2
     description: 
     price: 0
     dataType: active
     coolDown: 
+    requiredLV: 2
+    amount: 0
   - dataID: activeSkill3
     name: "\uC5D1\uD2F0\uBE0C3"
-    iconPath: PortionIcon/HP3
-    prefabPath: 
+    iconPath: SkillIcon/ActSkill3
+    prefabPath: Prefab/Skill/ActSkill3
     description: 
     price: 0
     dataType: active
     coolDown: 
+    requiredLV: 3
+    amount: 0
   - dataID: activeSkill4
     name: "\uC5D1\uD2F0\uBE0C4"
-    iconPath: PortionIcon/HP4
-    prefabPath: 
+    iconPath: SkillIcon/ActSkill4
+    prefabPath: Prefab/Skill/ActSkill4
     description: 
     price: 0
     dataType: active
     coolDown: 
+    requiredLV: 4
+    amount: 0
   - dataID: activeSkill5
     name: "\uC5D1\uD2F0\uBE0C5"
-    iconPath: PortionIcon/MP1
-    prefabPath: 
+    iconPath: SkillIcon/ActSkill5
+    prefabPath: Prefab/Skill/ActSkill5
     description: 
     price: 0
     dataType: active
     coolDown: 
+    requiredLV: 5
+    amount: 0
   - dataID: activeSkill6
     name: "\uC5D1\uD2F0\uBE0C6"
-    iconPath: PortionIcon/HP1
-    prefabPath: 
+    iconPath: SkillIcon/ActSkill6
+    prefabPath: Prefab/Skill/ActSkill6
     description: 
     price: 0
     dataType: active
     coolDown: 
+    requiredLV: 6
+    amount: 0
   - dataID: passiveSkill1
     name: "\uD328\uC2DC\uBE0C1"
-    iconPath: PortionIcon/HP2
-    prefabPath: 
+    iconPath: SkillIcon/PasSkill1
+    prefabPath: Prefab/Skill/PasSkill1
     description: 
     price: 0
     dataType: passive
     coolDown: 
+    requiredLV: 1
+    amount: 0
   - dataID: passiveSkill2
     name: "\uD328\uC2DC\uBE0C2"
-    iconPath: PortionIcon/HP3
-    prefabPath: 
+    iconPath: SkillIcon/PasSkill2
+    prefabPath: Prefab/Skill/PasSkill2
     description: 
     price: 0
     dataType: passive
     coolDown: 
+    requiredLV: 2
+    amount: 0
   - dataID: passiveSkill3
     name: "\uD328\uC2DC\uBE0C3"
-    iconPath: PortionIcon/HP4
-    prefabPath: 
+    iconPath: SkillIcon/PasSkill3
+    prefabPath: Prefab/Skill/PasSkill3
     description: 
     price: 0
     dataType: passive
     coolDown: 
+    requiredLV: 3
+    amount: 0
   - dataID: passiveSkill4
     name: "\uD328\uC2DC\uBE0C4"
-    iconPath: PortionIcon/MP1
-    prefabPath: 
+    iconPath: SkillIcon/PasSkill4
+    prefabPath: Prefab/Skill/PasSkill4
     description: 
     price: 0
     dataType: passive
     coolDown: 
+    requiredLV: 4
+    amount: 0
   - dataID: passiveSkill5
     name: "\uD328\uC2DC\uBE0C5"
-    iconPath: PortionIcon/MP2
-    prefabPath: 
+    iconPath: SkillIcon/PasSkill5
+    prefabPath: Prefab/Skill/PasSkill5
     description: 
     price: 0
     dataType: passive
     coolDown: 
+    requiredLV: 5
+    amount: 0
   - dataID: passiveSkill6
     name: "\uD328\uC2DC\uBE0C6"
-    iconPath: PortionIcon/MP3
-    prefabPath: 
+    iconPath: SkillIcon/PasSkill6
+    prefabPath: Prefab/Skill/PasSkill6
     description: 
     price: 0
     dataType: passive
     coolDown: 
+    requiredLV: 6
+    amount: 0
   shopDB:
   - npcID: PortionShopNPC
     dataID: HPPortion1

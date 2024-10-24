@@ -48,4 +48,8 @@ public class BaseInventory : MonoBehaviour
             }
         }
     }
+    public List<BaseSlotUI> GetSlotList()
+    {
+        return slots;
+    }
 }

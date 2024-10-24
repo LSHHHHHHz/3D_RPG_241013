@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class QuickSkillSlotUI : BaseSlotUI
+public class QuickSkillSlotUI : BaseSlotUI, IDropHandler
 {
     GameObject skillPrefab;
     BaseSkill skill;
@@ -36,7 +36,7 @@ public class QuickSkillSlotUI : BaseSlotUI
         if (!string.IsNullOrEmpty(id))
         {
             GameDBEntity db = GameManager.instance.gameDB.GetProfileDB(id);
-            if(db.dataType != "Skill")
+            if (db.dataType != "active" && db.dataType != "passive")
             {
                 return;
             }
@@ -53,7 +53,14 @@ public class QuickSkillSlotUI : BaseSlotUI
     }
     void ClickButton()
     {
-        skill.ExcuteSkill();
+        if (skill != null)
+        {
+            skill.ExcuteSkill();
+        }
+        else
+        {
+            Debug.Log("스킬 없음");
+        }
     }
     public void OnDrop(PointerEventData eventData)
     {
@@ -67,13 +74,13 @@ public class QuickSkillSlotUI : BaseSlotUI
         {
             return;
         }
-        if (currentSlotData.dataID == draggedSlot.dragDataId)
+        for(int i =0; i< GameData.instance.quickSkillSlotsData.slotDatas.Count; i++)
         {
-            currentSlotData.MergeData(currentSlotData, draggedSlot.dropSlotUI.currentSlotData);
+            if(db.dataID == GameData.instance.quickSkillSlotsData.slotDatas[i].dataID)
+            {
+                return;
+            }
         }
-        else
-        {
-            currentSlotData.SwapData(currentSlotData, draggedSlot.dropSlotUI.currentSlotData);
-        }
+        currentSlotData.SetData(db.dataID, 0);
     }
 }

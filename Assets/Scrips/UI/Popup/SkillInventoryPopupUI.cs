@@ -8,9 +8,11 @@ public class SkillInventoryPopupUI : MonoBehaviour
     [SerializeField] Text skillName;
     [SerializeField] Text skillRequiredLV;
     [SerializeField] Text skillDescription;
-
-    void SetData(string skillID)
+    public void SetData(string id)
     {
-
+        GameDBEntity skill = GameManager.instance.gameDB.GetProfileDB(id);
+        skillName.text = skill.name;
+        skillRequiredLV.text = "필요레벨 : " + skill.requiredLV;
+        skillDescription.text = skill.description;
     }
 }

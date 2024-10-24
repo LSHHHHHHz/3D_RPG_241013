@@ -14,10 +14,12 @@ public class Player : Actor
     private void OnEnable()
     {
         ActorManager<Player>.instnace.RegisterActor(this);
+        EventManager.instance.onRecoveryHP += RecoverHP;
     }
     private void OnDisable()
     {
         ActorManager<Player>.instnace.UnregisterActor(this);
+        EventManager.instance.onRecoveryHP -= RecoverHP;
     }
 
     public override void ReceiveEvent(IEvent ievent)
@@ -38,5 +40,6 @@ public class Player : Actor
     void RecoverHP(int amout)
     {
         status.GetHP(amout);
+        Debug.Log(amout + "È¸º¹");
     }
 }

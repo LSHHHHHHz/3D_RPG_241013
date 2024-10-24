@@ -49,6 +49,19 @@ public class SlotData
     {
         return dataID;
     }
+    public void UsePortion()
+    {
+        if (count > 0)
+        {
+            count--;
+            onDataChanged?.Invoke(dataID, count);
+            if (count == 0)
+            {
+                dataID = ""; 
+                onDataChanged?.Invoke(dataID, count);
+            }
+        }
+    }
 }
 public class InventoryData
 {

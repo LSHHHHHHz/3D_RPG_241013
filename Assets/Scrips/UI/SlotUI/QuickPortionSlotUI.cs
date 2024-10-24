@@ -19,7 +19,11 @@ public class QuickPortionSlotUI : BaseSlotUI, IDropHandler
     }
     void ClickButton(string dataID)
     {
-        Debug.Log("Æ÷¼Ç ¸ÔÀ½");
+        currentSlotData.UsePortion();
+        if(!string.IsNullOrEmpty(currentSlotData.dataID))
+        {
+            EventManager.instance.RecoverHP(GameManager.instance.gameDB.GetProfileDB(currentSlotData.dataID).amount);
+        }
     }
     public void OnDrop(PointerEventData eventData)
     {

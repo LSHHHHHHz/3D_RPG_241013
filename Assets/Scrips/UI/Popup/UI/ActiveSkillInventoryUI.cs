@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 public class ActiveSkillInventoryUI : BaseInventory
 {
+    SkillInventoryPopupUI skillInventoryPopupUI;
     ActiveSkillInventoryData activeSkillInventoryData;
-    public List<GameDBEntity> activeSkillEntities; //테스트중
+    List<GameDBEntity> activeSkillEntities; 
     protected override void Awake()
     {
         base.Awake();
@@ -19,6 +20,7 @@ public class ActiveSkillInventoryUI : BaseInventory
         }
         activeSkillInventoryData = GameData.instance.activeSkillInventoryData;
         SetSlotCount(activeSkillInventoryData.inventoryCount);
+        skillInventoryPopupUI = GetComponentInParent<SkillInventoryPopupUI>();
         SetSlotData();
     }
     void SetSlotData()
@@ -28,6 +30,8 @@ public class ActiveSkillInventoryUI : BaseInventory
             slots[i].currentSlotData = activeSkillInventoryData.slotDatas[i];
             activeSkillInventoryData.slotDatas[i].onDataChanged += slots[i].SetData;
             activeSkillInventoryData.slotDatas[i].SetData(activeSkillEntities[i].dataID, 0);
+            SkillInventorySlotUI slot = slots[i].GetComponent<SkillInventorySlotUI>();
+            slot.onClickButton += skillInventoryPopupUI.SetData;
         }
     }
 }
