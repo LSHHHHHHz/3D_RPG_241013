@@ -17,7 +17,7 @@ public class DragSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         canvasGroup = GetComponent<CanvasGroup>();
         rectTransform = GetComponent<RectTransform>();
-        canvas = FindObjectOfType<Canvas>().transform;
+        canvas = GameObject.Find("Canvas").transform;
         dropSlotUI = GetComponentInParent<BaseSlotUI>();
     }
     private void OnEnable()
@@ -32,7 +32,6 @@ public class DragSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         if(string.IsNullOrEmpty(dataID))
         {
-            dataImage.sprite = null;
             dataImage.color = new Color(1, 1, 1, 0);
             return;
         }

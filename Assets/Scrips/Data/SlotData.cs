@@ -82,7 +82,7 @@ public class ItemInventoryData : InventoryData
 [Serializable]
 public class ItemEquipInventoryData : InventoryData
 {
-    public int inventoryCount = 3;
+    public int inventoryCount = 2;
     public ItemEquipInventoryData()
     {
         if (slotDatas == null || slotDatas.Count == 0)
@@ -96,10 +96,26 @@ public class ItemEquipInventoryData : InventoryData
     }
 }
 [Serializable]
-public class SkillInventoryData : InventoryData
+public class ActiveSkillInventoryData : InventoryData
 {
-    public int inventoryCount = 18;
-    public SkillInventoryData()
+    public int inventoryCount = 6;
+    public ActiveSkillInventoryData()
+    {
+        if (slotDatas == null || slotDatas.Count == 0)
+        {
+            InitializeSlots(inventoryCount);
+        }
+        else
+        {
+            Debug.Log(slotDatas.Count);
+        }
+    }
+}
+[Serializable]
+public class PassiveSkillInventoryData : InventoryData
+{
+    public int inventoryCount = 6;
+    public PassiveSkillInventoryData()
     {
         if (slotDatas == null || slotDatas.Count == 0)
         {

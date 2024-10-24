@@ -20,7 +20,10 @@ public class BaseSlotUI : MonoBehaviour
             currentSlotData.dataID = dataID;
             currentSlotData.count = 0;
             dataImage.sprite = null;
-            dataCount.text = "";
+            if (dataCount != null)
+            {
+                dataCount.text = "";
+            }
             dataImage.color = new Color(1, 1, 1, 0);
             onSetData?.Invoke(currentSlotData.dataID);
             return;
@@ -30,7 +33,10 @@ public class BaseSlotUI : MonoBehaviour
         currentSlotData.count = count;
         GameDBEntity db = GameManager.instance.gameDB.GetProfileDB(dataID);
         dataImage.sprite = Resources.Load<Sprite>(db.iconPath);
-        dataCount.text = count.ToString();
+        if (dataCount != null)
+        {
+            dataCount.text = count.ToString();
+        }
         onSetData?.Invoke(currentSlotData.dataID);
     }    
     protected bool IsPossibleDrop(string type)

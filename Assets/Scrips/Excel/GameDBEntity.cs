@@ -10,4 +10,5 @@ public class GameDBEntity
     public string description;
     public int price;
     public string dataType;
+    public string coolDown;
 }

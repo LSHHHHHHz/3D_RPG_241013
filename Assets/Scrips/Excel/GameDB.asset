@@ -39,6 +39,7 @@ MonoBehaviour:
     description: "\uAE30\uBCF8\uAC80\uC774\uB2E4"
     price: 10
     dataType: Swrod
+    coolDown: 
   - dataID: Sword2
     name: "\uC911\uAE09\uAC80"
     iconPath: Item/Sword2
@@ -46,6 +47,7 @@ MonoBehaviour:
     description: "\uC911\uAE09\uAC80\uC774\uB2E4"
     price: 20
     dataType: Swrod
+    coolDown: 
   - dataID: HPPortion1
     name: "\uAE30\uBCF8HP\uD3EC\uC158"
     iconPath: PortionIcon/HP1
@@ -54,6 +56,7 @@ MonoBehaviour:
       \uC2E0\uBE44\uD55C \uC601\uC57D"
     price: 100
     dataType: Portion
+    coolDown: 
   - dataID: HPPortion2
     name: "\uC911\uAE09HP\uD3EC\uC158"
     iconPath: PortionIcon/HP2
@@ -62,6 +65,7 @@ MonoBehaviour:
       \uD3EC\uD568\uB41C \uD3EC\uC158"
     price: 200
     dataType: Portion
+    coolDown: 
   - dataID: HPPortion3
     name: "\uACE0\uAE09HP\uD3EC\uC158"
     iconPath: PortionIcon/HP3
@@ -70,6 +74,7 @@ MonoBehaviour:
       \uCE58\uC720 \uBB3C\uC57D"
     price: 300
     dataType: Portion
+    coolDown: 
   - dataID: HPPortion4
     name: "\uCD5C\uC0C1\uAE09HP\uD3EC\uC158"
     iconPath: PortionIcon/HP4
@@ -78,6 +83,7 @@ MonoBehaviour:
       \uBD89\uC740 \uBB3C\uC57D"
     price: 400
     dataType: Portion
+    coolDown: 
   - dataID: MpPortion1
     name: "\uAE30\uBCF8MP\uD3EC\uC158"
     iconPath: PortionIcon/MP1
@@ -86,6 +92,7 @@ MonoBehaviour:
       \uD0C4\uC0DD\uD55C \uB9C8\uBC95\uC758 \uD3EC\uC158"
     price: 100
     dataType: Portion
+    coolDown: 
   - dataID: MpPortion2
     name: "\uC911\uAE09MP\uD3EC\uC158"
     iconPath: PortionIcon/MP2
@@ -94,6 +101,7 @@ MonoBehaviour:
       \uB098\uC624\uB294 \uBB3C\uB85C \uB9CC\uB4E4\uC5B4\uC9C4 \uBB3C\uC57D"
     price: 200
     dataType: Portion
+    coolDown: 
   - dataID: MpPortion3
     name: "\uACE0\uAE09MP\uD3EC\uC158"
     iconPath: PortionIcon/MP3
@@ -102,6 +110,7 @@ MonoBehaviour:
       \uB9C8\uB098\uC758 \uACB0\uC815\uC774 \uB179\uC544\uB4E0 \uD3EC\uC158"
     price: 300
     dataType: Portion
+    coolDown: 
   - dataID: MpPortion4
     name: "\uCD5C\uC0C1\uAE09MP\uD3EC\uC158"
     iconPath: PortionIcon/MP4
@@ -110,20 +119,103 @@ MonoBehaviour:
       \uBE57\uBC29\uC6B8\uB85C \uB9CC\uB4E4\uC5B4\uC9C4 \uD3EC\uC158"
     price: 400
     dataType: Portion
-  - dataID: Skill1
-    name: "\uCCAB\uC2A4\uD0AC"
-    iconPath: SkillIcon/Skill1
-    prefabPath: Prefab/Skill/Skill1
-    description: "\uCCAB\uC2A4\uD0AC\uC774\uB2E4"
+    coolDown: 
+  - dataID: activeSkill1
+    name: "\uC5D1\uD2F0\uBE0C1"
+    iconPath: PortionIcon/HP1
+    prefabPath: 
+    description: 
     price: 0
-    dataType: Skill
-  - dataID: Skill2
-    name: "\uB458\uC2A4\uD0AC"
-    iconPath: SkillIcon/Skill2
-    prefabPath: Prefab/Skill/Skill2
-    description: "\uB458\uC2A4\uD0AC\uC774\uB2E4"
+    dataType: active
+    coolDown: 
+  - dataID: activeSkill2
+    name: "\uC5D1\uD2F0\uBE0C2"
+    iconPath: PortionIcon/HP2
+    prefabPath: 
+    description: 
     price: 0
-    dataType: Skill
+    dataType: active
+    coolDown: 
+  - dataID: activeSkill3
+    name: "\uC5D1\uD2F0\uBE0C3"
+    iconPath: PortionIcon/HP3
+    prefabPath: 
+    description: 
+    price: 0
+    dataType: active
+    coolDown: 
+  - dataID: activeSkill4
+    name: "\uC5D1\uD2F0\uBE0C4"
+    iconPath: PortionIcon/HP4
+    prefabPath: 
+    description: 
+    price: 0
+    dataType: active
+    coolDown: 
+  - dataID: activeSkill5
+    name: "\uC5D1\uD2F0\uBE0C5"
+    iconPath: PortionIcon/MP1
+    prefabPath: 
+    description: 
+    price: 0
+    dataType: active
+    coolDown: 
+  - dataID: activeSkill6
+    name: "\uC5D1\uD2F0\uBE0C6"
+    iconPath: PortionIcon/HP1
+    prefabPath: 
+    description: 
+    price: 0
+    dataType: active
+    coolDown: 
+  - dataID: passiveSkill1
+    name: "\uD328\uC2DC\uBE0C1"
+    iconPath: PortionIcon/HP2
+    prefabPath: 
+    description: 
+    price: 0
+    dataType: passive
+    coolDown: 
+  - dataID: passiveSkill2
+    name: "\uD328\uC2DC\uBE0C2"
+    iconPath: PortionIcon/HP3
+    prefabPath: 
+    description: 
+    price: 0
+    dataType: passive
+    coolDown: 
+  - dataID: passiveSkill3
+    name: "\uD328\uC2DC\uBE0C3"
+    iconPath: PortionIcon/HP4
+    prefabPath: 
+    description: 
+    price: 0
+    dataType: passive
+    coolDown: 
+  - dataID: passiveSkill4
+    name: "\uD328\uC2DC\uBE0C4"
+    iconPath: PortionIcon/MP1
+    prefabPath: 
+    description: 
+    price: 0
+    dataType: passive
+    coolDown: 
+  - dataID: passiveSkill5
+    name: "\uD328\uC2DC\uBE0C5"
+    iconPath: PortionIcon/MP2
+    prefabPath: 
+    description: 
+    price: 0
+    dataType: passive
+    coolDown: 
+  - dataID: passiveSkill6
+    name: "\uD328\uC2DC\uBE0C6"
+    iconPath: PortionIcon/MP3
+    prefabPath: 
+    description: 
+    price: 0
+    dataType: passive
+    coolDown: 
   shopDB:
   - npcID: PortionShopNPC
     dataID: HPPortion1

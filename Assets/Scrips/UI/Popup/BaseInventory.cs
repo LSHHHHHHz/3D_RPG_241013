@@ -16,7 +16,6 @@ public class BaseInventory : MonoBehaviour
     [SerializeField] GameObject slotPrefab;
     [SerializeField] Transform slotTransform;
     public InventoryType inventoryType;
-    public int slotCount;
     protected List<BaseSlotUI> slots;
 
     protected virtual void Awake()

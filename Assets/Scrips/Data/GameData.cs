@@ -24,15 +24,21 @@ public class GameData
         }
     }
     public ItemInventoryData itemInventoryData;
-    public ItemEquipInventoryData ItemEquipInventoryData;
+    public ItemEquipInventoryData firstItemEquipInventoryData;
+    public ItemEquipInventoryData secondItemEquipInventoryData;
     public QuickPortionSlotsData quickPortionSlotsData;
     public QuickSkillSlotsData quickSkillSlotsData;
+    public ActiveSkillInventoryData activeSkillInventoryData;
+    public PassiveSkillInventoryData passiveSkillInventoryData;
     public GameData()
     {
         itemInventoryData = new ItemInventoryData();
-        ItemEquipInventoryData = new ItemEquipInventoryData();
+        firstItemEquipInventoryData = new ItemEquipInventoryData();
+        secondItemEquipInventoryData = new ItemEquipInventoryData();
         quickPortionSlotsData = new QuickPortionSlotsData();
         quickSkillSlotsData = new QuickSkillSlotsData();
+        activeSkillInventoryData = new ActiveSkillInventoryData();
+        passiveSkillInventoryData = new PassiveSkillInventoryData();
     }
     [ContextMenu("Save To Json Data")]
     public void Save()
