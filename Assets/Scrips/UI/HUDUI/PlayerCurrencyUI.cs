@@ -14,14 +14,14 @@ public class PlayerCurrencyUI : MonoBehaviour
     }
     private void OnEnable()
     {
-        player.currency.onChangeCoin += ChangeCoinAmount;
+        player.currency.onChangeCoin += UpdateCoinUI;
         player.currency.InitializeCurrency();
     }
     private void OnDisable()
     {
-        player.currency.onChangeCoin  -= ChangeCoinAmount;
+        player.currency.onChangeCoin  -= UpdateCoinUI;
     }
-    void ChangeCoinAmount(int coin)
+    void UpdateCoinUI(int coin)
     {
         coinText.text = coin.ToString(); 
     }

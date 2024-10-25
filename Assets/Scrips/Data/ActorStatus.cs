@@ -2,6 +2,30 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public class PlayerStats
+{
+    public int playerTotalAttack { get; private set; }
+    public event Action<int> onChangeAttack;
+
+    public PlayerStats(int initialAttack)
+    {
+        playerTotalAttack = initialAttack;
+    }
+    public void InitializeStats()
+    {
+        onChangeAttack?.Invoke(playerTotalAttack);
+    }
+    public void IncreaseAttack(int amount)
+    {
+        playerTotalAttack += amount;
+        onChangeAttack?.Invoke(playerTotalAttack);
+    }
+    public void DecreaseAttack(int amount)
+    {
+        playerTotalAttack -= amount;
+        onChangeAttack?.Invoke(playerTotalAttack);
+    }
+}
 public class PlayerStatus
 {
     public int playerMaxHP { get; private set; }

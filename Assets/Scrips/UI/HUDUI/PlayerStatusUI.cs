@@ -20,34 +20,34 @@ public class PlayerStatusUI : MonoBehaviour
     private void OnEnable()
     {
         Debug.Log("PlayerStatusUI 먼저되나");
-        player.status.onChangeHP += ChangeHPUI;
-        player.status.onChangeMP += ChangeMPUI;
-        player.status.onChangeExp += ChangeExpUI;
-        player.status.onChangeLevel += ChangeLevelUI;
+        player.status.onChangeHP += UpdateHPUI;
+        player.status.onChangeMP += UpdateMPUI;
+        player.status.onChangeExp += UpdateExpUI;
+        player.status.onChangeLevel += UpdateLevelUI;
         player.status.IntializeStatus();
     }
     private void OnDisable()
     {
-        player.status.onChangeHP -= ChangeHPUI;
-        player.status.onChangeMP -= ChangeMPUI;
-        player.status.onChangeExp -= ChangeExpUI;
-        player.status.onChangeLevel -= ChangeLevelUI;
+        player.status.onChangeHP -= UpdateHPUI;
+        player.status.onChangeMP -= UpdateMPUI;
+        player.status.onChangeExp -= UpdateExpUI;
+        player.status.onChangeLevel -= UpdateLevelUI;
     }
-    void ChangeHPUI(int currentHP, int maxHP)
+    void UpdateHPUI(int currentHP, int maxHP)
     {
         hpText.text = currentHP + " / " + maxHP;
         hpFillAmountImage.fillAmount = (float)currentHP / maxHP;
     }
-    void ChangeMPUI(int currentMP, int maxMP)
+    void UpdateMPUI(int currentMP, int maxMP)
     {
         mpText.text = currentMP + " / " + maxMP;
         mpFillAmountImage.fillAmount = (float)currentMP / maxMP;
     }
-    void ChangeExpUI(int currentExp, int maxExp)
+    void UpdateExpUI(int currentExp, int maxExp)
     {
         expFillAmountImage.fillAmount = (float)currentExp / maxExp;
     }
-    void ChangeLevelUI(int lv)
+    void UpdateLevelUI(int lv)
     {
         levelText.text = "Level: " + lv;
     }

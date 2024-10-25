@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 public class PlayerMeleeWeapon : ActorMeleeWeapon<BaseEnemy>, IEquipment
 {
     PlayerAnimation playerAnim;
+    Player player;
     string weaponID;
+    bool isEquipped = false;
     private void OnEnable()
     {
         playerAnim = GetComponentInParent<PlayerAnimation>();
+        player = GetComponentInParent<Player>();
         playerAnim.onEndPlayerAttackAnim += ResetTarget;
         playerAnim.onStartPlayerAttackAnim += StartAttackAction;
     }
@@ -34,11 +38,23 @@ public class PlayerMeleeWeapon : ActorMeleeWeapon<BaseEnemy>, IEquipment
 
     public void EquipItem(string id)
     {
-        Debug.Log("아이템 장착");
+        if (!isEquipped)
+        {
+            gameObject.SetActive(true);
+            int attackBonus = GameManager.instance.gameDB.GetProfileDB(id).amount;
+            player.stats.IncreaseAttack(attackBonus);
+            isEquipped = true;
+        }
     }
 
     public void UnEquipItem(string id)
     {
-        Debug.Log("아이템 해제");
+        if (isEquipped)
+        {
+            int attackBonus = GameManager.instance.gameDB.GetProfileDB(id).amount;
+            player.stats.DecreaseAttack(attackBonus);
+            isEquipped = false;
+            gameObject.SetActive(false);
+        }
     }
 }

@@ -6,6 +6,14 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class EquipmentSlotUI : BaseSlotUI, IDropHandler
 {
+    private void OnEnable()
+    {
+        
+    }
+    private void OnDisable()
+    {
+        
+    }
     public void OnDrop(PointerEventData eventData)
     {
         DragSlotUI draggedSlot = eventData.pointerDrag.GetComponent<DragSlotUI>();

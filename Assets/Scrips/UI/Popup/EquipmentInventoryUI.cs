@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 public class EquipmentInventoryUI : BaseInventory
 {
-    //스왑 버튼을 누르면 다른 창의 데이터 실행
-
-
     [SerializeField] int equipInventoryNum;
     private ItemEquipInventoryData itemEquipInventoryData;
 
@@ -15,10 +12,6 @@ public class EquipmentInventoryUI : BaseInventory
         if (equipInventoryNum == 1)
         {
             itemEquipInventoryData = GameData.instance.firstItemEquipInventoryData;
-            //for(int i =0; i< itemEquipInventoryData.slotDatas.Count; i++)
-            //{
-            //    itemEquipInventoryData.slotDatas[i].onActiveEquipSlot += GameManager.instance.equipmentManager.ActiveEquipPrefab;
-            //} gk..
         }
         else if (equipInventoryNum == 2)
         {

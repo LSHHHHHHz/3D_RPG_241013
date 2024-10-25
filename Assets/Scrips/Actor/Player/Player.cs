@@ -6,8 +6,10 @@ public class Player : Actor
 {
     public PlayerStatus status { get; private set; }
     public PlayerCurrency currency { get; private set; }
+    public PlayerStats stats { get; private set; }
     private void Awake()
     {
+        stats = new PlayerStats(10);
         status = new PlayerStatus(100, 50);
         currency = new PlayerCurrency(100);
     }
