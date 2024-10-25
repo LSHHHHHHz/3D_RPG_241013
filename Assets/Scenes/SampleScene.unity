@@ -33440,7 +33440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &713350931
 Transform:
   m_ObjectHideFlags: 0
@@ -52306,7 +52306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1169189332
 Transform:
   m_ObjectHideFlags: 0
@@ -57576,37 +57576,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 393b236c42954a640b513d46de90ac38, type: 3}
---- !u!1 &1264507075
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1264507076}
-  m_Layer: 0
-  m_Name: StowingSwordPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1264507076
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1264507075}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.61410993, y: 0.32827616, z: -0.37422115, w: 0.6124233}
-  m_LocalPosition: {x: -0.686, y: -0.413, z: -0.031}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 409198706}
-  m_LocalEulerAnglesHint: {x: 86.274, y: -62.3, z: -121.904}
 --- !u!4 &1266058537 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4025826744558684, guid: e1e6ff2b1aae9bf409b95d54f1de1487, type: 3}
@@ -57636,7 +57605,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1266929069}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29fa9b17a8201854c9b1db6ad4859f75, type: 3}
   m_Name: 
@@ -65575,7 +65544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e7d86c11708154b9053b186203b8e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentInventoryType: 2
+  parentInventoryType: 1
   dataImage: {fileID: 2035623327}
   dataCount: {fileID: 0}
 --- !u!4 &1448978481 stripped
@@ -65583,37 +65552,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1246242846733100393, guid: 22b28188740ec62468b43ef287940dfc, type: 3}
   m_PrefabInstance: {fileID: 1478054892}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1449149204
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1449149205}
-  m_Layer: 0
-  m_Name: StowingShieldPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1449149205
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1449149204}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.28323653, y: 0.49549955, z: 0.17493045, w: 0.80228215}
-  m_LocalPosition: {x: -0.121, y: -0.484, z: 0.21}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 420963815}
-  m_LocalEulerAnglesHint: {x: -38.89, y: 63.4, z: 0}
 --- !u!1001 &1449811318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66871,7 +66809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e7d86c11708154b9053b186203b8e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentInventoryType: 1
+  parentInventoryType: 2
   dataImage: {fileID: 1570133663}
   dataCount: {fileID: 0}
 --- !u!4 &1473060919 stripped
@@ -69882,8 +69820,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 368809675}
   - {fileID: 672774351}
+  - {fileID: 368809675}
   m_Father: {fileID: 1883920184}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -87920,15 +87858,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6502182839619065283, guid: 549b909cc62695e4fa39217d7b17b60b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 48933304}
-    - targetCorrespondingSourceObject: {fileID: 6502182839619065283, guid: 549b909cc62695e4fa39217d7b17b60b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1449149205}
     - targetCorrespondingSourceObject: {fileID: 1852576806548013000, guid: 549b909cc62695e4fa39217d7b17b60b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1275378658}
-    - targetCorrespondingSourceObject: {fileID: 1852576806548013000, guid: 549b909cc62695e4fa39217d7b17b60b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1264507076}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 549b909cc62695e4fa39217d7b17b60b, type: 3}
       insertIndex: -1
@@ -94183,10 +94115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09b9ff9e1b4a794ebf2cff9b6ba6ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equipSwordPoint: {fileID: 1275378658}
   equipShieldPoint: {fileID: 48933304}
-  stowingShieldPoint: {fileID: 0}
-  equipSwordPoint: {fileID: 0}
-  stowingWeaponPoint: {fileID: 0}
 --- !u!1001 &2074457316
 PrefabInstance:
   m_ObjectHideFlags: 0

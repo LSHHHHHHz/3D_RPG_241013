@@ -2,47 +2,117 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public interface IEquipment
+{
+    void SetItemID(string id);
+    string GetItemID();
+    void EquipItem(string id);
+    void UnEquipItem(string id);
+}
+
 public class EquipmentManager : MonoBehaviour
 {
-    public Transform equipShieldPoint;
-    public Transform stowingShieldPoint;
     public Transform equipSwordPoint;
-    public Transform stowingWeaponPoint;
+    public Transform equipShieldPoint;
 
-    private GameObject currentWeapon; 
-    private GameObject currentShield;
+    private List<GameObject> playerEquipedSword = new List<GameObject>();
+    private List<GameObject> playerEquipedShield = new List<GameObject>();
+
+    private GameObject currentEquipSword;
+    private GameObject currentEquipShield;
 
     public void EquipItem(string itemId)
     {
         GameDBEntity itemData = GameManager.instance.gameDB.GetProfileDB(itemId);
 
-        if (itemData.dataType == "Weapon")
+        if (itemData.dataType == "sword")
         {
-            EquipWeapon(itemData);
+            EquipSword(itemData);
         }
-        else if (itemData.dataType == "Shield")
+        else if (itemData.dataType == "shield")
         {
             EquipShield(itemData);
         }
     }
-    private void EquipWeapon(GameDBEntity weaponData)
+    private void EquipSword(GameDBEntity weaponData)
     {
-        if (currentWeapon != null)
+        GameObject existingSword = null;
+        for (int i = 0; i < playerEquipedSword.Count; i++)
         {
-            StowItem(currentWeapon, stowingWeaponPoint);
+            if (playerEquipedSword[i].GetComponent<IEquipment>().GetItemID() == weaponData.dataID)
+            {
+                existingSword = playerEquipedSword[i];
+                break;
+            }
         }
-        currentWeapon = Instantiate(Resources.Load<GameObject>(weaponData.prefabPath), equipSwordPoint);
+        if (existingSword != null)
+        {
+            foreach (GameObject sword in playerEquipedSword)
+            {
+                sword.SetActive(false);
+            }
+            currentEquipSword = existingSword;
+            currentEquipSword.SetActive(true);
+        }
+        else
+        {
+            foreach (GameObject sword in playerEquipedSword)
+            {
+                sword.SetActive(false);
+            }
+            GameObject prefab = Resources.Load<GameObject>(weaponData.prefabPath);
+            GameObject newSword = Instantiate(prefab, equipSwordPoint);
+            IEquipment equip = newSword.GetComponent<IEquipment>();
+            equip.SetItemID(weaponData.dataID);
+            playerEquipedSword.Add(newSword);
+
+            currentEquipSword = newSword;
+            //currentEquipSword.SetActive(true);
+        }
     }
     private void EquipShield(GameDBEntity shieldData)
     {
-        if (currentShield != null)
+        GameObject existingShield = null;
+        for (int i = 0; i < playerEquipedShield.Count; i++)
         {
-            StowItem(currentShield, stowingShieldPoint);
+            if (playerEquipedShield[i].GetComponent<IEquipment>().GetItemID() == shieldData.dataID)
+            {
+                existingShield = playerEquipedShield[i];
+                break;
+            }
         }
-        currentShield = Instantiate(Resources.Load<GameObject>(shieldData.prefabPath), equipShieldPoint);
+        if (existingShield != null)
+        {
+            foreach (GameObject shield in playerEquipedShield)
+            {
+                shield.SetActive(false);
+            }
+            currentEquipShield = existingShield;
+            currentEquipShield.SetActive(true);
+        }
+        else
+        {
+            foreach (GameObject shield in playerEquipedShield)
+            {
+                shield.SetActive(false);
+            }
+
+            GameObject prefab = Resources.Load<GameObject>(shieldData.prefabPath);
+            GameObject newShield = Instantiate(prefab, equipShieldPoint);
+            IEquipment equip = newShield.GetComponent<IEquipment>();
+            equip.SetItemID(shieldData.dataID);
+            playerEquipedShield.Add(newShield);
+
+            currentEquipShield = newShield;
+           //currentEquipShield.SetActive(true);
+        }
     }
-    private void StowItem(GameObject item, Transform stowingPoint)
+    public void ActiveEquipPrefab()
     {
-        item.transform.SetParent(stowingPoint);
+        currentEquipSword.SetActive(true);
+        currentEquipShield.SetActive(true);
+    }
+    private void SwapItem()
+    {
     }
 }
