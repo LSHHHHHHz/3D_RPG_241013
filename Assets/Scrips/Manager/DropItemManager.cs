@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class DropItemManager : MonoBehaviour
 {
-    IReadOnlyList<BaseEnemy> baseEnemies;
-    Vector3 enemyDeathPos;
-    HashSet<BaseEnemy> registeredEnemies = new HashSet<BaseEnemy>();
     string enemyID;
     string[] dropItemsPrefabsPath;
     private void Awake()
     {
-        baseEnemies = ActorManager<BaseEnemy>.instnace.GetActors();
         dropItemsPrefabsPath = new string[]
          {
             "Dropitem/EquipmentDropItem",
@@ -20,45 +16,13 @@ public class DropItemManager : MonoBehaviour
             "Dropitem/ExpDropItem"
          };
     }
-    private void OnEnable()
+    public void DropItem(Vector3 pos, string id)
     {
-        StartCoroutine(RegisterEnemies());
-    }
-
-    private void OnDisable()
-    {
-        StopCoroutine(RegisterEnemies());
-
-        foreach (var enemy in registeredEnemies)
-        {
-            enemy.onDeathEnemyID -= DropRewardItem;
-        }
-        registeredEnemies.Clear();
-    }
-    IEnumerator RegisterEnemies()
-    {
-        while (true)
-        {
-            baseEnemies = ActorManager<BaseEnemy>.instnace.GetActors();
-            foreach (var enemy in baseEnemies)
-            {
-                if (!registeredEnemies.Contains(enemy))
-                {
-                    enemy.onDeathEnemyID += DropRewardItem;
-                    registeredEnemies.Add(enemy);
-                }
-            }
-            yield return new WaitForSeconds(0.3f);
-        }
-    }
-    public void DropRewardItem(Vector3 pos, string id)
-    {
-        enemyDeathPos = pos;
         int count = UnityEngine.Random.Range(4, 6);
         for (int i = 0; i < count; i++)
         {
             DropItem dropItem = GameManager.instance.poolManager.GetObjectFromPool(dropItemsPrefabsPath[MonsterDeathDropItemIndex()]).GetComponent<DropItem>();
-            dropItem.CreatedDropItem(enemyDeathPos);
+            dropItem.CreatedDropItem(pos);
             dropItem.SetData(id);
         }
     }

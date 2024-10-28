@@ -22,7 +22,8 @@ public class QuickPortionSlotUI : BaseSlotUI, IDropHandler
         currentSlotData.UsePortion();
         if(!string.IsNullOrEmpty(currentSlotData.dataID))
         {
-            EventManager.instance.RecoverHP(GameManager.instance.gameDB.GetProfileDB(currentSlotData.dataID).amount);
+            var portion = GameManager.instance.portionManager.GetPortion(dataID);
+            portion.Use();
         }
     }
     public void OnDrop(PointerEventData eventData)

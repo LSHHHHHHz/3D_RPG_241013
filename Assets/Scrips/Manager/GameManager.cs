@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public GameDB gameDB;
     public Player player;
     public EquipmentManager equipmentManager;
+    public SkillManager skillManager;
+    public PortionManager portionManager;
     private void Awake()
     {
         if (instance == null)

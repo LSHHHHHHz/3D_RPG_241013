@@ -10,17 +10,21 @@ public class BaseEnemy : Actor
     EnemyMove enemyMove;
     [SerializeField] float startAttackTime;
     public FSMController<BaseEnemy> fsmController { get; private set; }
+    EnemyStatus enemyStatus;
+
     public Animator anim { get; private set; }
     public Action<bool> onStartEnemyAttackAnim;
     public Action onEndEnemyAttackAnim;
     public Action onDeathEnemy;
-    public Action<Vector3, string> onDeathEnemyID;
     private void Awake()
     {
         enemyDetector = GetComponent<EnemyDetector>();
         enemyMove = GetComponent<EnemyMove>();
         fsmController = new FSMController<BaseEnemy>(this);
         anim = GetComponentInChildren<Animator>();
+
+        enemyStatus = new EnemyStatus(100); 
+        enemyStatus.onEnemyDeath += EnemyDeath;
     }
     private void OnEnable()
     {
@@ -31,7 +35,7 @@ public class BaseEnemy : Actor
     {
         ActorManager<BaseEnemy>.instnace.UnregisterActor(this);
         onDeathEnemy?.Invoke();
-        onDeathEnemyID?.Invoke(transform.position, enemyID);
+        enemyStatus.onEnemyDeath -= EnemyDeath;
     }
     private void Update()
     {
@@ -67,7 +71,7 @@ public class BaseEnemy : Actor
     {
         if(ievent is SendDamageEvent damageEvent)
         {
-
+            enemyStatus.ReduceHP(damageEvent.damage);
         }
     }
     public float GetStartAttackTime()
@@ -77,5 +81,10 @@ public class BaseEnemy : Actor
     public string GetEnemyID()
     {
         return enemyID;
-    }  
+    }
+    private void EnemyDeath()
+    {
+        Vector3 dropPosition = transform.position;
+        GameManager.instance.dropItemManager.DropItem(dropPosition, enemyID);
+    }
 }

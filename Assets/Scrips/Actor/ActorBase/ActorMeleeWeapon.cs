@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using UnityEngine;
-public class ActorMeleeWeapon<T> : MonoBehaviour where T : MonoBehaviour
+public class ActorMeleeWeapon<T> : MonoBehaviour where T : Actor
 {
     public int totalDamage = 10;
     protected Transform swordStartPoint;
@@ -50,10 +50,7 @@ public class ActorMeleeWeapon<T> : MonoBehaviour where T : MonoBehaviour
         {
             attackedTarget.Add(target);
             SendDamageEvent damageEvent = new SendDamageEvent(totalDamage);
-            if(target is IEventReceiver receiver)
-            {
-                receiver.ReceiveEvent(damageEvent);
-            }
+            target.ReceiveEvent(damageEvent);
         }
     }
     protected void StartAttackAction(bool isAttack)

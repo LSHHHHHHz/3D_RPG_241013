@@ -16,12 +16,10 @@ public class Player : Actor
     private void OnEnable()
     {
         ActorManager<Player>.instnace.RegisterActor(this);
-        EventManager.instance.onRecoveryHP += RecoverHP;
     }
     private void OnDisable()
     {
         ActorManager<Player>.instnace.UnregisterActor(this);
-        EventManager.instance.onRecoveryHP -= RecoverHP;
     }
 
     public override void ReceiveEvent(IEvent ievent)

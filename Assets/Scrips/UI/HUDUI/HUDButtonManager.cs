@@ -9,6 +9,9 @@ public class HUDButtonManager : MonoBehaviour
     ItemInventoryPopupUI itemInventoryPopupUI;
     [SerializeField] Button iteminventoryPopupButton;
 
+    [SerializeField] GameObject skillInventoryUIPrefab;
+    SkillInventoryPopupUI skillInventoryPopupUI;
+    [SerializeField] Button skillinventoryPopupButton;
     private void Awake()
     {
         iteminventoryPopupButton.onClick.AddListener(() =>
@@ -20,6 +23,17 @@ public class HUDButtonManager : MonoBehaviour
             if (!itemInventoryPopupUI.gameObject.activeSelf)
             {
                 itemInventoryPopupUI.gameObject.SetActive(true);
+            }
+        });
+        skillinventoryPopupButton.onClick.AddListener(() =>
+        {
+            if (skillInventoryPopupUI == null)
+            {
+                skillInventoryPopupUI = Instantiate(skillInventoryUIPrefab, popupTransform).GetComponent<SkillInventoryPopupUI>();
+            }
+            if (!skillInventoryPopupUI.gameObject.activeSelf)
+            {
+                skillInventoryPopupUI.gameObject.SetActive(true);
             }
         });
     }

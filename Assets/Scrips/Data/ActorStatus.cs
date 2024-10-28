@@ -97,14 +97,44 @@ public class PlayerStatus
         onChangeLevel?.Invoke(playerLevel);
     }
 }
-
 public class EnemyStatus
 {
-    public int EnemyHP = 30;
+    public int enemyMaxHP { get; private set; }
+    public int enemyCurrentHP { get; private set; }
+
+    public event Action<int, int> onChangeHP;
+    public event Action onEnemyDeath;
+
+    public EnemyStatus(int maxHp)
+    {
+        enemyMaxHP = maxHp;
+        enemyCurrentHP = enemyMaxHP;
+    }
+    public void InitializeStatus()
+    {
+        onChangeHP?.Invoke(enemyCurrentHP, enemyMaxHP);
+    }
     public void GetHP(int amount)
     {
+        enemyCurrentHP += amount;
+        if (enemyCurrentHP > enemyMaxHP)
+        {
+            enemyCurrentHP = enemyMaxHP;
+        }
+        onChangeHP?.Invoke(enemyCurrentHP, enemyMaxHP);
     }
     public void ReduceHP(int amount)
     {
+        enemyCurrentHP -= amount;
+        if (enemyCurrentHP < 0)
+        {
+            enemyCurrentHP = 0;
+        }
+        onChangeHP?.Invoke(enemyCurrentHP, enemyMaxHP);
+
+        if (enemyCurrentHP == 0)
+        {
+            onEnemyDeath?.Invoke();
+        }
     }
 }
