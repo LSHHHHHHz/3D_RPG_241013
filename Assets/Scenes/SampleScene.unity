@@ -91552,6 +91552,7 @@ GameObject:
   - component: {fileID: 2074362765}
   - component: {fileID: 2074362766}
   - component: {fileID: 2074362767}
+  - component: {fileID: 2074362768}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -91576,7 +91577,7 @@ MonoBehaviour:
   gameDB: {fileID: 11400000, guid: 904a011f37b555046a1537edb4e2ca1b, type: 2}
   player: {fileID: 434559946}
   equipmentManager: {fileID: 2074362766}
-  skillManager: {fileID: 0}
+  skillManager: {fileID: 2074362768}
   portionManager: {fileID: 2074362767}
 --- !u!4 &2074362762
 Transform:
@@ -91660,6 +91661,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7b7eb5485cb1a84abd2e81af2264642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2074362768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074362760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcabcd6bebd6c79448dc416ee4999a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2074457316

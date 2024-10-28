@@ -6,8 +6,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class QuickSkillSlotUI : BaseSlotUI, IDropHandler
 {
-    GameObject skillPrefab;
-    BaseSkill skill;
     private void Awake()
     {
         Button button = GetComponent<Button>();
@@ -15,51 +13,31 @@ public class QuickSkillSlotUI : BaseSlotUI, IDropHandler
         {
             if (!string.IsNullOrEmpty(currentSlotData.dataID))
             {
-                ClickButton();
+                ClickButton(currentSlotData.dataID);
             }
         });
     }
     private void OnEnable()
     {
-        onSetData += SetQuickSkillSlot;
+        onSetData += GameManager.instance.skillManager.SetSkill;
     }
     private void OnDisable()
     {
-        onSetData -= SetQuickSkillSlot;
+        onSetData -= GameManager.instance.skillManager.SetSkill;
     }
-    void SetQuickSkillSlot(string id)
+    void ClickButton(string id)
     {
-        if(skillPrefab != null)
+        if (string.IsNullOrEmpty(id))
         {
-            skillPrefab.SetActive(false);
-        }
-        if (!string.IsNullOrEmpty(id))
-        {
-            GameDBEntity db = GameManager.instance.gameDB.GetProfileDB(id);
-            if (db.dataType != "active" && db.dataType != "passive")
+            var skill = GameManager.instance.skillManager.GetSkill(id);
+            if (skill != null)
             {
-                return;
-            }
-            if (skillPrefab == null)
-            {
-                skillPrefab = Instantiate(Resources.Load<GameObject>(db.prefabPath));
+                skill.ExcuteSkill();
             }
             else
             {
-                skillPrefab.SetActive(true);
+                Debug.Log("스킬 없음");
             }
-            skill = skillPrefab.GetComponent<BaseSkill>();
-        }
-    }
-    void ClickButton()
-    {
-        if (skill != null)
-        {
-            skill.ExcuteSkill();
-        }
-        else
-        {
-            Debug.Log("스킬 없음");
         }
     }
     public void OnDrop(PointerEventData eventData)
