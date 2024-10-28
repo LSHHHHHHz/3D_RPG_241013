@@ -8,6 +8,10 @@ public class SkillManager : MonoBehaviour
     List<BaseSkill> skills = new List<BaseSkill>();
     public void SetSkill(string id)
     {
+        if (string.IsNullOrEmpty(id))
+        {
+            return;
+        }
         GameObject existingPrefab = null;
         foreach (var prefab in skillPrefabs)
         {
@@ -34,6 +38,7 @@ public class SkillManager : MonoBehaviour
             skillPrefabs.Add(newSkillPrefab);
 
             BaseSkill skill = newSkillPrefab.GetComponent<BaseSkill>();
+            skill.SetSkillData(id, db.amount);
             if (skill != null)
             {
                 skills.Add(skill);

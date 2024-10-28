@@ -27,7 +27,7 @@ public class QuickSkillSlotUI : BaseSlotUI, IDropHandler
     }
     void ClickButton(string id)
     {
-        if (string.IsNullOrEmpty(id))
+        if (!string.IsNullOrEmpty(id))
         {
             var skill = GameManager.instance.skillManager.GetSkill(id);
             if (skill != null)
