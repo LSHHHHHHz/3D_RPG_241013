@@ -10,8 +10,8 @@ public class BaseEnemy : Actor
     EnemyMove enemyMove;
     [SerializeField] float startAttackTime;
     public FSMController<BaseEnemy> fsmController { get; private set; }
-    EnemyStatus enemyStatus;
-
+    public EnemyStatus enemyStatus { get; private set; }
+    Generator generator;
     public Animator anim { get; private set; }
     public Action<bool> onStartEnemyAttackAnim;
     public Action onEndEnemyAttackAnim;
@@ -22,18 +22,18 @@ public class BaseEnemy : Actor
         enemyMove = GetComponent<EnemyMove>();
         fsmController = new FSMController<BaseEnemy>(this);
         anim = GetComponentInChildren<Animator>();
-
-        enemyStatus = new EnemyStatus(100); 
-        enemyStatus.onEnemyDeath += EnemyDeath;
+        generator = GetComponentInChildren<Generator>();
     }
     private void OnEnable()
     {
+        enemyStatus = new EnemyStatus(10);
+        enemyMove.PossibleMove();
+        enemyStatus.onEnemyDeath += EnemyDeath;
         ActorManager<BaseEnemy>.instnace.RegisterActor(this);
         fsmController.ChangeState(new EnemyIdleState());
     }
     private void OnDisable()
     {
-        ActorManager<BaseEnemy>.instnace.UnregisterActor(this);
         onDeathEnemy?.Invoke();
         enemyStatus.onEnemyDeath -= EnemyDeath;
     }
@@ -72,6 +72,8 @@ public class BaseEnemy : Actor
         if(ievent is SendDamageEvent damageEvent)
         {
             enemyStatus.ReduceHP(damageEvent.damage);
+            generator.GenerateText(damageEvent.damage.ToString(),transform.position);
+            generator.GenerateGetHitPrefab(transform.position, damageEvent.subjectPos);
         }
     }
     public float GetStartAttackTime()
@@ -82,9 +84,15 @@ public class BaseEnemy : Actor
     {
         return enemyID;
     }
-    private void EnemyDeath()
+    public void PerformDeathActions()
     {
+        ActorManager<BaseEnemy>.instnace.UnregisterActor(this);
+        gameObject.SetActive(false);
         Vector3 dropPosition = transform.position;
         GameManager.instance.dropItemManager.DropItem(dropPosition, enemyID);
+    }
+    private void EnemyDeath()
+    {
+        fsmController.ChangeState(new EnemyDieState());
     }
 }

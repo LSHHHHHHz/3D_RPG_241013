@@ -27,8 +27,9 @@ public class ActorMeleeWeapon<T> : MonoBehaviour where T : Actor
     }
     protected void DetectTargetInSwordRange()
     {
-        foreach (T target in targets)
+        for (int i = 0; i < targets.Count; i++)
         {
+            T target = targets[i];
             DetectedSwordRange(target);
         }
     }
@@ -49,7 +50,7 @@ public class ActorMeleeWeapon<T> : MonoBehaviour where T : Actor
         if (isInAttackRange)
         {
             attackedTarget.Add(target);
-            SendDamageEvent damageEvent = new SendDamageEvent(totalDamage);
+            SendDamageEvent damageEvent = new SendDamageEvent(totalDamage, this.transform.position);
             target.ReceiveEvent(damageEvent);
         }
     }

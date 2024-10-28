@@ -14639,7 +14639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalDamage: 10
-  attackRange: 0.1
+  attackRange: 1.5
 --- !u!1 &673750166873986737
 GameObject:
   m_ObjectHideFlags: 0

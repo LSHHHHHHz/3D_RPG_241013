@@ -132,7 +132,7 @@ public class EnemyStatus
         }
         onChangeHP?.Invoke(enemyCurrentHP, enemyMaxHP);
 
-        if (enemyCurrentHP == 0)
+        if (enemyCurrentHP <= 0)
         {
             onEnemyDeath?.Invoke();
         }

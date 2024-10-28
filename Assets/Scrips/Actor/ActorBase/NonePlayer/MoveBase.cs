@@ -30,6 +30,10 @@ public abstract class MoveBase : MonoBehaviour
         targetRot = Quaternion.LookRotation(dir);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * rotateSpeed);
     }
+    public void PossibleMove()
+    {
+        isPossibleMove = true;
+    }
     public void ResetMoveSpeed()
     {
         isPossibleMove = true;

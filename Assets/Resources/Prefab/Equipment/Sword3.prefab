@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51bec5fd97a84554eb247f6394f0b010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalDamage: 10
-  attackRange: 0.1
+  totalDamage: 30
+  attackRange: 1.5
 --- !u!1 &1660639005684719325
 GameObject:
   m_ObjectHideFlags: 0
