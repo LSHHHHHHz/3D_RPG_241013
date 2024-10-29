@@ -10,5 +10,5 @@ public abstract class BaseSkill : MonoBehaviour
         skillId = id;
         skillAmount = amount;
     }
-    public abstract void ExcuteSkill();
+    public abstract void ExcuteSkill(Actor actor);
 }

@@ -24,7 +24,7 @@ public class PlayerStatusUI : MonoBehaviour
         player.status.onChangeMP += UpdateMPUI;
         player.status.onChangeExp += UpdateExpUI;
         player.status.onChangeLevel += UpdateLevelUI;
-        player.status.IntializeStatus();
+        player.status.InitializeStatus();
     }
     private void OnDisable()
     {

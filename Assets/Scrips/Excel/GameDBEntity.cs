@@ -10,7 +10,7 @@ public class GameDBEntity
     public string description;
     public int price;
     public string dataType;
-    public string coolDown;
+    public float coolDown;
     public int requiredLV;
     public int amount;
 }

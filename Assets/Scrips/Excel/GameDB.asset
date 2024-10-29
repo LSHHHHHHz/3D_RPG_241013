@@ -264,61 +264,61 @@ MonoBehaviour:
   - dataID: passiveSkill1
     name: "\uD328\uC2DC\uBE0C1"
     iconPath: SkillIcon/PasSkill1
-    prefabPath: Prefab/Skill/PasSkill1
-    description: 
+    prefabPath: Prefab/Skill/BuffSkill1
+    description: "\uACF5\uACA9\uB825\uC744 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4"
     price: 0
     dataType: passive
-    coolDown: 
+    coolDown: 10
     requiredLV: 1
     amount: 0
   - dataID: passiveSkill2
     name: "\uD328\uC2DC\uBE0C2"
     iconPath: SkillIcon/PasSkill2
-    prefabPath: Prefab/Skill/PasSkill2
-    description: 
+    prefabPath: Prefab/Skill/BuffSkill2
+    description: "HP\uB97C \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4"
     price: 0
     dataType: passive
-    coolDown: 
+    coolDown: 10
     requiredLV: 2
     amount: 0
   - dataID: passiveSkill3
     name: "\uD328\uC2DC\uBE0C3"
     iconPath: SkillIcon/PasSkill3
-    prefabPath: Prefab/Skill/PasSkill3
+    prefabPath: Prefab/Skill/BuffSkill3
     description: 
     price: 0
     dataType: passive
-    coolDown: 
+    coolDown: 10
     requiredLV: 3
     amount: 0
   - dataID: passiveSkill4
     name: "\uD328\uC2DC\uBE0C4"
     iconPath: SkillIcon/PasSkill4
-    prefabPath: Prefab/Skill/PasSkill4
+    prefabPath: Prefab/Skill/BuffSkill4
     description: 
     price: 0
     dataType: passive
-    coolDown: 
+    coolDown: 10
     requiredLV: 4
     amount: 0
   - dataID: passiveSkill5
     name: "\uD328\uC2DC\uBE0C5"
     iconPath: SkillIcon/PasSkill5
-    prefabPath: Prefab/Skill/PasSkill5
+    prefabPath: Prefab/Skill/BuffSkill5
     description: 
     price: 0
     dataType: passive
-    coolDown: 
+    coolDown: 10
     requiredLV: 5
     amount: 0
   - dataID: passiveSkill6
     name: "\uD328\uC2DC\uBE0C6"
     iconPath: SkillIcon/PasSkill6
-    prefabPath: Prefab/Skill/PasSkill6
+    prefabPath: Prefab/Skill/BuffSkill6
     description: 
     price: 0
     dataType: passive
-    coolDown: 
+    coolDown: 10
     requiredLV: 6
     amount: 0
   shopDB:

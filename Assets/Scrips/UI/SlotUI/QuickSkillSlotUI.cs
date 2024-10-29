@@ -1,14 +1,18 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+
 public class QuickSkillSlotUI : BaseSlotUI, IDropHandler
 {
+    Player player;
+    [SerializeField] Image coolDownImage;
+    float coolTime;
+    bool isOnCooldown = false;
+    Button button;
     private void Awake()
     {
-        Button button = GetComponent<Button>();
+        button = GetComponent<Button>();
         button.onClick.AddListener(() =>
         {
             if (!string.IsNullOrEmpty(currentSlotData.dataID))
@@ -16,6 +20,11 @@ public class QuickSkillSlotUI : BaseSlotUI, IDropHandler
                 ClickButton(currentSlotData.dataID);
             }
         });
+    }
+    private void Start()
+    {
+        player = FindObjectOfType<Player>();
+        coolDownImage.fillAmount = 0;
     }
     private void OnEnable()
     {
@@ -25,20 +34,56 @@ public class QuickSkillSlotUI : BaseSlotUI, IDropHandler
     {
         onSetData -= GameManager.instance.skillManager.SetSkill;
     }
+    public void ActivateSlotSkill()
+    {
+        if (!string.IsNullOrEmpty(currentSlotData.dataID))
+        {
+            ClickButton(currentSlotData.dataID);
+        }
+    }
     void ClickButton(string id)
     {
+        if (isOnCooldown)
+        {
+            return;
+        }
+
         if (!string.IsNullOrEmpty(id))
         {
             var skill = GameManager.instance.skillManager.GetSkill(id);
             if (skill != null)
             {
-                skill.ExcuteSkill();
+                skill.ExcuteSkill(player);
+                StartCooldown(id);
             }
             else
             {
                 Debug.Log("스킬 없음");
             }
         }
+    }
+    void StartCooldown(string id)
+    {
+        GameDBEntity db = GameManager.instance.gameDB.GetProfileDB(id);
+        coolTime = db.coolDown;
+        button.interactable = false;
+        StartCoroutine(CooldownCoroutine());
+    }
+    private IEnumerator CooldownCoroutine()
+    {
+        isOnCooldown = true;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < coolTime)
+        {
+            elapsedTime += Time.deltaTime;
+            coolDownImage.fillAmount = 1 - (elapsedTime / coolTime);
+            yield return null;
+        }
+
+        coolDownImage.fillAmount = 0;
+        isOnCooldown = false;
+        button.interactable = true;
     }
     public void OnDrop(PointerEventData eventData)
     {
@@ -52,9 +97,9 @@ public class QuickSkillSlotUI : BaseSlotUI, IDropHandler
         {
             return;
         }
-        for(int i =0; i< GameData.instance.quickSkillSlotsData.slotDatas.Count; i++)
+        for (int i = 0; i < GameData.instance.quickSkillSlotsData.slotDatas.Count; i++)
         {
-            if(db.dataID == GameData.instance.quickSkillSlotsData.slotDatas[i].dataID)
+            if (db.dataID == GameData.instance.quickSkillSlotsData.slotDatas[i].dataID)
             {
                 return;
             }

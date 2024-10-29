@@ -38,46 +38,63 @@ public class PlayerStatus
     public int playerCurrentExp { get; private set; }
     public int playerLevel { get; private set; }
 
-    public event Action<int,int> onChangeHP;
-    public event Action<int,int> onChangeMP;
-    public event Action<int,int> onChangeExp;
+    public event Action<int, int> onChangeHP;
+    public event Action<int, int> onChangeMP;
+    public event Action<int, int> onChangeExp;
     public event Action<int> onChangeLevel;
+
     public PlayerStatus(int maxHp, int maxMp)
     {
         playerMaxHP = maxHp;
         playerCurrentHP = playerMaxHP;
         playerMaxMP = maxMp;
         playerCurrentMP = playerMaxMP;
-        playerMaxExp = 100; 
+        playerMaxExp = 100;
         playerCurrentExp = 0;
         playerLevel = 1;
     }
-    public void IntializeStatus()
+    public void InitializeStatus()
     {
         onChangeHP?.Invoke(playerCurrentHP, playerMaxHP);
-        onChangeMP?.Invoke(playerMaxMP, playerMaxMP);
-        onChangeExp?.Invoke(playerCurrentMP, playerMaxExp);
+        onChangeMP?.Invoke(playerCurrentMP, playerMaxMP);
+        onChangeExp?.Invoke(playerCurrentExp, playerMaxExp);
         onChangeLevel?.Invoke(playerLevel);
     }
     public void GetHP(int amount)
     {
         playerCurrentHP += amount;
-        onChangeHP?.Invoke(playerCurrentHP, playerMaxExp);
+        if (playerCurrentHP > playerMaxHP)
+        {
+            playerCurrentHP = playerMaxHP;
+        }
+        onChangeHP?.Invoke(playerCurrentHP, playerMaxHP);
     }
     public void ReduceHP(int amount)
     {
         playerCurrentHP -= amount;
-        onChangeHP?.Invoke(playerCurrentHP, playerMaxExp);
+        if (playerCurrentHP < 0) 
+        {
+            playerCurrentHP = 0;
+        }
+        onChangeHP?.Invoke(playerCurrentHP, playerMaxHP);
     }
     public void GetMP(int amount)
     {
         playerCurrentMP += amount;
-        onChangeMP?.Invoke(playerCurrentMP, playerMaxExp);
+        if (playerCurrentMP > playerMaxMP) 
+        {
+            playerCurrentMP = playerMaxMP;
+        }
+        onChangeMP?.Invoke(playerCurrentMP, playerMaxMP);
     }
     public void ReduceMP(int amount)
     {
         playerCurrentMP -= amount;
-        onChangeMP?.Invoke(playerCurrentMP, playerMaxExp);
+        if (playerCurrentMP < 0)  
+        {
+            playerCurrentMP = 0;
+        }
+        onChangeMP?.Invoke(playerCurrentMP, playerMaxMP);
     }
     public void GetExp(int amount)
     {
@@ -92,9 +109,29 @@ public class PlayerStatus
     private void LevelUp()
     {
         playerLevel++;
-        playerMaxExp += playerLevel * 100; 
+        playerMaxExp += playerLevel * 100;
         playerCurrentExp -= playerMaxExp;
         onChangeLevel?.Invoke(playerLevel);
+    }
+    public void IncreaseMaxHP(int amount)
+    {
+        playerMaxHP += amount;
+        onChangeHP?.Invoke(playerCurrentHP, playerMaxHP);
+    }
+    public void SetMaxHP(int value)
+    {
+        playerMaxHP = value;
+        onChangeHP?.Invoke(playerCurrentHP, playerMaxHP);
+    }
+
+    public void SetCurrentHP(int value)
+    {
+        playerCurrentHP = value;
+        if (playerCurrentHP > playerMaxHP)  
+        {
+            playerCurrentHP = playerMaxHP;
+        }
+        onChangeHP?.Invoke(playerCurrentHP, playerMaxHP);
     }
 }
 public class EnemyStatus
