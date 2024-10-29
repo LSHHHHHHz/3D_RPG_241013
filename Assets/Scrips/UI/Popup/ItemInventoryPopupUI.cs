@@ -5,6 +5,10 @@ public class ItemInventoryPopupUI : BaseInventory
 {
     private ItemInventoryData itemInventoryData;
 
+    private void OnEnable()
+    {
+        EventManager.instance.PossibleAttack(false);
+    }
     protected override void Awake()
     {
         base.Awake();
@@ -20,5 +24,10 @@ public class ItemInventoryPopupUI : BaseInventory
             itemInventoryData.slotDatas[i].onDataChanged += slots[i].SetData;
             itemInventoryData.slotDatas[i].SetData(itemInventoryData.slotDatas[i].dataID, itemInventoryData.slotDatas[i].count);
         }
+    }
+    public void ClosePopup()
+    {
+        gameObject.SetActive(false);
+        EventManager.instance.PossibleAttack(true);
     }
 }

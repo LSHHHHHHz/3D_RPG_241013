@@ -15,22 +15,23 @@ MonoBehaviour:
   DialogEntites:
   - branch: 0
     name: ???
-    dialog: "\uC810\uD504\uD0A4\uB97C \uC54C\uB824\uC8FC\uC9C0"
+    dialog: "\uB09C \uD3EC\uC158\uC744 \uD310\uB9E4\uD558\uACE0 \uC788\uC5B4"
   - branch: 0
     name: "\uB098"
-    dialog: "\uC640\uC624"
+    dialog: "\uC0AC\uB0E5\uD130\uC5D0\uC120 \uD3EC\uC158\uC774 \uAF2D \uD544\uC694\uD558\uC9C0"
   - branch: 0
     name: ???
-    dialog: "\uADF8\uB798 \uB2E4\uC74C\uBD80\uD130"
+    dialog: "\uD55C\uBC88 \uB458\uB7EC\uBD10"
   - branch: 1
     name: ???
-    dialog: "\uD638\uD638"
+    dialog: "\uB09C \uC7A5\uBE44\uB97C \uD310\uB9E4\uD558\uACE0 \uC788\uC5B4"
   - branch: 1
     name: "\uB098\uB098"
-    dialog: "\uD638\uD558"
+    dialog: "\uAC15\uD574\uC9C0\uAE30 \uC704\uD574\uC120 \uC7A5\uBE44\uAC00 \uAF2D
+      \uD544\uC694\uD558\uC9C0"
   - branch: 1
     name: ???
-    dialog: "\uD558\uD638"
+    dialog: "\uD55C\uBC88 \uB458\uB7EC\uBD10"
   GameDataEntites:
   - dataID: sword1
     name: "\uCD08\uC2EC\uC790\uC758 \uAC80"
@@ -338,9 +339,21 @@ MonoBehaviour:
   - npcID: PortionShopNPC
     dataID: MpPortion4
   - npcID: EquipmentShopNPC
-    dataID: Sword1
+    dataID: sword1
   - npcID: EquipmentShopNPC
-    dataID: Sword2
+    dataID: sword2
+  - npcID: EquipmentShopNPC
+    dataID: sword3
+  - npcID: EquipmentShopNPC
+    dataID: sword4
+  - npcID: EquipmentShopNPC
+    dataID: shield1
+  - npcID: EquipmentShopNPC
+    dataID: shield2
+  - npcID: EquipmentShopNPC
+    dataID: shield3
+  - npcID: EquipmentShopNPC
+    dataID: shield4
   QuestEntities:
   - QuestID: mainQuest0
     npcID: MainNPC

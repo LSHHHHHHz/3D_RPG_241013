@@ -26,7 +26,7 @@ public class BaseEnemy : Actor
     }
     private void OnEnable()
     {
-        enemyStatus = new EnemyStatus(10);
+        enemyStatus = new EnemyStatus(100);
         enemyMove.PossibleMove();
         enemyStatus.onEnemyDeath += EnemyDeath;
         ActorManager<BaseEnemy>.instnace.RegisterActor(this);
@@ -50,7 +50,7 @@ public class BaseEnemy : Actor
     }
     public bool IsPossibleAttack()
     {
-        return enemyDetector.isPossibleAttack;
+        return enemyDetector.isInPossibleAttackRange;
     }
     public bool IsOriginPos()
     {

@@ -26,6 +26,8 @@ public class EventManager
 
     public event Action<int> onTalkNPC;
     public event Action<int> onEndTalkNPC;
+
+    public event Action<bool> onOpenPopup;
     public void LeapPortalPlayer(Vector3 vec)
     {
         onLeapPortalPlayer?.Invoke(vec);
@@ -53,5 +55,9 @@ public class EventManager
     public void EndTalkNPC(int npcBranch)
     {
         onEndTalkNPC?.Invoke(npcBranch);
+    }
+    public void PossibleAttack(bool open)
+    {
+        onOpenPopup?.Invoke(open);
     }
 }

@@ -10,7 +10,7 @@ public class ActorMeleeWeapon<T> : MonoBehaviour where T : Actor
     protected Transform swordEndPoint;
     public float attackRange = 0.1f;
     protected IReadOnlyList<T> targets;
-    private HashSet<T> attackedTarget = new HashSet<T>();
+    private HashSet<T> attackedTargets = new HashSet<T>();
     private bool isStartAttack = false;
     private bool isInAttackRange = false;
     private void Awake()
@@ -45,11 +45,12 @@ public class ActorMeleeWeapon<T> : MonoBehaviour where T : Actor
         float distanceToMid = Vector3.Distance(targetPos, midPoint);
         float distanceToEnd = Vector3.Distance(targetPos, endPoint);
 
-        isInAttackRange = ((distanceToStart <= attackRange || distanceToMid <= attackRange || distanceToEnd <= attackRange) && !attackedTarget.Contains(target) && isStartAttack);
+        isInAttackRange = ((distanceToStart <= attackRange || distanceToMid <= attackRange || distanceToEnd <= attackRange)
+                          && !attackedTargets.Contains(target) && isStartAttack);
 
         if (isInAttackRange)
         {
-            attackedTarget.Add(target);
+            attackedTargets.Add(target);
             SendDamageEvent damageEvent = new SendDamageEvent(totalDamage, this.transform.position);
             target.ReceiveEvent(damageEvent);
         }
@@ -60,7 +61,7 @@ public class ActorMeleeWeapon<T> : MonoBehaviour where T : Actor
     }
     protected void ResetTarget()
     {
-        attackedTarget.Clear();
+        attackedTargets.Clear();
     }
     private void OnDrawGizmos()
     {

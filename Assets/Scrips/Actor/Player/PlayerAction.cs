@@ -17,6 +17,19 @@ public class PlayerAction : MonoBehaviour
             ActionMeleeAttack();
         }
     }
+    private void OnEnable()
+    {
+        EventManager.instance.onOpenPopup += PossibleAttack;
+    }
+    private void OnDisable()
+    {
+        EventManager.instance.onOpenPopup -= PossibleAttack;
+    }
+    void PossibleAttack(bool possible)
+    {
+        isPossibleMeleeAttack = possible;
+        anim.SetBool("IsAttack", false);
+    }
     void ActionMeleeAttack()
     {
         if (Input.GetMouseButtonDown(0) && isPossibleMeleeAttack)

@@ -32,7 +32,7 @@ public class EnemyMove : MoveBase
         {
             targetPosition = enemyDetector.detectedTarget.transform.position;
             targetPosition.y = transform.position.y;
-            if (enemyDetector.isPossibleAttack)
+            if (enemyDetector.isInPossibleAttackRange)
             {
                 StopMove();
             }

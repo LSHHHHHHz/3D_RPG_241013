@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyDetector : DetectorBase
 {
     public float possibleAttackRange { get; private set; } = 1;
-    public bool isPossibleAttack { get; private set; }
+    public bool isInPossibleAttackRange { get; private set; }
     Vector3 originPos;
 
     protected override void Awake()
@@ -34,13 +34,13 @@ public class EnemyDetector : DetectorBase
 
                 if (distanceFromCurrent <= possibleAttackRange)
                 {
-                    isPossibleAttack = true;
+                    isInPossibleAttackRange = true;
                 }
                 else
                 {
-                    isPossibleAttack = false;
+                    isInPossibleAttackRange = false;
                 }
-                break; 
+                break;
             }
             else
             {
@@ -48,7 +48,7 @@ public class EnemyDetector : DetectorBase
                 {
                     isDetectedTarget = false;
                     detectedTarget = null;
-                    isPossibleAttack = false;
+                    isInPossibleAttackRange = false;
                 }
             }
         }

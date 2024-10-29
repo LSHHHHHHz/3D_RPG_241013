@@ -8,18 +8,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayerPhysicsController physicsController;
     public Transform camera_Point;
 
-    public float playerSpeed = 5f;
-    public float acceleration = 10f;
-    public float deceleration = 5f;
-    public float turnSpeed = 10f;
-    public float jumpPower = 5;
+    float originSpeed;
+    float playerSpeed = 5f;
+    float acceleration = 10f;
+    float deceleration = 5f;
+    float turnSpeed = 10f;
+    float jumpPower = 5;
     public bool doJump {  get; private set; }
 
     private Vector2 moveInput;
     private Vector3 lastMoveDir;
-    public float currentSpeed { get; private set; }
+    public float currentSpeed;
 
     bool isLeap = false;
+    private void Awake()
+    {
+        originSpeed = playerSpeed;
+    }
     private void OnEnable()
     {
         EventManager.instance.onLeapPortalPlayer += LeapPlayer;
@@ -100,11 +105,13 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButton("Run"))
         {
-            currentSpeed = 10;
+            playerSpeed = 10;
+            acceleration = 30;
         }
         if (Input.GetButtonUp("Run"))
         {
-            currentSpeed = 5;
+            playerSpeed = originSpeed;
+            acceleration = 10;
         }
     }
     void RotPlayer()

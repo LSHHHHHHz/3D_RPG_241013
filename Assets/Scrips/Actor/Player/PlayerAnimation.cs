@@ -10,6 +10,7 @@ public class PlayerAnimation : MonoBehaviour
     public event Action onEndPlayerAttackAnim;
 
     public event Action onEndSwapWeapon;
+    public event Action onDodge;
     bool isSwapped = false;
     private void Awake()
     {
@@ -24,7 +25,7 @@ public class PlayerAnimation : MonoBehaviour
     }
     void MoveAnimation()
     {
-        if (playerController.currentSpeed > 5f)
+        if (playerController.currentSpeed > 5.1f)
         {
             anim.SetBool("IsRun", true);
             anim.SetBool("IsWalk", true);

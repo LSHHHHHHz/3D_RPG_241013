@@ -29,7 +29,7 @@ public class BaseInventory : MonoBehaviour
         newSlot.parentInventoryType = inventoryType;
         slots.Add(newSlot);
     }
-    public void SetSlotCount(int newCount)
+    protected void SetSlotCount(int newCount)
     {
         int currentCount = slots.Count;
 
@@ -48,9 +48,5 @@ public class BaseInventory : MonoBehaviour
                 slots.RemoveAt(i);
             }
         }
-    }
-    public List<BaseSlotUI> GetSlotList()
-    {
-        return slots;
     }
 }

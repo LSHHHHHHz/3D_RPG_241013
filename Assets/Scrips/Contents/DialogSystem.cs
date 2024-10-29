@@ -18,6 +18,11 @@ public class DialogSystem : MonoBehaviour
     private void OnEnable()
     {
         Setup();
+        EventManager.instance.PossibleAttack(false);
+    }
+    private void OnDisable()
+    {
+        EventManager.instance.PossibleAttack(true);
     }
     public void SetBranch(int branch)
     {
@@ -108,7 +113,7 @@ public class DialogSystem : MonoBehaviour
             index++;
             yield return new WaitForSeconds(typingSpeed);  // 타이핑 속도 조절
         }
-        SetDialogueText(dialogs[currentDialogIndex].dialogue);
+        //SetDialogueText(dialogs[currentDialogIndex].dialogue);
         isTypingEffect = false;  // 타이핑 효과 종료
 
         // 대사가 완료되었을 때 화살표 오브젝트 활성화
