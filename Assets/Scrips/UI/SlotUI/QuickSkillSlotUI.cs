@@ -38,7 +38,7 @@ public class QuickSkillSlotUI : BaseSlotUI, IDropHandler
     {
         if (!string.IsNullOrEmpty(currentSlotData.dataID))
         {
-            ClickButton(currentSlotData.dataID);
+            ClickButton(currentSlotData.dataID);           
         }
     }
     void ClickButton(string id)
@@ -55,6 +55,7 @@ public class QuickSkillSlotUI : BaseSlotUI, IDropHandler
             {
                 skill.ExcuteSkill(player);
                 StartCooldown(id);
+                EventManager.instance.ActiveSkill(id);
             }
             else
             {

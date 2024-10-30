@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems; 
+
 public class PlayerAction : MonoBehaviour
 {
     Animator anim;
@@ -10,17 +12,31 @@ public class PlayerAction : MonoBehaviour
     {
         anim = GetComponent<Animator>();
     }
+
     private void Update()
     {
+        if (IsPointerInUI())
+        {
+            isPossibleMeleeAttack = false;
+        }
+        else
+        {
+            isPossibleMeleeAttack = true;
+        }
+
+        Debug.Log("isPossibleMeleeAttack : " + isPossibleMeleeAttack);
+
         if (isPossibleMeleeAttack)
         {
             ActionMeleeAttack();
         }
     }
+
     private void OnEnable()
     {
         EventManager.instance.onOpenPopup += PossibleAttack;
     }
+
     private void OnDisable()
     {
         EventManager.instance.onOpenPopup -= PossibleAttack;
@@ -36,9 +52,13 @@ public class PlayerAction : MonoBehaviour
         {
             anim.SetBool("IsAttack", true);
         }
-        if(Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))
         {
             anim.SetBool("IsAttack", false);
         }
+    }
+    private bool IsPointerInUI()
+    {
+        return EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
     }
 }

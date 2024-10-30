@@ -40,7 +40,7 @@ MonoBehaviour:
     description: 
     price: 100
     dataType: sword
-    coolDown: 
+    coolDown: 0
     requiredLV: 1
     amount: 10
   - dataID: sword2
@@ -50,7 +50,7 @@ MonoBehaviour:
     description: 
     price: 200
     dataType: sword
-    coolDown: 
+    coolDown: 0
     requiredLV: 2
     amount: 20
   - dataID: sword3
@@ -60,7 +60,7 @@ MonoBehaviour:
     description: 
     price: 300
     dataType: sword
-    coolDown: 
+    coolDown: 0
     requiredLV: 3
     amount: 30
   - dataID: sword4
@@ -70,7 +70,7 @@ MonoBehaviour:
     description: 
     price: 400
     dataType: sword
-    coolDown: 
+    coolDown: 0
     requiredLV: 4
     amount: 40
   - dataID: shield1
@@ -80,7 +80,7 @@ MonoBehaviour:
     description: 
     price: 100
     dataType: shield
-    coolDown: 
+    coolDown: 0
     requiredLV: 1
     amount: 100
   - dataID: shield2
@@ -90,7 +90,7 @@ MonoBehaviour:
     description: 
     price: 200
     dataType: shield
-    coolDown: 
+    coolDown: 0
     requiredLV: 2
     amount: 200
   - dataID: shield3
@@ -100,7 +100,7 @@ MonoBehaviour:
     description: 
     price: 300
     dataType: shield
-    coolDown: 
+    coolDown: 0
     requiredLV: 3
     amount: 300
   - dataID: shield4
@@ -110,7 +110,7 @@ MonoBehaviour:
     description: 
     price: 400
     dataType: shield
-    coolDown: 
+    coolDown: 0
     requiredLV: 4
     amount: 400
   - dataID: HPPortion1
@@ -121,7 +121,7 @@ MonoBehaviour:
       \uC2E0\uBE44\uD55C \uC601\uC57D"
     price: 100
     dataType: Portion
-    coolDown: 
+    coolDown: 0
     requiredLV: 0
     amount: 50
   - dataID: HPPortion2
@@ -132,7 +132,7 @@ MonoBehaviour:
       \uD3EC\uD568\uB41C \uD3EC\uC158"
     price: 200
     dataType: Portion
-    coolDown: 
+    coolDown: 0
     requiredLV: 0
     amount: 100
   - dataID: HPPortion3
@@ -143,7 +143,7 @@ MonoBehaviour:
       \uCE58\uC720 \uBB3C\uC57D"
     price: 300
     dataType: Portion
-    coolDown: 
+    coolDown: 0
     requiredLV: 0
     amount: 150
   - dataID: HPPortion4
@@ -154,7 +154,7 @@ MonoBehaviour:
       \uBD89\uC740 \uBB3C\uC57D"
     price: 400
     dataType: Portion
-    coolDown: 
+    coolDown: 0
     requiredLV: 0
     amount: 200
   - dataID: MpPortion1
@@ -165,7 +165,7 @@ MonoBehaviour:
       \uD0C4\uC0DD\uD55C \uB9C8\uBC95\uC758 \uD3EC\uC158"
     price: 100
     dataType: Portion
-    coolDown: 
+    coolDown: 0
     requiredLV: 0
     amount: 50
   - dataID: MpPortion2
@@ -176,7 +176,7 @@ MonoBehaviour:
       \uB098\uC624\uB294 \uBB3C\uB85C \uB9CC\uB4E4\uC5B4\uC9C4 \uBB3C\uC57D"
     price: 200
     dataType: Portion
-    coolDown: 
+    coolDown: 0
     requiredLV: 0
     amount: 100
   - dataID: MpPortion3
@@ -187,7 +187,7 @@ MonoBehaviour:
       \uB9C8\uB098\uC758 \uACB0\uC815\uC774 \uB179\uC544\uB4E0 \uD3EC\uC158"
     price: 300
     dataType: Portion
-    coolDown: 
+    coolDown: 0
     requiredLV: 0
     amount: 150
   - dataID: MpPortion4
@@ -198,7 +198,7 @@ MonoBehaviour:
       \uBE57\uBC29\uC6B8\uB85C \uB9CC\uB4E4\uC5B4\uC9C4 \uD3EC\uC158"
     price: 400
     dataType: Portion
-    coolDown: 
+    coolDown: 0
     requiredLV: 0
     amount: 200
   - dataID: activeSkill1
@@ -208,7 +208,7 @@ MonoBehaviour:
     description: 
     price: 0
     dataType: active
-    coolDown: 
+    coolDown: 10
     requiredLV: 1
     amount: 0
   - dataID: activeSkill2
@@ -218,7 +218,7 @@ MonoBehaviour:
     description: 
     price: 0
     dataType: active
-    coolDown: 
+    coolDown: 10
     requiredLV: 2
     amount: 0
   - dataID: activeSkill3
@@ -228,7 +228,7 @@ MonoBehaviour:
     description: 
     price: 0
     dataType: active
-    coolDown: 
+    coolDown: 10
     requiredLV: 3
     amount: 0
   - dataID: activeSkill4
@@ -238,7 +238,7 @@ MonoBehaviour:
     description: 
     price: 0
     dataType: active
-    coolDown: 
+    coolDown: 10
     requiredLV: 4
     amount: 0
   - dataID: activeSkill5
@@ -248,7 +248,7 @@ MonoBehaviour:
     description: 
     price: 0
     dataType: active
-    coolDown: 
+    coolDown: 10
     requiredLV: 5
     amount: 0
   - dataID: activeSkill6
@@ -258,7 +258,7 @@ MonoBehaviour:
     description: 
     price: 0
     dataType: active
-    coolDown: 
+    coolDown: 10
     requiredLV: 6
     amount: 0
   - dataID: passiveSkill1

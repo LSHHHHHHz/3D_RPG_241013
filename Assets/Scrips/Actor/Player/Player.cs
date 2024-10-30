@@ -7,6 +7,7 @@ public class Player : Actor
     public PlayerStatus status { get; private set; }
     public PlayerCurrency currency { get; private set; }
     public PlayerStats stats { get; private set; }
+    public TargettingObject targetingObject;
     private void Awake()
     {
         stats = new PlayerStats(10);

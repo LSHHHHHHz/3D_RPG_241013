@@ -28,6 +28,8 @@ public class EventManager
     public event Action<int> onEndTalkNPC;
 
     public event Action<bool> onOpenPopup;
+
+    public event Action<string> onActiveSkill;
     public void LeapPortalPlayer(Vector3 vec)
     {
         onLeapPortalPlayer?.Invoke(vec);
@@ -59,5 +61,9 @@ public class EventManager
     public void PossibleAttack(bool open)
     {
         onOpenPopup?.Invoke(open);
+    }
+    public void ActiveSkill(string skillName)
+    {
+        onActiveSkill?.Invoke(skillName);
     }
 }

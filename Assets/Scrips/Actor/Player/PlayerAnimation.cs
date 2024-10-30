@@ -16,12 +16,49 @@ public class PlayerAnimation : MonoBehaviour
     {
         anim = GetComponent<Animator>();
     }
+    private void OnEnable()
+    {
+        EventManager.instance.onActiveSkill += SkillAnim;
+    }
+    private void OnDisable()
+    {
+        EventManager.instance.onActiveSkill -= SkillAnim;
+    }
     private void Update()
     {
         MoveAnimation();
         SwapWeapon();
         CheckEndAttackAnim();
         DoPlayerJump();
+    }
+    void SkillAnim(string name)
+    {
+        StopAllCoroutines();
+        GameDBEntity db = GameManager.instance.gameDB.GetProfileDB(name);
+        if(db.dataType == "active")
+        {
+            if (db.dataID == "activeSkill1")
+            {
+                anim.SetTrigger("DoActiveSkill1");
+                StartCoroutine(DisablePlayerController(0.4f));
+            }
+            if (db.dataID == "activeSkill2")
+            {
+                anim.SetTrigger("DoActiveSkill2");
+                StartCoroutine(DisablePlayerController(2.3f));
+            }
+        }
+        if(db.dataType =="passive")
+        {
+            anim.SetTrigger("DoBuffSkill");
+            StartCoroutine(DisablePlayerController(2.3f));
+        }
+    }
+    private IEnumerator DisablePlayerController(float duration)
+    {
+        playerController.enabled = false; 
+        yield return new WaitForSeconds(duration); 
+        playerController.enabled = true; 
     }
     void MoveAnimation()
     {
