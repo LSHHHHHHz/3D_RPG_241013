@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public EquipmentManager equipmentManager;
     public SkillManager skillManager;
     public PortionManager portionManager;
+    public CinematicManager chematicManager;
     private void Awake()
     {
         if (instance == null)

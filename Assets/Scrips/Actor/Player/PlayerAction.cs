@@ -24,8 +24,6 @@ public class PlayerAction : MonoBehaviour
             isPossibleMeleeAttack = true;
         }
 
-        Debug.Log("isPossibleMeleeAttack : " + isPossibleMeleeAttack);
-
         if (isPossibleMeleeAttack)
         {
             ActionMeleeAttack();

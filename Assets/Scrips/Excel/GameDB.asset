@@ -14,24 +14,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogEntites:
   - branch: 0
-    name: ???
+    name: "\uD3EC\uC158\uD310\uB9E4\uC790"
     dialog: "\uB09C \uD3EC\uC158\uC744 \uD310\uB9E4\uD558\uACE0 \uC788\uC5B4"
   - branch: 0
-    name: "\uB098"
+    name: "\uD3EC\uC158\uD310\uB9E4\uC790"
     dialog: "\uC0AC\uB0E5\uD130\uC5D0\uC120 \uD3EC\uC158\uC774 \uAF2D \uD544\uC694\uD558\uC9C0"
   - branch: 0
-    name: ???
+    name: "\uD3EC\uC158\uD310\uB9E4\uC790"
     dialog: "\uD55C\uBC88 \uB458\uB7EC\uBD10"
   - branch: 1
-    name: ???
+    name: "\uC7A5\uBE44\uD310\uB9E4\uC790"
     dialog: "\uB09C \uC7A5\uBE44\uB97C \uD310\uB9E4\uD558\uACE0 \uC788\uC5B4"
   - branch: 1
-    name: "\uB098\uB098"
+    name: "\uC7A5\uBE44\uD310\uB9E4\uC790"
     dialog: "\uAC15\uD574\uC9C0\uAE30 \uC704\uD574\uC120 \uC7A5\uBE44\uAC00 \uAF2D
       \uD544\uC694\uD558\uC9C0"
   - branch: 1
-    name: ???
+    name: "\uC7A5\uBE44\uD310\uB9E4\uC790"
     dialog: "\uD55C\uBC88 \uB458\uB7EC\uBD10"
+  - branch: 101
+    name: "\uC774\uC2B9\uD6C8"
+    dialog: "\uC5EC\uAE34\uBB50\uC9C0\u2026"
+  - branch: 101
+    name: "\uC774\uC2B9\uD6C8"
+    dialog: "\uC5B4\uC5B4\uC5B4\uC5B4"
+  - branch: 101
+    name: "\uBCF4\uC2A4"
+    dialog: "\uB204\uAD6C\uB0D0\u2026"
   GameDataEntites:
   - dataID: sword1
     name: "\uCD08\uC2EC\uC790\uC758 \uAC80"

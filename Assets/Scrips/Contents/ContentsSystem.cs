@@ -10,6 +10,8 @@ public class ContentsSystem : MonoBehaviour
     public DialogSystem dialogSystem;
     public CameraFollow maincamera;
     public FadeSystem fadeSystem;
+    public CinematicManager cinematicManager;
+
     private void OnEnable()
     {
         if (dialogSystem == null)
@@ -19,8 +21,25 @@ public class ContentsSystem : MonoBehaviour
         else
         {
             dialogSystem.gameObject.SetActive(true);
+        }
+        if (contentsBranch < 100)
+        {
             StartCoroutine(RunContent());
         }
+        else if(contentsBranch < 1000)
+        {
+            StartCoroutine(RunBossContent());
+        }
+    }
+    private IEnumerator RunBossContent()
+    {
+        if (dialogSystem != null && contentsBranch != -1)
+        {
+            dialogSystem.SetBranch(contentsBranch);
+            yield return new WaitForSeconds(0.2f);
+            yield return new WaitUntil(() => dialogSystem.UpdateDialog());
+        }
+
     }
     private IEnumerator RunContent()
     {

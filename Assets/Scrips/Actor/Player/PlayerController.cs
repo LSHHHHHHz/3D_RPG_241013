@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public float currentSpeed;
 
     bool isLeap = false;
+    bool isExternalControll = false;
     private void Awake()
     {
         originSpeed = playerSpeed;
@@ -35,7 +36,7 @@ public class PlayerController : MonoBehaviour
     }
     private void LateUpdate()
     {
-        if (!isLeap)
+        if (!isLeap && !isExternalControll)
         {
             RotPlayer();
             MoveRunPlayer();
@@ -60,11 +61,16 @@ public class PlayerController : MonoBehaviour
             currentSpeed = Mathf.Lerp(currentSpeed, 0, Time.deltaTime * deceleration);
             playerMoveDir = lastMoveDir;
         }
-        controller.Move((currentSpeed * Time.deltaTime) * playerMoveDir + new Vector3(0, physicsController.velocity.y, 0) * Time.deltaTime);
+        MoveController(currentSpeed, playerMoveDir);
         if (currentSpeed < 0.1f)
         {
             lastMoveDir = Vector3.zero;
         }
+    }
+    public void MoveController(float speed, Vector3 dir)
+    {
+        controller.Move((speed * Time.deltaTime) * dir + new Vector3(0, physicsController.velocity.y, 0) * Time.deltaTime);
+        currentSpeed = speed;
     }
     void JumpPlayer()
     {
@@ -131,5 +137,9 @@ public class PlayerController : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(playerMoveDirection);
             controller.gameObject.transform.rotation = Quaternion.Slerp(controller.gameObject.transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
         }
+    }
+    public void SetExternalControl(bool enabled)
+    {
+        isExternalControll = enabled;
     }
 }
