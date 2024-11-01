@@ -47,7 +47,7 @@ public class EnemyMove : MoveBase
             transform.position = Vector3.MoveTowards(transform.position, originPos, moveSpeed * Time.deltaTime);
             ResetMoveSpeed();
         }
-        if (!isOriginPos)
+        if (!isOriginPos && enemyDetector.isDetectedTarget) 
         {
             LookTarget(targetPosition);
         }

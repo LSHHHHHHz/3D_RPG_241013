@@ -29,7 +29,7 @@ public class BossEnemyAttack : BaseEnemyAttack
     }
     private void Heal()
     {
-        enemy.fsmController.ChangeState(new EnemyHealState());
+        enemy.fsmController.ChangeState(new EnemyWaitState(new EnemyHealState()));
     }
     private void BasicAttack()
     {
@@ -37,7 +37,7 @@ public class BossEnemyAttack : BaseEnemyAttack
     }
     private void SpecialAttack()
     {
-        enemy.fsmController.ChangeState(new EnemySpecialAttackState());
+        enemy.fsmController.ChangeState(new EnemyWaitState(new EnemySpecialAttackState()));
     }
     public void ExcuteProjectileAttack(AnimatorStateInfo info)
     {

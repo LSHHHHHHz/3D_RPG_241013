@@ -7,6 +7,7 @@ using static UnityEngine.EventSystems.EventTrigger;
 public class EnemyAttackState : IState<BaseEnemy>
 {
     float isStartAttackTime;
+    int loopCount = 0;
     public void Enter(BaseEnemy actor)
     {       
         actor.anim.SetBool("IsAttack", true);

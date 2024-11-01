@@ -35,7 +35,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         StopAllCoroutines();
         GameDBEntity db = GameManager.instance.gameDB.GetProfileDB(name);
-        if(db.dataType == "active")
+        if (db.dataType == "active")
         {
             if (db.dataID == "activeSkill1")
             {
@@ -48,7 +48,7 @@ public class PlayerAnimation : MonoBehaviour
                 StartCoroutine(DisablePlayerController(2.3f));
             }
         }
-        if(db.dataType =="passive")
+        if (db.dataType == "passive")
         {
             anim.SetTrigger("DoBuffSkill");
             StartCoroutine(DisablePlayerController(2.3f));
@@ -56,9 +56,9 @@ public class PlayerAnimation : MonoBehaviour
     }
     private IEnumerator DisablePlayerController(float duration)
     {
-        playerController.enabled = false; 
-        yield return new WaitForSeconds(duration); 
-        playerController.enabled = true; 
+        playerController.enabled = false;
+        yield return new WaitForSeconds(duration);
+        playerController.enabled = true;
     }
     void MoveAnimation()
     {
@@ -103,8 +103,19 @@ public class PlayerAnimation : MonoBehaviour
     void CheckEndAttackAnim()
     {
         AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
-
-        if (stateInfo.IsName("Player_Attack"))
+        if (stateInfo.IsName("Player_Attack1"))
+        {
+            if (stateInfo.normalizedTime >= 0.7f)
+            {
+                onEndPlayerAttackAnim?.Invoke();
+                onStartPlayerAttackAnim?.Invoke(false);
+            }
+            else if (stateInfo.normalizedTime >= 0)
+            {
+                onStartPlayerAttackAnim?.Invoke(true);
+            }
+        }
+        if (stateInfo.IsName("Player_Attack2") || stateInfo.IsName("Player_Attack3"))
         {
             if (stateInfo.normalizedTime >= 0.5f)
             {
