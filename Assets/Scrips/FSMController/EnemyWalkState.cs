@@ -18,7 +18,7 @@ public class EnemyWalkState : IState<BaseEnemy>
     {
         if(actor.IsPossibleAttack())
         {
-            actor.fsmController.ChangeState(new EnemyAttackState());
+            actor.baseEnemyAttack.AttackAction();
         }
         if(actor.IsOriginPos())
         {

@@ -7,10 +7,12 @@ public class BaseEnemy : Actor
 {
     [SerializeField] string enemyID;
     public EnemyDetector enemyDetector;
-    EnemyMove enemyMove;
+    public BaseEnemyAttack baseEnemyAttack { get; private set; }
+    public EnemyMove enemyMove { get; private set; }
     [SerializeField] float startAttackTime;
     public FSMController<BaseEnemy> fsmController { get; private set; }
     public EnemyStatus enemyStatus { get; private set; }
+    private MonsterEntity monsterEntity;
     Generator generator;
     public Animator anim { get; private set; }
     public Action<bool> onStartEnemyAttackAnim;
@@ -23,10 +25,12 @@ public class BaseEnemy : Actor
         fsmController = new FSMController<BaseEnemy>(this);
         anim = GetComponentInChildren<Animator>();
         generator = GetComponentInChildren<Generator>();
+        baseEnemyAttack = GetComponent<BaseEnemyAttack>();
     }
     private void OnEnable()
     {
-        enemyStatus = new EnemyStatus(100);
+        monsterEntity = GameManager.instance.gameDB.GetEnemyProfileDB(enemyID);
+        enemyStatus = new EnemyStatus(monsterEntity.monsterMaxHP);
         enemyMove.PossibleMove();
         enemyStatus.onEnemyDeath += EnemyDeath;
         ActorManager<BaseEnemy>.instnace.RegisterActor(this);

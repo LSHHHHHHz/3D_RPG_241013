@@ -2,13 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class EnemyAttackState : IState<BaseEnemy>
 {
     float isStartAttackTime;
     public void Enter(BaseEnemy actor)
-    {
-        isStartAttackTime = actor.GetStartAttackTime();
+    {       
         actor.anim.SetBool("IsAttack", true);
         actor.StartAttack(true);
     }
@@ -21,11 +21,10 @@ public class EnemyAttackState : IState<BaseEnemy>
     {
         AnimatorStateInfo stateInfo = actor.anim.GetCurrentAnimatorStateInfo(0);
 
-        if (stateInfo.IsName("Attack"))
+        if (stateInfo.IsName("Enemy_Attack"))
         {
             float normalizedTime = stateInfo.normalizedTime % 1;
-
-            if (normalizedTime >= 0.99f)
+            if (normalizedTime >= 0.95f)
             {
                 actor.fsmController.ChangeState(new EnemyIdleState());
                 actor.onStartEnemyAttackAnim?.Invoke(false);
@@ -35,10 +34,6 @@ public class EnemyAttackState : IState<BaseEnemy>
             {
                 actor.onStartEnemyAttackAnim?.Invoke(true);
             }
-        }
-        if (!actor.IsPossibleAttack() && stateInfo.IsName("Attack") && stateInfo.normalizedTime % 1 >= 0.99f)
-        {
-            actor.fsmController.ChangeState(new EnemyWalkState());
-        }
+        }       
     }
 }

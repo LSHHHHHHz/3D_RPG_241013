@@ -42,7 +42,7 @@ MonoBehaviour:
     name: "\uBCF4\uC2A4"
     dialog: "\uB204\uAD6C\uB0D0\u2026"
   GameDataEntites:
-  - dataID: sword1
+  - dataID: Sword1
     name: "\uCD08\uC2EC\uC790\uC758 \uAC80"
     iconPath: Item/Sword1
     prefabPath: Prefab/Equipment/Sword1
@@ -52,7 +52,7 @@ MonoBehaviour:
     coolDown: 0
     requiredLV: 1
     amount: 10
-  - dataID: sword2
+  - dataID: Sword2
     name: "\uC6A9\uC0AC\uC758 \uAC80"
     iconPath: Item/Sword2
     prefabPath: Prefab/Equipment/Sword2
@@ -62,7 +62,7 @@ MonoBehaviour:
     coolDown: 0
     requiredLV: 2
     amount: 20
-  - dataID: sword3
+  - dataID: Sword3
     name: "\uBA85\uC608\uC758 \uAC80"
     iconPath: Item/Sword3
     prefabPath: Prefab/Equipment/Sword3
@@ -72,7 +72,7 @@ MonoBehaviour:
     coolDown: 0
     requiredLV: 3
     amount: 30
-  - dataID: sword4
+  - dataID: Sword4
     name: "\uC804\uC124\uC758 \uAC80"
     iconPath: Item/Sword4
     prefabPath: Prefab/Equipment/Sword4
@@ -82,7 +82,7 @@ MonoBehaviour:
     coolDown: 0
     requiredLV: 4
     amount: 40
-  - dataID: shield1
+  - dataID: Shield1
     name: "\uCD08\uC2EC\uC790\uC758 \uBC29\uD328"
     iconPath: Item/Shield1
     prefabPath: Prefab/Equipment/Shield1
@@ -92,7 +92,7 @@ MonoBehaviour:
     coolDown: 0
     requiredLV: 1
     amount: 100
-  - dataID: shield2
+  - dataID: Shield2
     name: "\uC218\uD638\uC790\uC758 \uBC29\uD328"
     iconPath: Item/Shield2
     prefabPath: Prefab/Equipment/Shield2
@@ -102,7 +102,7 @@ MonoBehaviour:
     coolDown: 0
     requiredLV: 2
     amount: 200
-  - dataID: shield3
+  - dataID: Shield3
     name: "\uAC15\uCCA0\uC758 \uBC29\uD328"
     iconPath: Item/Shield3
     prefabPath: Prefab/Equipment/Shield3
@@ -112,7 +112,7 @@ MonoBehaviour:
     coolDown: 0
     requiredLV: 3
     amount: 300
-  - dataID: shield4
+  - dataID: Shield4
     name: "\uBD88\uBA78\uC758 \uBC29\uD328"
     iconPath: Item/Shield4
     prefabPath: Prefab/Equipment/Shield4
@@ -348,21 +348,21 @@ MonoBehaviour:
   - npcID: PortionShopNPC
     dataID: MpPortion4
   - npcID: EquipmentShopNPC
-    dataID: sword1
+    dataID: Sword1
   - npcID: EquipmentShopNPC
-    dataID: sword2
+    dataID: Sword2
   - npcID: EquipmentShopNPC
-    dataID: sword3
+    dataID: Sword3
   - npcID: EquipmentShopNPC
-    dataID: sword4
+    dataID: Sword4
   - npcID: EquipmentShopNPC
-    dataID: shield1
+    dataID: Shield1
   - npcID: EquipmentShopNPC
-    dataID: shield2
+    dataID: Shield2
   - npcID: EquipmentShopNPC
-    dataID: shield3
+    dataID: Shield3
   - npcID: EquipmentShopNPC
-    dataID: shield4
+    dataID: Shield4
   QuestEntities:
   - QuestID: mainQuest0
     npcID: MainNPC
@@ -466,3 +466,14 @@ MonoBehaviour:
     rewardPortion: HPPortion1
     rewardExp: 10
     rewardCoin: 20
+  - monsterID: bossMonster1
+    monsterName: "\uB9D0\uC790\uD558"
+    monsterRewardDescription: "\uBCF4\uC0C1 : \uACBD\uD5D8\uCE58, \uCF54\uC778, \uB0AE\uC740
+      \uD655\uB960\uB85C \uBB34\uAE30 \uB4DC\uB78D"
+    monsterIconPath: 
+    monsterPrefabPath: 
+    monsterMaxHP: 500
+    rewardEquipment: Sword1
+    rewardPortion: HPPortion1
+    rewardExp: 100
+    rewardCoin: 200

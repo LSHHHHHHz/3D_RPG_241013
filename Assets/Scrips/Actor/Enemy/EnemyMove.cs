@@ -55,7 +55,7 @@ public class EnemyMove : MoveBase
         {
             if (Vector3.Distance(transform.position, originPos) > 0.1f)
             {
-                LookTarget(targetPosition);
+                LookTarget(originPos);
             }
         }
     }

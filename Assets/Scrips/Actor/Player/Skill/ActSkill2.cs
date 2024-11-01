@@ -26,6 +26,23 @@ public class ActSkill2 : BaseSkill
                 Debug.Log("타겟팅된 오브젝트 없음.");
             }
         }
+        if (actor is BaseEnemy enemy)
+        {
+            Player p = GameManager.instance.player;
+            if (p == null)
+            {
+                return;
+            }
+            if (p != null)
+            {
+                Vector3 targetPosition = p.transform.position;
+                StartCoroutine(ActivateOrCreatePrefab(targetPosition));
+            }
+            else
+            {
+                Debug.Log("타겟팅된 오브젝트 없음.");
+            }
+        }
     }
     private IEnumerator ActivateOrCreatePrefab(Vector3 targetPosition)
     {

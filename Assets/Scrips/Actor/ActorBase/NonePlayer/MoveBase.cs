@@ -44,4 +44,8 @@ public abstract class MoveBase : MonoBehaviour
         isPossibleMove = false;
         moveSpeed = 0;
     }
+    public bool CheckEnemyMove()
+    {
+        return isPossibleMove;
+    }
 }
