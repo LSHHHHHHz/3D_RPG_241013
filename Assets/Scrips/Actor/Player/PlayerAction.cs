@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class PlayerAction : MonoBehaviour
 {
     Animator anim;
     bool isPossibleMeleeAttack = true;
-
+    public static event Action<bool> onMeleeAttack;
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -33,11 +34,13 @@ public class PlayerAction : MonoBehaviour
     private void OnEnable()
     {
         EventManager.instance.onOpenPopup += PossibleAttack;
+        onMeleeAttack += GameManager.instance.motionBlurManager.ActivateSwordMotionBlur;
     }
 
     private void OnDisable()
     {
         EventManager.instance.onOpenPopup -= PossibleAttack;
+        onMeleeAttack -= GameManager.instance.motionBlurManager.ActivateSwordMotionBlur;
     }
     void PossibleAttack(bool possible)
     {
@@ -47,40 +50,41 @@ public class PlayerAction : MonoBehaviour
     void ActionMeleeAttack()
     {
         AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
-        if (Input.GetMouseButtonDown(0) && isPossibleMeleeAttack)
+        float normalizedTime = stateInfo.normalizedTime % 1;
+
+        if (Input.GetMouseButtonDown(0))
         {
-            anim.SetBool("IsAttack", true);
-        }
-        if (Input.GetMouseButtonUp(0) && stateInfo.IsName("Player_Attack1"))
-        {
-            float normalizedTime = stateInfo.normalizedTime % 1;
+            if (isPossibleMeleeAttack)
+            {
+                anim.SetBool("IsAttack", true);
+                onMeleeAttack?.Invoke(true);
+            }
             if (normalizedTime >= 0.5f)
             {
-                anim.SetBool("IsAttack2", true);
+                if (stateInfo.IsName("Player_Attack1"))
+                {
+                    anim.SetBool("IsAttack2", true);
+                    onMeleeAttack?.Invoke(true);
+                }
+                else if (stateInfo.IsName("Player_Attack2"))
+                {
+                    anim.SetBool("IsAttack3", true);
+                    onMeleeAttack?.Invoke(true);
+                }
             }
         }
-        if (Input.GetMouseButtonUp(0) && stateInfo.IsName("Player_Attack2"))
+        if ((stateInfo.IsName("Player_Attack1") || stateInfo.IsName("Player_Attack2") || stateInfo.IsName("Player_Attack3")) && normalizedTime > 0.96f)
         {
-            float normalizedTime = stateInfo.normalizedTime % 1;
-            if (normalizedTime >= 0.5f)
-            {
-                anim.SetBool("IsAttack3", true);
-            }
-        }
-        if(stateInfo.IsName("Player_Attack2") || stateInfo.IsName("Player_Attack3"))
-        {
-            float normalizedTime = stateInfo.normalizedTime % 1;
-            if(normalizedTime >0.96)
-            {
-                anim.SetBool("IsAttack2", false);
-                anim.SetBool("IsAttack3", false);
-            }
+            anim.SetBool("IsAttack2", false);
+            anim.SetBool("IsAttack3", false);
+            onMeleeAttack?.Invoke(false);
         }
         if (Input.GetMouseButtonUp(0))
         {
             anim.SetBool("IsAttack", false);
         }
     }
+
     private bool IsPointerInUI()
     {
         return EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();

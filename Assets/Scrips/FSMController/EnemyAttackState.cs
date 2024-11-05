@@ -4,21 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
 
-public class EnemyAttackState : IState<BaseEnemy>
+public class EnemyAttackState : IState<NormalEnemy>
 {
     float isStartAttackTime;
     int loopCount = 0;
-    public void Enter(BaseEnemy actor)
+    public void Enter(NormalEnemy actor)
     {       
         actor.anim.SetBool("IsAttack", true);
         actor.StartAttack(true);
     }
-    public void Exit(BaseEnemy actor)
+    public void Exit(NormalEnemy actor)
     {
         actor.anim.SetBool("IsAttack", false);
         actor.StartAttack(false);
     }
-    public void Update(BaseEnemy actor)
+    public void Update(NormalEnemy actor)
     {
         AnimatorStateInfo stateInfo = actor.anim.GetCurrentAnimatorStateInfo(0);
 

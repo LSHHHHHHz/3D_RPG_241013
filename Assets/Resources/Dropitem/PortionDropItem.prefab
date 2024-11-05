@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 9164769923988073413}
   - component: {fileID: 147590801979424045}
   - component: {fileID: 7915708922036224302}
-  - component: {fileID: 3132532237206900078}
   - component: {fileID: 3616895587218090310}
   - component: {fileID: 8444350677866658246}
+  - component: {fileID: 3639878105983939234}
   m_Layer: 0
   m_Name: PortionDropItem
   m_TagString: Untagged
@@ -251,20 +251,6 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
---- !u!114 &3132532237206900078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3184394172794531017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2a9ebb8ac4305044a624c95d1d4b70f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forcePower: 2
-  randomRange: 0.1
 --- !u!198 &3616895587218090310
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5062,6 +5048,20 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &3639878105983939234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3184394172794531017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c4e611491366f4a804313780935731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forcePower: 4
+  randomRange: 0.2
 --- !u!1 &3298169333488167599
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 728911374759294859}
   - component: {fileID: 3519751922856086281}
   - component: {fileID: 6180897702785890346}
-  - component: {fileID: 748812507475664580}
   - component: {fileID: 8502218686163210660}
   - component: {fileID: 555905424139060677}
+  - component: {fileID: 561752823784709659}
   m_Layer: 0
   m_Name: ExpDropItem
   m_TagString: Untagged
@@ -251,20 +251,6 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
---- !u!114 &748812507475664580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2760696891754058338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2a9ebb8ac4305044a624c95d1d4b70f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forcePower: 2
-  randomRange: 0.1
 --- !u!198 &8502218686163210660
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5062,6 +5048,20 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &561752823784709659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760696891754058338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7227b9af436c9543961ccb6d4685840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forcePower: 3
+  randomRange: 0.3
 --- !u!1 &3239428394101135805
 GameObject:
   m_ObjectHideFlags: 0

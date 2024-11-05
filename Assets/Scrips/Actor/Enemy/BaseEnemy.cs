@@ -1,52 +1,40 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
+
 public class BaseEnemy : Actor
 {
-    [SerializeField] string enemyID;
+    [SerializeField] private string enemyID;
     public EnemyDetector enemyDetector;
-    public BaseEnemyAttack baseEnemyAttack { get; private set; }
     public EnemyMove enemyMove { get; private set; }
-    [SerializeField] float startAttackTime;
-    public FSMController<BaseEnemy> fsmController { get; private set; }
+    [SerializeField] private float startAttackTime;
     public EnemyStatus enemyStatus { get; private set; }
     private MonsterEntity monsterEntity;
-    Generator generator;
+    private Generator generator;
     public Animator anim { get; private set; }
     public Action<bool> onStartEnemyAttackAnim;
     public Action onEndEnemyAttackAnim;
     public Action onDeathEnemy;
-    private void Awake()
+    protected virtual void Awake()
     {
         enemyDetector = GetComponent<EnemyDetector>();
         enemyMove = GetComponent<EnemyMove>();
-        fsmController = new FSMController<BaseEnemy>(this);
         anim = GetComponentInChildren<Animator>();
         generator = GetComponentInChildren<Generator>();
-        baseEnemyAttack = GetComponent<BaseEnemyAttack>();
     }
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         monsterEntity = GameManager.instance.gameDB.GetEnemyProfileDB(enemyID);
         enemyStatus = new EnemyStatus(monsterEntity.monsterMaxHP);
         enemyMove.PossibleMove();
         enemyStatus.onEnemyDeath += EnemyDeath;
         ActorManager<BaseEnemy>.instnace.RegisterActor(this);
-        fsmController.ChangeState(new EnemyIdleState());
     }
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         onDeathEnemy?.Invoke();
         enemyStatus.onEnemyDeath -= EnemyDeath;
-    }
-    private void Update()
-    {
-        if (enemyDetector != null)
-        {
-            fsmController.FSMUpdate();
-        }
     }
     public bool IsPlayerDetected()
     {
@@ -62,7 +50,7 @@ public class BaseEnemy : Actor
     }
     public void StartAttack(bool isAttack)
     {
-        if(isAttack)
+        if (isAttack)
         {
             enemyMove.StopMove();
         }
@@ -73,16 +61,16 @@ public class BaseEnemy : Actor
     }
     public override void ReceiveEvent(IEvent ievent)
     {
-        if(ievent is SendDamageEvent damageEvent)
+        if (ievent is SendDamageEvent damageEvent)
         {
             enemyStatus.ReduceHP(damageEvent.damage);
-            generator.GenerateText(damageEvent.damage.ToString(),transform.position);
+            generator.GenerateText(damageEvent.damage.ToString(), transform.position);
             generator.GenerateGetHitPrefab(transform.position, damageEvent.subjectPos);
         }
     }
     public float GetStartAttackTime()
     {
-       return startAttackTime;
+        return startAttackTime;
     }
     public string GetEnemyID()
     {
@@ -97,6 +85,6 @@ public class BaseEnemy : Actor
     }
     private void EnemyDeath()
     {
-        fsmController.ChangeState(new EnemyDieState());
+        onDeathEnemy?.Invoke();
     }
 }

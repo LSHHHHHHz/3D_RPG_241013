@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public SkillManager skillManager;
     public PortionManager portionManager;
     public CinematicManager chematicManager;
+    public MotionBlurManager motionBlurManager;
     private void Awake()
     {
         if (instance == null)

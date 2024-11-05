@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 
-public class EnemyDieState : IState<BaseEnemy>
+public class EnemyDieState : IState<NormalEnemy>
 {
     bool isDie;
-    public void Enter(BaseEnemy actor)
+    public void Enter(NormalEnemy actor)
     {
         isDie = false;
-        ActorManager<BaseEnemy>.instnace.UnregisterActor(actor);
+        ActorManager<NormalEnemy>.instnace.UnregisterActor(actor);
         actor.anim.SetTrigger("DoDeath");
     }
 
-    public void Exit(BaseEnemy actor)
+    public void Exit(NormalEnemy actor)
     {
     }
-    public void Update(BaseEnemy actor)
+    public void Update(NormalEnemy actor)
     {
         AnimatorStateInfo stateInfo = actor.anim.GetCurrentAnimatorStateInfo(0);
 

@@ -99,9 +99,9 @@ public class PlayerController : MonoBehaviour
         anim.DoLeapJump();
         EventManager.instance.ZommIn(2);
         yield return new WaitForSeconds(3.67f);
-        while (Vector3.Distance(transform.position, vec) > 0.2f)
+        while (Vector3.Distance(controller.transform.position, vec) > 0.2f)
         {
-            transform.position = Vector3.Lerp(transform.position, vec, Time.deltaTime * 5);
+            controller.transform.position = Vector3.Lerp(controller.transform.position, vec, Time.deltaTime * 5);
             yield return null;
         }
         EventManager.instance.ZoomOut(0.5f);

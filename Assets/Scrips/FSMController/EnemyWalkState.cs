@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyWalkState : IState<BaseEnemy>
+public class EnemyWalkState : IState<NormalEnemy>
 {
-    public void Enter(BaseEnemy actor)
+    public void Enter(NormalEnemy actor)
     {
         actor.anim.SetBool("IsWalk", true);
     }
 
-    public void Exit(BaseEnemy actor)
+    public void Exit(NormalEnemy actor)
     {
         actor.anim.SetBool("IsWalk", false);
     }
 
-    public void Update(BaseEnemy actor)
+    public void Update(NormalEnemy actor)
     {
         if(actor.IsPossibleAttack())
         {
-            actor.baseEnemyAttack.AttackAction();
+            actor.fsmController.ChangeState(new EnemyAttackState());
         }
         if(actor.IsOriginPos())
         {
