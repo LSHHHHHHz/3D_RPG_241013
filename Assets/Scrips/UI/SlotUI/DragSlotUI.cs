@@ -17,7 +17,7 @@ public class DragSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         canvasGroup = GetComponent<CanvasGroup>();
         rectTransform = GetComponent<RectTransform>();
-        canvas = GameObject.Find("Canvas").transform;
+        canvas = GameObject.Find("MainCanvas").transform;
         dropSlotUI = GetComponentInParent<BaseSlotUI>();
     }
     private void OnEnable()

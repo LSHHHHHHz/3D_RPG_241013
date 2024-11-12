@@ -151,7 +151,7 @@ public class EnemyStatus
     {
         onChangeHP?.Invoke(enemyCurrentHP, enemyMaxHP);
     }
-    public void GetHP(int amount)
+    public void RecoveryHP(int amount)
     {
         enemyCurrentHP += amount;
         if (enemyCurrentHP > enemyMaxHP)

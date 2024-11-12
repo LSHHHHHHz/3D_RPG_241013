@@ -25,18 +25,16 @@ public class NPC : MonoBehaviour
     private void OnEnable()
     {
         fsmController.ChangeState(new NPCWalkState());
-        EventManager.instance.onEndTalkNPC += OpenShopPopupUI;
     }
     private void OnDisable()
     {
-        EventManager.instance.onEndTalkNPC -= OpenShopPopupUI;
     }
     private void Update()
     {
         fsmController.FSMUpdate();
         if (npcDetector.isPossibleTalk && Input.GetKeyDown(KeyCode.T))
         {
-            EventManager.instance.StartTalkNPC(npcBranch);
+            ActiveShoPopupUI();
         }
     }
     void OpenShopPopupUI(int index)

@@ -13,6 +13,7 @@ public class ActorMeleeWeapon<T> : MonoBehaviour where T : Actor
     private HashSet<T> attackedTargets = new HashSet<T>();
     private bool isStartAttack = false;
     private bool isInAttackRange = false;
+    public bool isPossibleAttackanim = false;
     private void Awake()
     {
         swordStartPoint = transform.Find("StartPos");
@@ -46,7 +47,7 @@ public class ActorMeleeWeapon<T> : MonoBehaviour where T : Actor
         float distanceToEnd = Vector3.Distance(targetPos, endPoint);
 
         isInAttackRange = ((distanceToStart <= attackRange || distanceToMid <= attackRange || distanceToEnd <= attackRange)
-                          && !attackedTargets.Contains(target) && isStartAttack);
+                          && !attackedTargets.Contains(target) && isStartAttack && isPossibleAttackanim);
 
         if (isInAttackRange)
         {

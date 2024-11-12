@@ -16,6 +16,12 @@ public class BaseEnemy : Actor
     public Action<bool> onStartEnemyAttackAnim;
     public Action onEndEnemyAttackAnim;
     public Action onDeathEnemy;
+
+    public int currentHPTest;
+    private void Update()
+    {
+        currentHPTest = enemyStatus.enemyCurrentHP;
+    }
     protected virtual void Awake()
     {
         enemyDetector = GetComponent<EnemyDetector>();
@@ -75,6 +81,14 @@ public class BaseEnemy : Actor
     public string GetEnemyID()
     {
         return enemyID;
+    }
+    public float GetEnemyMaxHP()
+    {
+        return enemyStatus.enemyMaxHP;
+    }
+    public float GetEnemyCurrentHp()
+    {
+        return enemyStatus.enemyCurrentHP;
     }
     public void PerformDeathActions()
     {

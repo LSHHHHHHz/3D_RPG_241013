@@ -57,7 +57,7 @@ public class ActSkill2 : BaseSkill
             prefabInstance.transform.position = targetPosition;
             prefabInstance.SetActive(true);
         }
-        prefabInstance.GetComponent<ActSkill2Projectile>().SetDamage(20);
+        prefabInstance.GetComponent<ActSkill2Projectile>().SetSkill(new PlayerSkillStrategy(), 55);
         StartCoroutine(DisablePrefabEffect(3f));
     }
     private IEnumerator DisablePrefabEffect(float delay)

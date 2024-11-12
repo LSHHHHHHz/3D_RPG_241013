@@ -14,10 +14,10 @@ public class EnemyDetector : DetectorBase
         base.Awake();
         originPos = transform.position;
     }
-    protected override void Update()
+    void Update()
     {
         actors = ActorManager<Player>.instnace.GetActors();
-        base.Update();
+        DetectPlayer(actors);
     }
     protected override void DetectPlayer(IReadOnlyList<Actor> players)
     {

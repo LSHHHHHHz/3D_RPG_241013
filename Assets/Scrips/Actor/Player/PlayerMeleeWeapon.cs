@@ -24,6 +24,7 @@ public class PlayerMeleeWeapon : ActorMeleeWeapon<BaseEnemy>, IEquipment
     {
         base.Update();
         targets = ActorManager<BaseEnemy>.instnace.GetActors();
+        isPossibleAttackanim = player.isPossbleAttack;
     }
 
     public void SetItemID(string id)

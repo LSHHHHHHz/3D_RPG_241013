@@ -15,6 +15,10 @@ public class NPCMove : MoveBase
         npcDetector = GetComponent<NPCDetector>();
         SetMovePos();
     }
+    private void Update()
+    {
+        MoveEnemy();
+    }
     private void OnEnable()
     {
         wayPointIndex = 0;
@@ -23,7 +27,7 @@ public class NPCMove : MoveBase
             targetPos = npcMovePos[wayPointIndex];
         }
     }
-    public override void MoveEnemy()
+    public void MoveEnemy()
     {
         if (Vector3.Distance(transform.position, targetPos) < 0.5f)
         {
@@ -51,5 +55,10 @@ public class NPCMove : MoveBase
         {
             npcMovePos.Add(wayPointParent.transform.GetChild(i).position);
         }
+    }
+
+    public override void MoveEnemy(Vector3 targetPos)
+    {
+        throw new System.NotImplementedException();
     }
 }

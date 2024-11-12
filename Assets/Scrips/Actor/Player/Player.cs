@@ -8,11 +8,12 @@ public class Player : Actor
     public PlayerCurrency currency { get; private set; }
     public PlayerStats stats { get; private set; }
     public TargettingObject targetingObject;
+    public bool isPossbleAttack = false;
     private void Awake()
     {
         stats = new PlayerStats(10);
         status = new PlayerStatus(100, 50);
-        currency = new PlayerCurrency(100);
+        currency = new PlayerCurrency(10000);
     }
     private void OnEnable()
     {

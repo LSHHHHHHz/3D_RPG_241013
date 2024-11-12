@@ -67,6 +67,7 @@ public class ShopBuyPopupUI : MonoBehaviour
 
         if (player.currency.coin >= totalCost)
         {
+            gameObject.SetActive(false);
             player.currency.SpendCoin(totalCost);
             for (int i = 0; i < GameData.instance.itemInventoryData.slotDatas.Count; i++)
             {

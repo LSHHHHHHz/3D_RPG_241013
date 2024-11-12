@@ -22,7 +22,7 @@ public class EnemyAttackState : IState<NormalEnemy>
     {
         AnimatorStateInfo stateInfo = actor.anim.GetCurrentAnimatorStateInfo(0);
 
-        if (stateInfo.IsName("Enemy_Attack"))
+        if (stateInfo.IsName("Attack"))
         {
             float normalizedTime = stateInfo.normalizedTime % 1;
             if (normalizedTime >= 0.95f)

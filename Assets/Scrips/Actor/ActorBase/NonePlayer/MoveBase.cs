@@ -20,9 +20,9 @@ public abstract class MoveBase : MonoBehaviour
     }
     private void Update()
     {
-        MoveEnemy();
+        //MoveEnemy();
     }
-    public abstract void MoveEnemy();
+    public abstract void MoveEnemy(Vector3 targetPos);
     public void LookTarget(Vector3 targetPos)
     {
         Vector3 dir = (targetPos - transform.position).normalized;
@@ -47,5 +47,13 @@ public abstract class MoveBase : MonoBehaviour
     public bool CheckEnemyMove()
     {
         return isPossibleMove;
+    }
+    public void ReSetOriginSpeed()
+    {
+        moveSpeed = originMoveSpeed;
+    }
+    public void SetSpeed()
+    {
+        moveSpeed = originMoveSpeed * 2;
     }
 }

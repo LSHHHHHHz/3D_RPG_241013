@@ -15,7 +15,7 @@ public class Portion
     }
     public void Use()
     {
-        Debug.Log(recoveryAmount + " : 회복");
+        Debug.LogError(recoveryAmount + " : 회복");
     }
 }
 public class PortionManager : MonoBehaviour
@@ -28,7 +28,14 @@ public class PortionManager : MonoBehaviour
     }
     void SetPortionData()
     {
-        portions.Add(new Portion("HPPortion1", 10));
+        portions.Add(new Portion("HPPortion1", 50));
+        portions.Add(new Portion("HPPortion2", 100));
+        portions.Add(new Portion("HPPortion3", 150));
+        portions.Add(new Portion("HPPortion4", 200));
+        portions.Add(new Portion("MPPortion1", 50));
+        portions.Add(new Portion("MPPortion2", 100));
+        portions.Add(new Portion("MPPortion3", 150));
+        portions.Add(new Portion("MPPortion4", 200));
     }
     public Portion GetPortion(string id)
     {

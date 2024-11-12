@@ -11,6 +11,18 @@ public class GetHit : MonoBehaviour
         Vector3 direction = (thisPos - attackerPos).normalized;
         transform.rotation = Quaternion.LookRotation(direction);
 
-        gameObject.SetActive(true);
+        gameObject.SetActive(true); 
+        StartCoroutine(ActiveText());
+    }
+    IEnumerator ActiveText()
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < 1)
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        gameObject.SetActive(false);
     }
 }

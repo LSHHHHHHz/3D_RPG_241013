@@ -11,12 +11,12 @@ public class PlayerCurrency
     public PlayerCurrency(int initialCoin)
     {
         coin = initialCoin;
-        onChangeCoin?.Invoke(coin);  
+        onChangeCoin?.Invoke(coin);
     }
     public void GetCoin(int amount)
     {
         coin += amount;
-        onChangeCoin?.Invoke(coin);  
+        onChangeCoin?.Invoke(coin);
     }
     public void SpendCoin(int amount)
     {
@@ -32,6 +32,6 @@ public class PlayerCurrency
     }
     public void InitializeCurrency()
     {
-        onChangeCoin?.Invoke(coin); 
+        onChangeCoin?.Invoke(coin);
     }
 }

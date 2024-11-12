@@ -14,10 +14,6 @@ public abstract class DetectorBase : MonoBehaviour
     {
         moveBase = GetComponent<MoveBase>();
     }
-
-    protected virtual void Update()
-    {
-        DetectPlayer(actors); 
-    }
+  
     protected abstract void DetectPlayer(IReadOnlyList<Actor> actors);
 }

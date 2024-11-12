@@ -5,18 +5,19 @@ using UnityEngine;
 public class ActSkill2Projectile : MonoBehaviour
 {
     private int damage;
+    private ISkillStrategy skillStrategy;
 
-    public void SetDamage(int damageAmount)
+    public void SetSkill(ISkillStrategy skillStrategy, int dmg)
     {
-        damage = damageAmount;
+        this.skillStrategy = skillStrategy;
+        this.damage = dmg;
     }
     private void OnTriggerEnter(Collider other)
     {
-        BaseEnemy enemy = other.GetComponent<BaseEnemy>();
-        if (enemy != null)
+        IEventReceiver target = other.GetComponent<IEventReceiver>();
+        if (target != null && skillStrategy != null)
         {
-            SendDamageEvent damage = new SendDamageEvent(20);
-            enemy.ReceiveEvent(damage);
+            skillStrategy.ExcuteSkill(target, damage);
         }
     }
 }

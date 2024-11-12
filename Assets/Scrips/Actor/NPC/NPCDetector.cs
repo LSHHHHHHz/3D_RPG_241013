@@ -11,10 +11,10 @@ public class NPCDetector : DetectorBase
         base.Awake();
         moveBase = GetComponent<NPCMove>();
     }
-    protected override void Update()
+    void Update()
     {
         actors = ActorManager<Player>.instnace.GetActors();
-        base.Update();
+        DetectPlayer(actors);
     }
     protected override void DetectPlayer(IReadOnlyList<Actor> players)
     {
