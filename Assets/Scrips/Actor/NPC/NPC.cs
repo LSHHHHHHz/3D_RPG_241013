@@ -35,17 +35,22 @@ public class NPC : MonoBehaviour
         if (npcDetector.isPossibleTalk && Input.GetKeyDown(KeyCode.T))
         {
             ActiveShoPopupUI();
+            QuestManager.instance.ProgressQuest(GoalType.TalkNPC, npcName);
         }
     }
     void OpenShopPopupUI(int index)
     {
-        if(npcBranch == index)
+        if (npcBranch == index)
         {
             ActiveShoPopupUI();
         }
     }
     void ActiveShoPopupUI()
     {
+        if (npcName == "MainNPC")
+        {
+            return;
+        }
         if (npcDetector.isPossibleTalk)
         {
             if (shopPopupUI == null)

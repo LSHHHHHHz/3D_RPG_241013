@@ -100,5 +100,6 @@ public class BaseEnemy : Actor
     private void EnemyDeath()
     {
         onDeathEnemy?.Invoke();
+        QuestManager.instance.ProgressQuest(GoalType.KillMonsters, enemyID);
     }
 }
