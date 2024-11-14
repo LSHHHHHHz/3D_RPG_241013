@@ -38,6 +38,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2411840548215817844}
+  - {fileID: 902778571578353042}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &445164497820257765
@@ -5060,6 +5061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7227b9af436c9543961ccb6d4685840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropEffect: {fileID: 902778571578353042}
   forcePower: 3
   randomRange: 0.3
 --- !u!1 &3239428394101135805
@@ -9904,3 +9906,89 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1001 &36389165706532165
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5029575093697777781}
+    m_Modifications:
+    - target: {fileID: 866405899422363863, guid: 803b3878a4e7c664091886acebb88883, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 866405899422363863, guid: 803b3878a4e7c664091886acebb88883, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 866405899422363863, guid: 803b3878a4e7c664091886acebb88883, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 866405899422363863, guid: 803b3878a4e7c664091886acebb88883, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 866405899422363863, guid: 803b3878a4e7c664091886acebb88883, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 866405899422363863, guid: 803b3878a4e7c664091886acebb88883, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 866405899422363863, guid: 803b3878a4e7c664091886acebb88883, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 866405899422363863, guid: 803b3878a4e7c664091886acebb88883, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 866405899422363863, guid: 803b3878a4e7c664091886acebb88883, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 866405899422363863, guid: 803b3878a4e7c664091886acebb88883, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1077088959769570501, guid: 803b3878a4e7c664091886acebb88883, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1077088959769570501, guid: 803b3878a4e7c664091886acebb88883, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.69728756
+      objectReference: {fileID: 0}
+    - target: {fileID: 1077088959769570501, guid: 803b3878a4e7c664091886acebb88883, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.4009434
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420451200842836005, guid: 803b3878a4e7c664091886acebb88883, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420451200842836005, guid: 803b3878a4e7c664091886acebb88883, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.69728756
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420451200842836005, guid: 803b3878a4e7c664091886acebb88883, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.4009434
+      objectReference: {fileID: 0}
+    - target: {fileID: 8772308850582352435, guid: 803b3878a4e7c664091886acebb88883, type: 3}
+      propertyPath: m_Name
+      value: DropEffect_Blue
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 803b3878a4e7c664091886acebb88883, type: 3}
+--- !u!4 &902778571578353042 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 866405899422363863, guid: 803b3878a4e7c664091886acebb88883, type: 3}
+  m_PrefabInstance: {fileID: 36389165706532165}
+  m_PrefabAsset: {fileID: 0}

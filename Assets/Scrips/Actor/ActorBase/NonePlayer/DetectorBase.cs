@@ -6,7 +6,8 @@ public abstract class DetectorBase : MonoBehaviour
 {
     public bool isDetectedTarget { get; set; }
     public Player detectedTarget { get; set; }
-    [SerializeField] protected float detectedRange = 3;   
+    [SerializeField] protected float detectedRange = 4;
+    [SerializeField] protected float activeDetectedRange = 2;
     protected IReadOnlyList<Actor> actors;
     protected MoveBase moveBase;
 
@@ -16,4 +17,12 @@ public abstract class DetectorBase : MonoBehaviour
     }
   
     protected abstract void DetectPlayer(IReadOnlyList<Actor> actors);
+    public float GetDetectRange()
+    {
+        return detectedRange;
+    }
+    public float GetActiveDetectRange()
+    {
+        return activeDetectedRange;
+    }
 }

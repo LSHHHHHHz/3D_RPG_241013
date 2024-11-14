@@ -15,11 +15,11 @@ MonoBehaviour:
   questId: MainQuest1
   questTitle: "\uC0C1\uC810 \uB458\uB7EC\uBCF4\uAE30"
   questType: 0
-  questStatus: 0
+  questStatus: 1
   goal:
     goalType: 0
     requiredAmount: 3
-    currentAmount: 0
+    currentAmount: 1
     targetId:
     - PortionShopNPC
     - EquipmentShopNPC

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using static Unity.VisualScripting.Dependencies.Sqlite.SQLite3;
@@ -5,10 +6,12 @@ using static Unity.VisualScripting.Dependencies.Sqlite.SQLite3;
 public class QuestManager : MonoBehaviour
 {
     public static QuestManager instance;
-    Quest currentQuest;
-    [SerializeField] QuestHUDUI questHUDUI;
+    public Quest currentQuest { get; private set; }
     [SerializeField] List<Quest> questList = new List<Quest>();
     private int currentQuestIndex = 0;
+    public event Action<Quest> onStartQuest;
+    public event Action<Quest> onFinishQuest;
+    public event Action<string> onClearGoalQeust;
     private void Awake()
     {
         if (instance == null)
@@ -19,6 +22,7 @@ public class QuestManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        currentQuest = questList[currentQuestIndex];
     }
     private void Start()
     {
@@ -30,7 +34,6 @@ public class QuestManager : MonoBehaviour
         {
             currentQuest = questList[currentQuestIndex];
             RegisterQuest(currentQuest);
-            questHUDUI.UpdateProgress(currentQuest.goal.goalName[currentQuest.goal.currentAmount]);
         }
     }
     public void RegisterQuest(Quest quest)
@@ -56,8 +59,13 @@ public class QuestManager : MonoBehaviour
                     {
                         if (q.goal.targetId[j] == targetId && j == q.goal.currentAmount)
                         {
+                            onClearGoalQeust?.Invoke(q.goal.goalName[j]);
                             isQuestValid = true;
                             quest = q;
+                            if(j == q.goal.targetId.Length - 1)
+                            {
+                                onFinishQuest?.Invoke(currentQuest);
+                            }
                             break;
                         }
                     }
@@ -84,15 +92,12 @@ public class QuestManager : MonoBehaviour
                 currentQuestIndex++;
                 StartNextQuest();
             }
-            UpdateUI(currentQuest);
-            questHUDUI.UpdateProgress(currentQuest.goal.goalName[currentQuest.goal.currentAmount]);
         }
     }
-
     private void UpdateUI(Quest q)
     {
         Debug.Log("퀘스트 UI 업데이트");
-        questHUDUI.SetUI(q);
+        onStartQuest?.Invoke(q);
     }
     public List<Quest> GetQuests()
     {
