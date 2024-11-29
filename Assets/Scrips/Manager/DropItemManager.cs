@@ -16,9 +16,17 @@ public class DropItemManager : MonoBehaviour
             "Dropitem/ExpDropItem"
          };
     }
-    public void DropItem(Vector3 pos, string id)
+    public void DropItem(Vector3 pos, string id, EnemyType type)
     {
-        int count = UnityEngine.Random.Range(4, 6);
+        int count = 0;
+        if (type == EnemyType.Normar)
+        {
+            count = UnityEngine.Random.Range(4, 6);
+        }
+        else
+        {
+            count = UnityEngine.Random.Range(7, 10);
+        }
         for (int i = 0; i < count; i++)
         {
             DropItem dropItem = GameManager.instance.poolManager.GetObjectFromPool(dropItemsPrefabsPath[MonsterDeathDropItemIndex()]).GetComponent<DropItem>();

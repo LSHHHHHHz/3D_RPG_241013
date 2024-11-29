@@ -38,7 +38,7 @@ public class QuestHUD : MonoBehaviour
     }
     void SetLastData(Quest quest)
     {
-        int goalCount = quest.goal.goalName.Length;
+        int goalCount = quest.goal.goalName.Length-1;
         for (int i = 0; i < questHUDSlotUIs.Length; i++)
         {
             if (i == goalCount)
@@ -46,10 +46,6 @@ public class QuestHUD : MonoBehaviour
                 QuestManager.instance.onClearGoalQeust += questHUDSlotUIs[i].ClearQuestUI;
                 questHUDSlotUIs[i].gameObject.SetActive(true);
                 questHUDSlotUIs[i].SetQuestData(quest.goal.goalName[i]);
-            }
-            else
-            {
-                questHUDSlotUIs[i].gameObject.SetActive(false);
             }
         }
     }

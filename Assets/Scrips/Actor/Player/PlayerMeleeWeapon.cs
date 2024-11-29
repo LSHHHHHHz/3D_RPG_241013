@@ -14,6 +14,8 @@ public class PlayerMeleeWeapon : ActorMeleeWeapon<BaseEnemy>, IEquipment
         player = GetComponentInParent<Player>();
         playerAnim.onEndPlayerAttackAnim += ResetTarget;
         playerAnim.onStartPlayerAttackAnim += StartAttackAction;
+        player.stats.onChangeAttack += SetTotalDamage;
+        player.stats.InitializeStats();
     }
     private void OnDisable()
     {
@@ -26,7 +28,10 @@ public class PlayerMeleeWeapon : ActorMeleeWeapon<BaseEnemy>, IEquipment
         targets = ActorManager<BaseEnemy>.instnace.GetActors();
         isPossibleAttackanim = player.isPossbleAttack;
     }
-
+    void SetTotalDamage(int damage)
+    {
+        totalDamage = damage;
+    }
     public void SetItemID(string id)
     {
         weaponID = id;

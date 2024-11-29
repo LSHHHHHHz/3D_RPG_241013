@@ -6,6 +6,7 @@ using UnityEngine;
 public class BaseEnemy : Actor
 {
     [SerializeField] private string enemyID;
+    [SerializeField] EnemyType enemyType;
     public EnemyDetector enemyDetector;
     public EnemyMove enemyMove { get; private set; }
     [SerializeField] private float startAttackTime;
@@ -70,7 +71,7 @@ public class BaseEnemy : Actor
         if (ievent is SendDamageEvent damageEvent)
         {
             enemyStatus.ReduceHP(damageEvent.damage);
-            generator.GenerateText(damageEvent.damage.ToString(), transform.position);
+            generator.GenerateText(damageEvent.damage.ToString(), transform.position, "Red");
             generator.GenerateGetHitPrefab(transform.position, damageEvent.subjectPos);
         }
     }
@@ -90,16 +91,20 @@ public class BaseEnemy : Actor
     {
         return enemyStatus.enemyCurrentHP;
     }
+    public void RecoverHP(int amount)
+    {
+        enemyStatus.RecoveryHP(amount);
+    }
     public void PerformDeathActions()
     {
         ActorManager<BaseEnemy>.instnace.UnregisterActor(this);
         gameObject.SetActive(false);
         Vector3 dropPosition = transform.position;
-        GameManager.instance.dropItemManager.DropItem(dropPosition, enemyID);
+        GameManager.instance.dropItemManager.DropItem(dropPosition, enemyID, enemyType);
     }
     private void EnemyDeath()
     {
         onDeathEnemy?.Invoke();
-        QuestManager.instance.ProgressQuest(GoalType.KillMonsters, enemyID);
+        QuestManager.instance.ProgressQuest(enemyID);
     }
 }

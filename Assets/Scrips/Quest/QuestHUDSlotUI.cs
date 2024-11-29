@@ -44,12 +44,19 @@ public class QuestHUDSlotUI : MonoBehaviour
     }
     public void ClearQuestUI(string goalName)
     {
-        if (goalName == slotGaolName) 
+        if (goalName == slotGaolName)
         {
-            StartCoroutine(ScaleClearIcon());
-            StartCoroutine(MoveAndFadeBackground());
+            StartCoroutine(HandleClearQuest());
         }
     }
+
+    private IEnumerator HandleClearQuest()
+    {
+        yield return StartCoroutine(ScaleClearIcon());
+        yield return StartCoroutine(MoveAndFadeBackground());
+        gameObject.SetActive(false); 
+    }
+
     IEnumerator ScaleClearIcon()
     {
         clearIcon.gameObject.SetActive(true);

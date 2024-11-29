@@ -13,9 +13,9 @@ public class Portion
         this.id = id;
         this.recoveryAmount = recoveryAmount;
     }
-    public void Use()
+    public int Use()
     {
-        Debug.LogError(recoveryAmount + " : È¸º¹");
+        return recoveryAmount;
     }
 }
 public class PortionManager : MonoBehaviour

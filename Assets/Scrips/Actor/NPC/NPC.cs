@@ -6,13 +6,16 @@ using UnityEngine;
 public class NPC : MonoBehaviour
 {
     [SerializeField] string npcName;
-    [SerializeField] int npcBranch;
+    [SerializeField] int npcDialogBranch;
+    int progressBranch;
     public NPCDetector npcDetector { get; private set; }
     public NPCMove npcMove { get; private set; }
     public Animator anim { get; private set; }
     public FSMController<NPC> fsmController { get; private set; }
     [SerializeField] GameObject shopPopupUIPrefab;
     [SerializeField] Transform shopPopupTransform;
+    bool isOpenPopup = false;
+    bool isDialogEnd = false;
     ShopPopupUI shopPopupUI;
     public event Action<string> onTalkNPC;
     private void Awake()
@@ -25,24 +28,44 @@ public class NPC : MonoBehaviour
     private void OnEnable()
     {
         fsmController.ChangeState(new NPCWalkState());
+        GameManager.instance.dialogManager.onEndDialog += CheckEndDialog;
+        QuestManager.instance.onClearQuest += NextDialog;
     }
     private void OnDisable()
     {
+        GameManager.instance.dialogManager.onEndDialog -= CheckEndDialog;
+        QuestManager.instance.onClearQuest -= NextDialog;
     }
     private void Update()
     {
         fsmController.FSMUpdate();
+
         if (npcDetector.isPossibleTalk && Input.GetKeyDown(KeyCode.T))
         {
+            GameManager.instance.dialogManager.OpenDialog(npcDialogBranch, true);
+        }
+        if (!npcDetector.isPossibleTalk)
+        {
+            isOpenPopup = false;
+        }
+        if (progressBranch == npcDialogBranch && isDialogEnd && !isOpenPopup)
+        {
+            isOpenPopup = true;
             ActiveShoPopupUI();
-            QuestManager.instance.ProgressQuest(GoalType.TalkNPC, npcName);
+            QuestManager.instance.ProgressQuest(npcName);
         }
     }
-    void OpenShopPopupUI(int index)
+
+    void CheckEndDialog(int branch, bool boool)
     {
-        if (npcBranch == index)
+        progressBranch = branch;
+        isDialogEnd = boool;
+    }
+    void NextDialog()
+    {
+        if (npcName == "MainNPC")
         {
-            ActiveShoPopupUI();
+            npcDialogBranch++;
         }
     }
     void ActiveShoPopupUI()
@@ -66,6 +89,7 @@ public class NPC : MonoBehaviour
         if (!npcDetector.isPossibleTalk && shopPopupUI != null)
         {
             shopPopupUI.gameObject.SetActive(false);
+            isOpenPopup = false;
         }
     }
 }

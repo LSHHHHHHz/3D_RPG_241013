@@ -32,7 +32,6 @@ public class TargettingObject : MonoBehaviour
             if (enemy != null && Vector3.Distance(transform.position, enemy.transform.position) <= distanceObj)
             {
                 targetObj = enemy.gameObject;
-                Debug.Log(targetObj.name);
                 enemy.onDeathEnemy += ClearTarget;
                 ShowTargetPopup(enemy.GetEnemyID());
             }

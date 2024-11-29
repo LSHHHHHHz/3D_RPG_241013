@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Unity.VisualScripting.Dependencies.Sqlite.SQLite3;
@@ -12,6 +13,7 @@ public class QuestManager : MonoBehaviour
     public event Action<Quest> onStartQuest;
     public event Action<Quest> onFinishQuest;
     public event Action<string> onClearGoalQeust;
+    public event Action onClearQuest;
     private void Awake()
     {
         if (instance == null)
@@ -38,20 +40,27 @@ public class QuestManager : MonoBehaviour
     }
     public void RegisterQuest(Quest quest)
     {
-        if (quest.questStatus == QuestStatus.Ready)
+        StartCoroutine(RegisterQuestWithDelay(quest));
+    }
+    private IEnumerator RegisterQuestWithDelay(Quest quest)
+    {
+        yield return new WaitForSeconds(4f);
+
+        if (quest.questStatus == QuestStatus.Ready || quest.goal.currentAmount == 0)
         {
             quest.StartQuest();
-            UpdateUI(quest);
+            onStartQuest?.Invoke(quest);
         }
     }
-    public void ProgressQuest(GoalType goalType, string targetId)
+    public void ProgressQuest(string targetId)
     {
         Quest quest = null;
-        bool isQuestValid =false;
+        bool isQuestValid = false;
+
         for (int i = 0; i < questList.Count; i++)
         {
             Quest q = questList[i];
-            if (q.questStatus == QuestStatus.Progress && q.goal.goalType == goalType)
+            if (q.questStatus == QuestStatus.Progress)
             {
                 if (q.goal.targetId.Length > 0)
                 {
@@ -62,10 +71,11 @@ public class QuestManager : MonoBehaviour
                             onClearGoalQeust?.Invoke(q.goal.goalName[j]);
                             isQuestValid = true;
                             quest = q;
-                            if(j == q.goal.targetId.Length - 1)
-                            {
-                                onFinishQuest?.Invoke(currentQuest);
-                            }
+                            //마지막 이라면
+                            //if (j == q.goal.targetId.Length - 1)
+                            //{
+                            //    onFinishQuest?.Invoke(currentQuest);
+                            //}
                             break;
                         }
                     }
@@ -93,11 +103,11 @@ public class QuestManager : MonoBehaviour
                 StartNextQuest();
             }
         }
-    }
-    private void UpdateUI(Quest q)
-    {
-        Debug.Log("퀘스트 UI 업데이트");
-        onStartQuest?.Invoke(q);
+        if(quest != null && quest.goal.currentAmount == quest.goal.requiredAmount -1)
+        {
+            onClearQuest?.Invoke();
+            onFinishQuest?.Invoke(currentQuest);
+        }
     }
     public List<Quest> GetQuests()
     {

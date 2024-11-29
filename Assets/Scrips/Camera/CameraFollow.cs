@@ -40,16 +40,15 @@ public class CameraFollow : MonoBehaviour
     public void StartZoomIn(float duration)
     {
         StopAllCoroutines();
-        StartCoroutine(ZoomIn(duration)); 
+        StartCoroutine(ZoomIn(duration));
     }
     public void StartZoomOut(float duration)
     {
         StopAllCoroutines();
-        StartCoroutine(ZoomOut(duration)); 
+        StartCoroutine(ZoomOut(duration));
     }
     public IEnumerator ZoomIn(float duration)
     {
-        Debug.Log("¡‹¿Œ Ω√¿€");
         offset = originOffset;
         float elapsedTime = 0f;
         Vector3 startOffset = offset;
@@ -63,9 +62,8 @@ public class CameraFollow : MonoBehaviour
     }
     public IEnumerator ZoomOut(float duration)
     {
-        Debug.Log("¡‹æ∆øÙ Ω√¿€");
         float elapsedTime = 0f;
-        Vector3 startOffset = offset; 
+        Vector3 startOffset = offset;
         while (elapsedTime < duration)
         {
             offset = Vector3.Lerp(startOffset, originOffset, elapsedTime / duration);
@@ -84,6 +82,16 @@ public class CameraFollow : MonoBehaviour
             currentAngle += Input.GetAxis("Mouse X") * rotationSpeed;
             currentPitch += Input.GetAxis("Mouse Y") * rotationSpeed;
             currentPitch = Mathf.Clamp(currentPitch, -pitchRange, pitchRange);
+        }
+        if(Input.GetKey(KeyCode.I) || Input.GetKey(KeyCode.E))
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
         Quaternion horizontalRotation = Quaternion.Euler(0, currentAngle, 0);
         Quaternion verticalRotation = Quaternion.Euler(-currentPitch, 0, 0);

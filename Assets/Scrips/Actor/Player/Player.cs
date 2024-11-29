@@ -8,12 +8,14 @@ public class Player : Actor
     public PlayerCurrency currency { get; private set; }
     public PlayerStats stats { get; private set; }
     public TargettingObject targetingObject;
+    private Generator generator;
     public bool isPossbleAttack = false;
     private void Awake()
     {
         stats = new PlayerStats(10);
-        status = new PlayerStatus(100, 50);
+        status = new PlayerStatus(500, 50);
         currency = new PlayerCurrency(10000);
+        generator = GetComponentInChildren<Generator>();
     }
     private void OnEnable()
     {
@@ -29,19 +31,20 @@ public class Player : Actor
         if (ievent is SendDamageEvent damageEvent)
         {
             TakeDamage(damageEvent.damage);
+            generator.GenerateText(damageEvent.damage.ToString(), transform.position , "Red");
         }
         if (ievent is SendHealingEvent healingEvent)
         {
-            TakeDamage(healingEvent.amount);
+            RecoverHP(healingEvent.amount);
+            generator.GenerateText(healingEvent.amount.ToString(), transform.position, "Red");
         }
     }
     void TakeDamage(int damage)
     {
         status.ReduceHP(damage);
     }
-    void RecoverHP(int amout)
+    public void RecoverHP(int amout)
     {
         status.GetHP(amout);
-        Debug.Log(amout + "È¸º¹");
     }
 }

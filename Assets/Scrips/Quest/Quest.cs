@@ -39,14 +39,12 @@ public class Quest : ScriptableObject
         if (questStatus == QuestStatus.Ready)
         {
             questStatus = QuestStatus.Progress;
-            Debug.Log(questTitle + " : 시작");
         }
     }
     public void ProgressQuest()
     {
         if (questStatus == QuestStatus.Progress)
         {
-            Debug.Log(questTitle + " : 진행");
             goal.IncreaseProgress();
             if (goal.IsCompleted())
             {
@@ -59,7 +57,6 @@ public class Quest : ScriptableObject
         if (questStatus == QuestStatus.Progress)
         {
             questStatus = QuestStatus.Completed;
-            Debug.Log(questTitle + " : 완료");
             if (nextQuest != null)
             {
                 nextQuest.StartQuest();

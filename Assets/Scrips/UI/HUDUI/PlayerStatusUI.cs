@@ -19,7 +19,6 @@ public class PlayerStatusUI : MonoBehaviour
     }
     private void OnEnable()
     {
-        Debug.Log("PlayerStatusUI 먼저되나");
         player.status.onChangeHP += UpdateHPUI;
         player.status.onChangeMP += UpdateMPUI;
         player.status.onChangeExp += UpdateExpUI;

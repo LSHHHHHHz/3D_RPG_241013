@@ -11,9 +11,10 @@ public class ActorMeleeWeapon<T> : MonoBehaviour where T : Actor
     public float attackRange = 0.1f;
     protected IReadOnlyList<T> targets;
     private HashSet<T> attackedTargets = new HashSet<T>();
-    private bool isStartAttack = false;
+    public bool isStartAttack = false;
     private bool isInAttackRange = false;
     public bool isPossibleAttackanim = false;
+    public bool isClearHashSet = false;
     private void Awake()
     {
         swordStartPoint = transform.Find("StartPos");
@@ -24,6 +25,10 @@ public class ActorMeleeWeapon<T> : MonoBehaviour where T : Actor
         if (targets != null)
         {
             DetectTargetInSwordRange();
+        }
+        if(isClearHashSet)
+        {
+            attackedTargets.Clear();
         }
     }
     protected void DetectTargetInSwordRange()

@@ -22,10 +22,21 @@ public class AmountText : MonoBehaviour
     {
         mainCamera = Camera.main.transform;
     }
-    public void ShowDamageText(string damageText, Vector3 position)
+    public void ShowDamageText(string damageText, Vector3 position, string colorString)
     {
         transform.position = position;
         textMesh.text = damageText;
+        switch(colorString)
+        {
+            case "Red":
+                textMesh.color = new Color(1, 0, 0);
+                break;
+
+            case "Blue":
+                textMesh.color = new Color(0, 0, 1);
+                break;
+
+        }
         StartCoroutine(ActiveText());
     }
 

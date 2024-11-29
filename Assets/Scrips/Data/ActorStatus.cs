@@ -25,6 +25,10 @@ public class PlayerStats
         playerTotalAttack -= amount;
         onChangeAttack?.Invoke(playerTotalAttack);
     }
+    public int GetToTalAttack()
+    {
+        return playerTotalAttack;
+    }
 }
 public class PlayerStatus
 {
@@ -32,8 +36,6 @@ public class PlayerStatus
     public int playerCurrentHP { get; private set; }
     public int playerMaxMP { get; private set; }
     public int playerCurrentMP { get; private set; }
-    public float originSpeed { get; private set; }
-    public float currentMoveSpeed { get; private set; }
     public int playerMaxExp { get; private set; }
     public int playerCurrentExp { get; private set; }
     public int playerLevel { get; private set; }
@@ -123,7 +125,6 @@ public class PlayerStatus
         playerMaxHP = value;
         onChangeHP?.Invoke(playerCurrentHP, playerMaxHP);
     }
-
     public void SetCurrentHP(int value)
     {
         playerCurrentHP = value;

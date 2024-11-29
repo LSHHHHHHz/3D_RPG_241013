@@ -6,8 +6,10 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class QuickPortionSlotUI : BaseSlotUI, IDropHandler
 {
+    Player player;
     private void Awake()
     {
+        player = FindAnyObjectByType<Player>();
         Button button = GetComponent<Button>();
         button.onClick.AddListener(() =>
         {
@@ -23,7 +25,8 @@ public class QuickPortionSlotUI : BaseSlotUI, IDropHandler
         if(!string.IsNullOrEmpty(currentSlotData.dataID))
         {
             var portion = GameManager.instance.portionManager.GetPortion(dataID);
-            portion.Use();
+            SendHealingEvent heal = new SendHealingEvent(portion.Use());
+            player.ReceiveEvent(heal);
         }
     }
     public void OnDrop(PointerEventData eventData)

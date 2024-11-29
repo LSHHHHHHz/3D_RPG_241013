@@ -22,7 +22,6 @@ public class EnemyDieState : IState<NormalEnemy>
 
         if (stateInfo.IsName("Death") && stateInfo.normalizedTime >= 0.95f && !isDie)
         {
-            Debug.Log("µé¾î¿È");
             isDie = true;
             actor.PerformDeathActions();
         }

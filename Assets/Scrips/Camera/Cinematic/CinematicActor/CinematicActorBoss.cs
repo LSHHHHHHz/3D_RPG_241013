@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class FirstCinematicActorBoss : CinematicActor
+public class CinematicActorBoss : CinematicActor
 {
     public override void PerformAction()
     {

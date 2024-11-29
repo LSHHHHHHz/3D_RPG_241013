@@ -23,7 +23,6 @@ public class ActSkill2 : BaseSkill
             }
             else
             {
-                Debug.Log("타겟팅된 오브젝트 없음.");
             }
         }
         if (actor is BaseEnemy enemy)

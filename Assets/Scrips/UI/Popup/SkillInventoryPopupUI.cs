@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 public class SkillInventoryPopupUI : MonoBehaviour
@@ -11,6 +12,13 @@ public class SkillInventoryPopupUI : MonoBehaviour
     private void OnEnable()
     {
         EventManager.instance.PossibleAttack(false);
+        Initialized();
+    }
+    private void Initialized()
+    {
+        skillName.text = "";
+        skillRequiredLV.text = "";
+        skillDescription.text = "";
     }
     public void SetData(string id)
     {

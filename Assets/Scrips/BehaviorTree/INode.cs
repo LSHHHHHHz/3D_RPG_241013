@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public interface INode
 {
@@ -69,3 +70,29 @@ public class SequenceNode : INode
         return INode.STATE.SUCCESS;
     }
 }
+public class WaitNode : INode
+{
+    private float waitTime;
+    private float startTime;
+
+    public WaitNode(float waitTime)
+    {
+        this.waitTime = waitTime;
+    }
+    public INode.STATE Evaluate()
+    {
+        if (startTime == 0)
+        {
+            startTime = Time.time;
+        }
+
+        if (Time.time - startTime >= waitTime)
+        {
+            startTime = 0; 
+            return INode.STATE.SUCCESS;
+        }
+
+        return INode.STATE.RUN;
+    }
+}
+

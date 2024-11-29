@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JumpPortal : MonoBehaviour
 {
-    IReadOnlyList<Player> player;
+    Player player;
     public GameObject[] jumpPortalPos;
     private Vector3 targetPos;
     private float portalRange = 1;
@@ -14,7 +14,7 @@ public class JumpPortal : MonoBehaviour
 
     private void Start()
     {
-        player = ActorManager<Player>.instnace.GetActors();
+        player = FindAnyObjectByType<Player>();
     }
     void Update()
     {
@@ -27,17 +27,20 @@ public class JumpPortal : MonoBehaviour
             elpasedTime = 0;
             FindPlayer();
         }
-        if (targetPos != Vector3.zero && Input.GetMouseButtonDown(1))
+        foreach (GameObject go in jumpPortalPos)
         {
-            EventManager.instance.LeapPortalPlayer(targetPos);
-            targetPos = Vector3.zero;
+            if(Vector3.Distance(go.gameObject.transform.position,player.transform.position)<1 && targetPos != Vector3.zero && Input.GetMouseButtonDown(1))
+            {
+                EventManager.instance.LeapPortalPlayer(targetPos);
+                targetPos = Vector3.zero;
+            }
         }
     }
     void FindPlayer()
     {
         for (int i = 0; i < jumpPortalPos.Length; i++)
         {
-            if (Vector3.Distance(jumpPortalPos[i].transform.position, player[0].transform.position) < portalRange)
+            if (Vector3.Distance(jumpPortalPos[i].transform.position, player.transform.position) < portalRange)
             {
                 if (i == 0)
                 {

@@ -20,6 +20,13 @@ public class EquipmentInventoryUI : BaseInventory
         SetSlots();
         SetSlotData();
     }
+    private void OnEnable()
+    {
+        for (int i = 0; i < slots.Count; i++)
+        {
+            slots[i].currentSlotData.onEquipItem += GameManager.instance.equipmentManager.EquipItem;
+        }
+    }
     private void OnDisable()
     {
         for(int i =0; i < slots.Count; i++)
@@ -45,7 +52,6 @@ public class EquipmentInventoryUI : BaseInventory
             slots[i].currentSlotData = itemEquipInventoryData.slotDatas[i];
             itemEquipInventoryData.slotDatas[i].onDataChanged += slots[i].SetData;
             itemEquipInventoryData.slotDatas[i].SetData(itemEquipInventoryData.slotDatas[i].dataID, itemEquipInventoryData.slotDatas[i].count);
-            slots[i].currentSlotData.onEquipItem += GameManager.instance.equipmentManager.EquipItem;
         }
     }
 }

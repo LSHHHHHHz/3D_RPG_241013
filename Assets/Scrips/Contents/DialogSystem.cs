@@ -27,7 +27,10 @@ public class DialogSystem : MonoBehaviour
     public void SetBranch(int branch)
     {
         this.branch = branch;
+        isFirst = true;
+        Setup();
     }
+
     private void Setup()
     {
         currentDialogIndex = -1;
@@ -61,7 +64,7 @@ public class DialogSystem : MonoBehaviour
 
             isFirst = false;
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Y))
         {
             // 대사가 남아있을 경우 다음 대사 진행
             if (dialogs.Length > currentDialogIndex + 1)

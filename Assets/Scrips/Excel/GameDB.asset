@@ -32,15 +32,45 @@ MonoBehaviour:
   - branch: 1
     name: "\uC7A5\uBE44\uD310\uB9E4\uC790"
     dialog: "\uD55C\uBC88 \uB458\uB7EC\uBD10"
+  - branch: 100
+    name: "\uCD0C\uC7A5"
+    dialog: "\uB9C8\uC744\uC744 \uD55C\uBC88 \uAD6C\uACBD\uD574\uBD10"
+  - branch: 100
+    name: "\uCD0C\uC7A5"
+    dialog: "\uD55C\uBC88 \uB458\uB7EC\uBD10"
+  - branch: 100
+    name: "\uCD0C\uC7A5"
+    dialog: "\uC0C1\uC810\uC5D4 \uB2E4\uC591\uD55C \uAC83\uB4E4\uC744 \uD314\uACE0\uC788\uC5B4"
   - branch: 101
-    name: "\uC774\uC2B9\uD6C8"
-    dialog: "\uC5EC\uAE34\uBB50\uC9C0\u2026"
+    name: "\uCD0C\uC7A5"
+    dialog: "\uC0C1\uC810\uB4E4\uC740 \uB2E4 \uB458\uB7EC\uBD24\uC9C0?"
   - branch: 101
-    name: "\uC774\uC2B9\uD6C8"
-    dialog: "\uC5B4\uC5B4\uC5B4\uC5B4"
+    name: "\uCD0C\uC7A5"
+    dialog: "\uD639\uC2DC \uB9C8\uC744 \uBC16 \uC2A4\uCF08\uB808\uD1A4\uC774 \uD65C\uAE30\uB97C
+      \uCE5C\uB2E4\uB294\uB370"
   - branch: 101
-    name: "\uBCF4\uC2A4"
-    dialog: "\uB204\uAD6C\uB0D0\u2026"
+    name: "\uCD0C\uC7A5"
+    dialog: "\uB9C8\uC744\uC744 \uB2E4 \uAD6C\uACBD\uD588\uC73C\uBA74 \uC2A4\uCF08\uB808\uD1A4\uC880
+      \uC7A1\uC544\uC654\uC73C\uBA74 \uC88B\uACA0\uC5B4"
+  - branch: 102
+    name: "\uCD0C\uC7A5"
+    dialog: "\uC5ED\uC2DC \uC7A1\uC544\uC62C \uC904 \uC54C\uC558\uB2E4\uB2C8\uAE4C"
+  - branch: 102
+    name: "\uCD0C\uC7A5"
+    dialog: "\uADFC\uB370 \uC800 \uBA40\uB9AC \uB9C8\uC744\uC744 \uC704\uD611\uD558\uB294
+      \uB140\uC11D\uC774 \uC788\uC5B4"
+  - branch: 102
+    name: "\uCD0C\uC7A5"
+    dialog: "\uC598\uB294 \uC9C4\uC9DC \uC704\uD5D8\uD574"
+  - branch: 103
+    name: "\uCD0C\uC7A5"
+    dialog: "\uB10C \uCD5C\uACE0\uAC00 \uB420\uAEBC\uC57C"
+  - branch: 103
+    name: "\uCD0C\uC7A5"
+    dialog: "\uC544\uC544"
+  - branch: 103
+    name: "\uCD0C\uC7A5"
+    dialog: "\uC624\uC624"
   GameDataEntites:
   - dataID: Sword1
     name: "\uCD08\uC2EC\uC790\uC758 \uAC80"
@@ -211,24 +241,26 @@ MonoBehaviour:
     requiredLV: 0
     amount: 200
   - dataID: activeSkill1
-    name: "\uC5D1\uD2F0\uBE0C1"
+    name: "\uC544\uC774\uC2A4 \uC2A4\uD1A4"
     iconPath: SkillIcon/ActSkill1
     prefabPath: Prefab/Skill/ActSkill1
-    description: 
+    description: "\uC5BC\uC74C \uC18D\uC131\uC758 \uB3CC\uC744 \uC18C\uD658"
     price: 0
     dataType: active
     coolDown: 10
     requiredLV: 1
     amount: 0
   - dataID: activeSkill2
-    name: "\uC5D1\uD2F0\uBE0C2"
+    name: "\uC804\uAE30 \uBCA0\uAE30"
     iconPath: SkillIcon/ActSkill2
     prefabPath: Prefab/Skill/ActSkill2
-    description: 
+    description: "\uAC15\uB825\uD55C \uC804\uAE30 \uC5D0\uB108\uC9C0\uB97C \uAC80\uC5D0
+      \uC2E4\uC5B4 \uC801\uC744 \uB0B4\uB824\uCE58\uBA70 \uBC88\uAC1C \uC18D\uC131
+      \uD53C\uD574\uB97C \uC785\uD78C\uB2E4"
     price: 0
     dataType: active
     coolDown: 10
-    requiredLV: 2
+    requiredLV: 1
     amount: 0
   - dataID: activeSkill3
     name: "\uC5D1\uD2F0\uBE0C3"
@@ -238,7 +270,7 @@ MonoBehaviour:
     price: 0
     dataType: active
     coolDown: 10
-    requiredLV: 3
+    requiredLV: 1
     amount: 0
   - dataID: activeSkill4
     name: "\uC5D1\uD2F0\uBE0C4"
@@ -248,7 +280,7 @@ MonoBehaviour:
     price: 0
     dataType: active
     coolDown: 10
-    requiredLV: 4
+    requiredLV: 1
     amount: 0
   - dataID: activeSkill5
     name: "\uC5D1\uD2F0\uBE0C5"
@@ -258,7 +290,7 @@ MonoBehaviour:
     price: 0
     dataType: active
     coolDown: 10
-    requiredLV: 5
+    requiredLV: 1
     amount: 0
   - dataID: activeSkill6
     name: "\uC5D1\uD2F0\uBE0C6"
@@ -268,10 +300,10 @@ MonoBehaviour:
     price: 0
     dataType: active
     coolDown: 10
-    requiredLV: 6
+    requiredLV: 1
     amount: 0
   - dataID: passiveSkill1
-    name: "\uD328\uC2DC\uBE0C1"
+    name: "\uC6C0"
     iconPath: SkillIcon/PasSkill1
     prefabPath: Prefab/Skill/BuffSkill1
     description: "\uACF5\uACA9\uB825\uC744 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4"
@@ -281,14 +313,14 @@ MonoBehaviour:
     requiredLV: 1
     amount: 0
   - dataID: passiveSkill2
-    name: "\uD328\uC2DC\uBE0C2"
+    name: "\uB9AC\uC820"
     iconPath: SkillIcon/PasSkill2
     prefabPath: Prefab/Skill/BuffSkill2
     description: "HP\uB97C \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4"
     price: 0
     dataType: passive
     coolDown: 10
-    requiredLV: 2
+    requiredLV: 1
     amount: 0
   - dataID: passiveSkill3
     name: "\uD328\uC2DC\uBE0C3"
@@ -298,7 +330,7 @@ MonoBehaviour:
     price: 0
     dataType: passive
     coolDown: 10
-    requiredLV: 3
+    requiredLV: 1
     amount: 0
   - dataID: passiveSkill4
     name: "\uD328\uC2DC\uBE0C4"
@@ -308,7 +340,7 @@ MonoBehaviour:
     price: 0
     dataType: passive
     coolDown: 10
-    requiredLV: 4
+    requiredLV: 1
     amount: 0
   - dataID: passiveSkill5
     name: "\uD328\uC2DC\uBE0C5"
@@ -318,7 +350,7 @@ MonoBehaviour:
     price: 0
     dataType: passive
     coolDown: 10
-    requiredLV: 5
+    requiredLV: 1
     amount: 0
   - dataID: passiveSkill6
     name: "\uD328\uC2DC\uBE0C6"
@@ -328,7 +360,7 @@ MonoBehaviour:
     price: 0
     dataType: passive
     coolDown: 10
-    requiredLV: 6
+    requiredLV: 1
     amount: 0
   shopDB:
   - npcID: PortionShopNPC
@@ -459,7 +491,7 @@ MonoBehaviour:
     monsterName: "\uC2A4\uCF08\uB808\uD1A4"
     monsterRewardDescription: "\uBCF4\uC0C1 : \uACBD\uD5D8\uCE58, \uCF54\uC778, \uB0AE\uC740
       \uD655\uB960\uB85C \uBB34\uAE30 \uB4DC\uB78D"
-    monsterIconPath: 
+    monsterIconPath: UICaapture/Skeleton
     monsterPrefabPath: 
     monsterMaxHP: 100
     rewardEquipment: Sword1
@@ -470,7 +502,7 @@ MonoBehaviour:
     monsterName: "\uB9D0\uC790\uD558"
     monsterRewardDescription: "\uBCF4\uC0C1 : \uACBD\uD5D8\uCE58, \uCF54\uC778, \uB0AE\uC740
       \uD655\uB960\uB85C \uBB34\uAE30 \uB4DC\uB78D"
-    monsterIconPath: 
+    monsterIconPath: UICaapture/Boss
     monsterPrefabPath: 
     monsterMaxHP: 500
     rewardEquipment: Sword1

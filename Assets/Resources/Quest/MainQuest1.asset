@@ -19,7 +19,7 @@ MonoBehaviour:
   goal:
     goalType: 0
     requiredAmount: 3
-    currentAmount: 1
+    currentAmount: 0
     targetId:
     - PortionShopNPC
     - EquipmentShopNPC
@@ -27,5 +27,5 @@ MonoBehaviour:
     goalName:
     - "\uD3EC\uC158\uC0C1\uC810 \uAD6C\uACBD\uD558\uAE30"
     - "\uC7A5\uBE44\uC0C1\uC810 \uAD6C\uACBD\uD558\uAE30"
-    - "\uB9C8\uC744 \uCD0C\uC7A5\uC5D0\uAC8C\uB85C.."
+    - "\uB9C8\uC744 \uCD0C\uC7A5\uC5D0\uAC8C\uB85C..."
   nextQuest: {fileID: 11400000, guid: 4b86e660ccb129b4c868711bd982878d, type: 2}

@@ -1,9 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
+public enum EnemyType
+{
+    Normar,
+    Boss
+}
 public class EnemyMove : MoveBase
 {
+    public EnemyType enemyType;
     public bool isOriginPos { get; private set; }
     [SerializeField] float moveArea = 5;
     EnemyDetector enemyDetector;
@@ -14,7 +21,10 @@ public class EnemyMove : MoveBase
     }
     private void Update()
     {
-        MoveEnemy();
+        if (enemyType == EnemyType.Normar)
+        {
+            MoveEnemy();
+        }
     }
     public  void MoveEnemy()
     {
@@ -108,4 +118,18 @@ public class EnemyMove : MoveBase
             }
         }
     }
+    public void MoveOrigin(Vector3 origin)
+    {
+        LookTarget(origin);
+
+        if (Vector3.Distance(transform.position, origin) > 0.01f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, origin, moveSpeed * Time.deltaTime *2);
+        }
+        else
+        {
+            transform.position = origin; 
+        }
+    }
+
 }

@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public PortionManager portionManager;
     public CinematicManager chematicManager;
     public MotionBlurManager motionBlurManager;
+    public DialogManager dialogManager;
     private void Awake()
     {
         if (instance == null)

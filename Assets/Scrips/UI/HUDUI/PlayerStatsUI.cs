@@ -26,6 +26,8 @@ public class PlayerStatsUI : MonoBehaviour
         player.stats.onChangeAttack += UpdateAttackUI;
         player.currency.onChangeCoin += UpdateCoinUI;
         player.stats.InitializeStats();
+        player.status.InitializeStatus();
+        player.currency.InitializeCurrency();
     }
     private void OnDisable()
     {

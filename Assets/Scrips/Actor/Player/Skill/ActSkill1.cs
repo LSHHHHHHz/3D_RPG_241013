@@ -33,7 +33,6 @@ public class ActSkill1 : BaseSkill
             }
             else
             {
-                Debug.Log("타겟팅된 오브젝트 없음.");
             }
         }
     }
